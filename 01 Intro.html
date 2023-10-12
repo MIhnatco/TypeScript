@@ -101,8 +101,16 @@ function popup(msg, options){
                 kind of pop-up. The function should produce an error in all these situations. <br>
                 If we add up the code, then we get 59 lines of code. Remember, we haven't written any functionality 
                 yet to actually make a pop-up, and we already have 23 lines of boilerplate code and six test 
-                cases. There is no functional code here and there are zero tests to make sure that the pop-up actually 
-                works. The test cases are there just to make sure we can actually call this function properly.
+                cases. 
+            </p>
+
+            <aside class="pullquote float-right">
+                There is no functional code here and there are zero tests to make sure that the pop-up actually 
+                works. 
+
+            </aside>
+            <p>
+                The test cases are there just to make sure we can actually call this function properly.
 
                 <br>
                 This code is alsy only useful for this one function. So none of these 59 lines can tribute 
@@ -136,9 +144,14 @@ function popup(msg, options){
             version would produce an air, if anything was wrong ..it's actually not possible to make the TypeScript version 
             produce an air..
         </p>
+        <aside class="pullquote float-left">
+            The <strong>TypeScript</strong> code has all the same checks as a JS version, takes less code, requires fewer tests and some of 
+            the code is actually reusable across the rest of the code base. 
+
+        </aside>
+        
         <p>
-            The TypeScript code has all the same checks as a JS version, takes less code, requires fewer tests and some of 
-            the code is actually reusable across the rest of the code base. In this comparison code overall, TypeScript uses 
+            In this comparison code overall, TypeScript uses 
             38% less code. And in this particular example, there's also another huge advantage ..Since the information 
             needed to call the pop-up encode into the type system we get lif suggestions, at our code editor, as we 
             type our code. <br>

@@ -4,15 +4,66 @@
     color: #222;
     background: #e9e8e8;
     font: 18px/30px Georgia, serif;
-    max-width: 860px;
+    max-width: 960px;
     margin: 0 auto;
     padding: 1rem;
     -webkit-font-smoothing: antialiased;
   }
 
+  h1, 
+  h2 {
+    color: #694906;
+  }
+
 
 header {
     text-align: center;
+}
+
+
+.containerFlex {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.half {
+  max-width: 49%;
+  padding: 1rem;
+}
+
+article p {
+  margin-left: 100px;
+}
+
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+.pullquote {
+  color: #4d4242;
+  max-width: 300px;
+  padding: 1.5rem 0;
+}
+
+.pullquote.float-left {
+  margin: 1.5rem 2rem 1.5rem 0;
+}
+
+.pullquote.float-right {
+  margin: 1.5rem 0 1.5rem 2rem;
+}
+
+
+@media (min-width: 568px){
+  .containerFlex {
+    flex-direction: row;
+  }
 }
 
 
