@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Variables</h1>
+        <p>
+            In the context of programming, a <strong>variable</strong> is a fundamental concept used to store and manage data. 
+            Variables are like containers or storage locations that hold values, which can be manipulated, changed, and referenced within a program. 
+            They are an essential building block for writing code and working with data
+        </p>
+    </header>
+
+    <article>
+
+        <h2>Variables</h2>
+        <p>
+            When we are writing programs, we are going to work with lots of kinds of data, maybe an address, an online shopping cart, or 
+            score in a video game. Maybe even all three in the same application. <br>
+            The computer puts these data somewhere in the memory. For us, the exact location of the data in the memory is not a concern. 
+        </p>
+
+        <figure>
+            <img src="images/variables.png" alt="">
+        </figure>
+        
+        
+        <aside class="pullquote float-left">
+            All we care is, how can we get to the data. And that is where <strong>variables</strong> come in.
+
+        </aside>
+        <p>
+            <strong>Variables</strong> allows us to assign useful names to these pieces of data and will also 
+            automatically keeping track of where they exist in memory. This freexe you up to work on your code 
+            instead of trying to remember where everything exists. <br>
+            So if we want to access a player score in a video game, we can just use these <strong>score</strong> variable 
+            and TypeScript will go into memory and pull it out for us.
+        </p>
+
+        <p>
+            Different programming languages may have slightly different rules and conventions for working with variables, but the fundamental concept remains consistent across most languages. Understanding how to declare, assign,
+             and use variables is a fundamental skill in programming, and it's a key part of managing data and building software applications.
+        </p>
+    </article>
+
+    <article>
+        <h3>Variables work as follows inside a program:</h3>
+        <h2>let</h2>
+
+        <p>
+            <strong>Declaration: </strong>
+            To create a variable binding, we need to use a keyword (we start with 'let'). <strong>let</strong> allows us 
+            to reassign data to that binding. Later this allows us to easily make modifications to that variable when 
+            we need to. 
+        </p>
+            <figure>
+                <img src="images/let.png" alt="">
+            </figure>
+
+            <p>
+                So, whenever you have a situation where you need to reassign data, back to the same variable, we'll be using 
+                the <strong>let</strong> keyword to do that.
+            </p>
+           <p>
+               For example, in TypeScript, you can declare a variable like this:
+
+           </p>
+    <pre>
+        <code>
+            let age: number;
+        </code>
+    </pre>
+    <p>
+        Here, age is the variable name, and number is the data type, indicating that age will store numeric values.
+    </p>
+
+
+    <h2>const</h2>
+    <p>
+        We can also use the <strong>const</strong> keyword. The const keyword in programming is used to declare a constant,
+         which is a variable that cannot be reassigned a new value after its initial assignment. It's a way to create variables whose values 
+         should remain fixed throughout the execution of a program. 
+        The const keyword provides benefits in terms of code clarity, predictability, and preventing unintentional value changes.
+    </p>
+
+    <aside class="pullquote float-left">
+        It is important to note that we can still change the value within a constant.
+    </aside>
+    <p>
+        We just cannot reassign it. So using an equal sign won't work, but other methods will still allow  the <strong>const</strong> 
+        to be updated. So <strong>const</strong> shouldn't be confused with the imutable. The data can still be changed, we just 
+        can't assing entirely new data to it.
+    </p>
+
+    <figure>
+        <img src="images/const.png" alt="">
+    </figure>
+
+
+    <h2>var</h2>
+    <figure>
+        <img src="images/var.png" alt="">
+    </figure>
+    <p>
+        This is the only time we'll mention this keyword because you should never use it under any circumstances. <br>
+        It's a legacy keyword left over from the early JavaScript days and it has some very unconventional behovior.
+    </p>
+   
+    </article>
+
+
+    <footer>
+        <p>
+            <strong>let</strong> keyword can do everything, that <strong>var</strong> keyword can do without any of the downsides.
+        </p>
+    </footer>    
+</body>
+</html>
