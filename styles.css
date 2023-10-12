@@ -1,14 +1,14 @@
-body {
-    max-width: 800px;
-    margin: 0 auto;
-    font-family: sans-serif;
 
+  
+  body {
+    color: #222;
     background: #e9e8e8;
+    font: 18px/30px Georgia, serif;
+    max-width: 860px;
+    margin: 0 auto;
     padding: 1rem;
-
-    font-size: 1.1rem;
-    line-height: 1.2;
-}
+    -webkit-font-smoothing: antialiased;
+  }
 
 
 header {
