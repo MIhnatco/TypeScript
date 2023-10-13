@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arithmetic assignment</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Increment & Arithmetic Assignment</h1>
+        <p>
+            Incrementing numbers is a common task to perform when writing programs. So
+            common that there is an operator dedicated to just incrementing numbers. <br>
+            However, it does come with a few caveats to be aware of.
+
+        </p>
+    </header>
+    <article>
+        <h2>Increment and Decrement Operators:</h2>
+        <p>
+            TypeScript provides two operators for incrementing and decrementing variables:
+        </p>
+
+        <h3>Postfix Increment:</h3>
+        <p>
+            In postfix increment, the ++ operator is placed after the variable. 
+            The increment operation is performed after the current value is used or evaluated.
+
+        </p>
+
+<pre>
+    <code>
+let a = 10;
+let b = a++;
+// Now, a is 11, but b is 10 (the previous value of a)
+
+    </code>
+</pre>
+<p>
+    In this example, the current value of a is assigned to b before a is incremented. 
+    So, a ends up with the value 11, but b retains the previous value of a, which is 10.
+</p>
+
+        <ul>
+            <li>
+                Increment (++): Adds 1 to the variable's value.
+
+                <figure>
+                    <img src="images/postfix.png" alt="">
+                </figure>
+            </li>
+            <li>
+                Decrement (--): Subtracts 1 from the variable's value.
+            </li>
+        </ul>
+
+<pre>
+    <code>
+let count = 5;
+count++; // Increment count to 6
+count--; // Decrement count to 5
+    </code>
+</pre>
+        <p>
+            You can use these operators both as pre-increment and post-increment. 
+            Pre-increment increases the value before its use, and post-increment increases the value after its use.
+        </p>
+
+        <h3>
+            Prefix Increment:
+
+        </h3>
+        <p>
+            In prefix increment, the ++ operator is placed before the variable. 
+            The increment operation is performed before the value is used or evaluated.
+
+        </p>
+
+<pre>
+    <code>
+    let x = 5;
+let y = ++x;
+// Now, x is 6, and y is also 6
+
+    </code>
+</pre>
+            <p>
+                In this example, the value of x is incremented before its value is assigned to y. So, both x and y end up with the value 6.
+            </p>
+
+        <figure>
+            <img src="images/prefix.png" alt="">
+        </figure>
+
+<pre>
+    <code>
+let x = 10;
+let y = ++x; // Now x and y are both 11
+    </code>
+</pre>
+    </article>
+
+    <article>
+        <h2>Arithmetic Assignment Operators:</h2>
+        <p>
+            TypeScript provides shorthand operators that combine arithmetic operations with assignment:
+        </p>
+        <ul>
+            <li>
+                Add and Assign (+=): Adds a value to the variable and assigns the result to the variable.
+            </li>
+            <li>
+                Subtract and Assign (-=): Subtracts a value from the variable and assigns the result to the variable.
+            </li>
+            <li>
+                Multiply and Assign (*=): Multiplies the variable by a value and assigns the result to the variable.
+            </li>
+            <li>
+                Divide and Assign (/=): Divides the variable by a value and assigns the result to the variable.
+            </li>
+            <li>
+                Modulo and Assign (%=): Calculates the remainder and assigns it to the variable.
+            </li>
+        </ul>
+
+<pre>
+    <code>
+let total = 10;
+total += 5; // total is now 15
+total -= 3; // total is now 12
+total *= 2; // total is now 24
+total /= 4; // total is now 6
+total %= 5; // total is now 1
+    </code>
+</pre>
+    </article>
+
+    <footer>
+        <h5>Mnemonic Devices:</h5>
+
+        <ul>
+            <li>
+                Think of the increment and decrement operators as quick shortcuts for adding or subtracting 1 from a variable.
+            </li>
+            <li>
+                Both prefix and postfix increment increase the variable's value by 1. <br>
+                
+                The difference is in the order of operations: prefix increments before using the value, while postfix increments after using the value.
+            </li>
+
+        </ul>
+
+Arithmetic assignment operators are like a combination of arithmetic operations and variable assignment, allowing you to perform operations and update a variable's value in a single step.
+    </footer>
+    
+</body>
+</html>
