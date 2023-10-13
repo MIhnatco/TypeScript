@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variable and Basic types</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Variable and Basic types</h1>
+        <p>
+            A <strong>variable</strong> is a named memory location that can hold a value. <br>
+            <strong>Variables</strong> can be used to store a wide range of data types, such as numbers, strings, and arrays.  <br>
+            A <strong>variable</strong> is declared by specifying its name, data type, and
+            optionally an initial value. Once a variable is declared, it can be read potentially updated in other parts of the program.
+        </p>
+    </header>
+
+    <article>
+       <h2>Variable Declarations in TypeScript:</h2>
+       <p>
+           In TypeScript, <strong>variables</strong> are declared using the let or const keyword. 
+           As discussed earlier, <em>const</em> is used for constants that cannot be reassigned, 
+           while <em>let</em> is used for variables that can change their values. 
+           <br>Here's an example:
+
+       </p>
+
+       <pre>
+        <code>
+            let age: number = 30; // Declaring a variable 'age' of type 'number'
+            const name: string = "Alice"; // Declaring a constant 'name' of type 'string'
+
+        </code>
+       </pre>
+    </article>
+
+    <article>
+       <h2>Data Types in TypeScript:</h2>
+       <p>
+          <strong>TypeScript</strong>, as a statically typed language, allows you to specify the data type of a variable. Some common data types in TypeScript include:
+       </p>
+       <ul>
+
+          <li>number for numeric values
+            <ul>
+                <li>
+                    <code>     const amount = 10     </code>
+                </li>
+                <li>
+                    <code>     const fraction = 10.2     </code>
+                </li>
+                <li>
+                    <code>     const oneThousand = 10e3    </code>
+                </li>
+            </ul> </li>
+          <li>string for text values
+            <ul>
+                <li>
+                    <code>const courseName = 'TypeScript'</code>
+                </li>
+                <li>
+                    <code>const courseName = "TypeScript"</code>
+                </li>
+            </ul>
+          </li>
+          <li>boolean for true/false values
+            <ul>
+                <li><code>const yes = true;</code></li>
+                <li><code>const no = false;</code></li>
+            </ul>
+          </li>
+          <li>Completely missing:
+            <ul>
+                <li>
+                    <code>const missing = undefined;</code></li>
+                </li>
+            </ul> 
+          <li>We know it's missing:
+            <ul>
+                <li>
+                    <code>const empty = null;</code></li>
+                </li>
+            </ul> 
+       </ul>
+
+       <p>
+        For example:
+       </p>
+<pre>
+<code>
+    let quantity: number = 5;
+    let productName: string = "Laptop";
+    let isAvailable: boolean = true;
+    let scores: number[] = [90, 85, 78];
+    let person: object = { name: "Bob", age: 25 };
+    let dynamicValue: any = "This can be anything";
+</code>
+</pre>
+
+    </article>
+    <article>
+        <h2>Type Inference</h2>
+        <p>
+            <strong>TypeScript</strong> also provides <em>type inference</em>,
+            which means it can often determine the data type of a variable without 
+            explicit annotation. <br>
+            For instance:
+
+        </p>
+<pre>
+    <code>
+        let temperature = 25; //TypeScript infers the type 'number'
+        let greeting = "Hello";  //TypeScript infers the type 'string'
+    </code>
+</pre>
+<p>
+    <strong>Type inference</strong> reduces the need for explicit type annotations, 
+    making your code more concise.
+</p>
+    </article>
+
+    <article>
+        <h2>Type Annotations</h2>
+        <p>
+            While <strong>TypeScript</strong> can infer types, you can also provide explicit type annotations to make 
+            your code more explicit and self-documenting. <strong>Type annotations</strong> are especially useful 
+            for function parameters and return types. These annotations help the TypeScript compiler catch type-related 
+            errors during development. 
+        </p>
+
+<code>
+    <pre>
+        function add(a: number, b:number): number {
+            return a + b
+        }
+    </pre>
+</code>
+    </article>
+
+    <footer>
+        <h3>Mnemonic Devices:</h3>
+        <p>
+            Think of variables as containers that hold different types of data. You label each container with a data type to specify what kind of data it can hold.
+        </p>
+        <p>
+            Type inference is like magic - TypeScript often guesses the variable's type for you, but you can always be explicit with type annotations to remove any uncertainty.
+        </p>
+
+    </footer>
+    
+</body>
+</html>
