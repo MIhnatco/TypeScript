@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arithmetic Operators</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Arithmetic Operators</h1>
+        <p>
+            TypeScript provides several arithmetic operators for performing basic mathematical operations. Here are the most commonly used ones:
+        </p>
+    </header>
+    <article>
+
+        <ul>
+            <li>
+                Addition (+): Adds two numbers together.
+            </li>
+            <li>
+                Subtraction (-): Subtracts one number from another.
+            </li>
+            <li>
+                Multiplication (*): Multiplies two numbers.
+            </li>
+            <li>
+                Division (/): Divides one number by another.
+            </li>
+            <li>
+                Modulo (%): Returns the remainder of a division operation.
+            </li>
+        </ul>
+
+<pre>
+    <code>
+        let x = 10;
+        let y = 3;
+        let sum = x + y;
+        let difference = x - y;
+        let product = x * y;
+
+        let quotient = 10 / 5;
+        assert.eqaul(quotient, 2)
+
+        let remainder = 10 % 3;
+        assert.eqaul(remainder, 1)
+
+        const inf = 1 / 0;
+        assert.equal(inf, Infinity)
+
+        const nan = 0 / 0;
+        assert(isNane(nan))
+
+        //negation 
+        const neg = -remainder;
+        assert.eqaul(neg, -1);
+
+        //negation of negation
+        const neg2 = -neg;
+        assert.eqaul(neg2, 1);
+
+        //exponent
+        const exp = 2 ** 3;
+        assert.equal(exp, 8);
+
+    </code>
+</pre>
+    </article>
+
+    <article>
+       <h2>Combining Arithmetic Operators:</h2>
+       <p>
+           You can combine multiple arithmetic operators in a single expression. TypeScript evaluates expressions from left to right.
+       </p>
+
+
+<pre>
+    <code>
+        let expression = 10 + 2 * 5; // Multiplication takes precedence, so this equals to 20
+    </code>
+</pre>
+    </article>
+
+    <article>
+        <h2>Type Coercion in Mathematical Operations:</h2>
+        <p>
+            <strong>TypeScript</strong> performs type coercion when you mix data types in mathematical operations. For example, when you add a number to a string, 
+            <strong>TypeScript</strong> converts the number to a string and performs string concatenation.
+        </p>
+
+<pre>
+    <code>
+let num = 5;
+let str = "10";
+let result = num + str; // The result will be "510" (a string), not 15.
+
+    </code>
+</pre>
+    </article>
+
+    <footer>
+        <p>
+            These operators are essential for solving a wide range of problems in programming, from simple calculations to complex mathematical algorithms.
+        </p>
+    </footer>
+    
+</body>
+</html>
