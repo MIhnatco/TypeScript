@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolean Logic</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Boolean Logic</h1>
+        <p> <strong>Boolean logic</strong> is a fundamental concept that involves evaluating true/false statements.
+             It is a system of logical thought that uses <strong>true</strong> and <strong>false</strong> values to make deductions or draw conclusions. 
+             <br> <strong>Boolean logic</strong> is used to
+             express conditions and make decisions based on the truth or falsehood of these conditions.
+        </p>
+    </header>
+
+    <article>
+        <h2>Boolean Data Type in TypeScript:</h2>
+        <p>
+
+            In TypeScript, the boolean data type represents two values: true and false. 
+            Booleans are used to express binary logic and are fundamental to decision-making in programming.
+        </p>
+
+<pre>
+    <code>
+        let isRaining: boolean = true;
+        let hasPermission: boolean = false;
+
+    </code>
+</pre>
+    </article>
+    <article>
+        <h2>Logical Operators:</h2>
+        <p>
+            TypeScript provides several logical operators to work with boolean values:
+
+        </p>
+
+<pre>
+    <code>
+        AND (&&): Returns true if both operands are true.
+        OR (||): Returns true if at least one operand is true.
+        NOT (!): Negates the value; if the operand is true, it becomes false, and vice versa.
+
+        let sunny = true;
+        let warm = true;
+        let isSummer = false;
+        
+        let goingOutside = sunny && warm; // true
+        let needACoat = !warm; // false
+        let beachDay = sunny && (warm || isSummer); // true
+    </code>
+</pre>
+    </article>
+    <article>
+        <h2>Boolean Expressions:</h2>
+        <p>
+            Boolean expressions are combinations of variables, values, and logical operators that result in a boolean value. 
+            They are used in decision-making and control flow in your programs.
+
+        </p>
+
+
+<pre>
+    <code>
+        let isWeekend = true;
+        let hasHomework = false;
+        
+        if (isWeekend && !hasHomework) {
+          console.log("Let's go have fun!");
+        } else {
+          console.log("Time to study.");
+        }
+
+    </code>
+</pre>
+    </article>
+
+
+    <footer>
+        <h3>Mnemonic Devices:</h3>
+        <ul>
+            <li>
+                Think of boolean expressions as questions or conditions. For example, "Is it sunny?" or "Do I have homework?"
+            </li>
+            <li>
+                Logical operators are like the words that connect these questions: "AND" connects conditions that must both be true, "OR" connects conditions where at least one should be true, and "NOT" negates a condition.
+
+            </li>
+        </ul>
+
+        <p>
+            These concepts are essential for building programs that can make informed choices based on different conditions. 
+        </p>
+    </footer>
+    
+</body>
+</html>
