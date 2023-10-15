@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exploring Functions</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Writing and calling Functions</h1>
+    </header>
+    <article>
+        <h2>Function declaration and definition:</h2>
+        <p>
+            In TypeScript, you can declare and define functions using the <strong>'function'</strong> keyword. 
+            A function definition consists of a function name, a list of parameters (optional), and the code to 
+            execute.
+        </p>
+<pre>
+    <code>
+        function sayHello() {
+
+        }
+    </code>
+</pre>
+        <p>
+            The curly braces indicate the beginning and end of function. The code to be executed is placed inside the curly 
+            braces and this part of the function is called 'function body'.
+        </p>
+
+        <h3>Example:</h3>
+<pre>
+    <code>
+
+function sayHello(){
+    console.log("Hello, world!")
+}
+    </code>
+</pre>
+        <p>
+            Here, we are going to access the console and we're going to call the <strong>log</strong> function. What 
+            we're doing here is we're accessing the console module, and withing that module exists a function 
+            called <strong>log</strong> and we call it using parentheses and we add a string <strong>"Hello, world!"</strong> as 
+            an argument. So whenever we call 'sayHello', we're going to log to the console the word.
+        </p>
+        <p>
+            In this case, to call a function we just write the name of  the function, no need of the parameters and add 
+            parentheses.
+        </p>
+<pre>
+    <code>
+        sayHello();
+    </code>
+</pre>
+
+        <p>
+            Once the program starts executing the code...this functions is going to load it into memory and it'll 
+            be ready to go. Actually, nothing is going to happen until we call the fucntion. Then it'll jump 
+            back to the curly braces, where 'console.log()' and will display the result.
+        </p>
+    </article>
+    
+</body>
+</html>
