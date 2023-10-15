@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Literals</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Template Literals</h1>
+        <p>
+            Template literals are a way to create strings that can contain placeholders for dynamic values or expressions. 
+            They are defined using backticks (``) instead of single or double quotes.
+            
+        </p>
+<pre>
+    <code>
+        const name = "Alice";
+        const greeting = `Hello, ${name}!`;
+
+    </code>
+</pre>
+<p>
+    In the example above, ${name} is a placeholder that can be replaced with the value of the name variable.
+</p>
+
+    <h2>Interpolating Variables and Expressions:</h2>
+    <p>
+        Template literals allow you to interpolate variables and expressions directly into the string using ${}. 
+        This makes it easy to include dynamic content in your strings.
+
+    </p>
+
+
+<pre>
+    <code>
+        function greet(message){
+            console.log(`Hello, ${message}!`)
+        }
+    </code>
+</pre>
+        <p>
+            We use the 'back quotes', inside we can place a text and then we can use the dynamic value... 
+            we use 'dollar sign' with curly braces and then a variable that you want to substitute.
+        </p>
+        <p>
+            So if we call the function..
+        </p>
+
+<pre>
+    <code>
+        greet("TypeScript")
+    </code>
+</pre>
+        <p> and run this program..</p>
+<pre>
+    <code>
+        Hello, TypeScript!
+    </code>
+</pre>
+        <p>
+            So this is the simples thing we can do with <strong>templates strings</strong>.
+        </p>
+
+        <h2>Multiple Strings:</h2>
+        <p>
+            Template literals also make it simple to create multiline strings without needing to 
+            add line breaks explicitly. This is especially useful for formatting longer text.
+        </p>
+
+<pre>
+    <code>
+        const poem = `
+            Roses are red, 
+            Violets are blue, 
+            Sugar is sweet, 
+            And so are you.`;
+    </code>
+</pre>
+
+
+
+
+
+
+
+
+        <p>
+            It's also possible to put expressions within a template string. So let's say:
+        </p>
+<pre>
+    <code>
+        let kids =  2;
+        let adults = 4;
+        let totalPeople = `There are ${kids + adults} people`;
+
+        console.log(totalPeople);
+    </code>
+</pre>
+
+        <p>
+            Just as with functions, we don't want to put too many things in a template strings, because 
+            it's going to be hard to separate the part of string with the part that's being calculated.
+        </p>
+        <pre>
+            <code>
+                let kids =  2;
+                let adults = 4;
+                const totalAttending = kids + adults;
+                const totalPeople = `There are ${totalAttending} people`;
+        
+                console.log(totalPeople);
+            </code>
+        </pre>
+
+        <p>
+            So that's a way you can kind of simplify.
+        </p>
+        <p>
+            The last thing in this lesson we need to mention..we can actually put template strings into other template strings.
+        </p>
+<pre>
+    <code>
+        let kids =  2;
+        let adults = 4;
+        const totalAttending = kids + adults;
+        const message = `There are ${totalAttending} people`;
+
+        console.log(`${message} to seat at the restaurand.`)
+    </code>
+</pre>
+
+<p>
+    This has been composed from two template strings and that's all the interesting parts of the template strings. <br>
+    They just enable us to easily create strings by composing other strings and pieces of data into one, complete 
+    message that we can then use later in our code.
+</p>
+    </header>
+
+    <footer>
+        <h3>Mnemonic Devices:</h3>
+        <ul>
+            <li>
+                Think of template literals as strings with superpowers, where you can easily embed variables and expressions.
+            </li>
+            <li>
+                Backticks (`) are your "magic wand" for creating dynamic and multiline strings.
+            </li>
+        </ul>
+
+        <p>
+            They are especially useful when working with dynamic content, such as user-generated data or when formatting text. 
+        </p>
+
+    </footer>
+    
+</body>
+</html>
