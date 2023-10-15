@@ -60,6 +60,15 @@ article p {
 }
 
 
+#test ul {
+  list-style-type: none;
+}
+
+#test ol li:nth-child(4) {
+  margin-bottom: 1rem;
+}
+
+
 @media (min-width: 568px){
   .containerFlex {
     flex-direction: row;
