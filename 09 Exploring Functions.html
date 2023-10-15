@@ -49,6 +49,8 @@ function sayHello(){
             In this case, to call a function we just write the name of  the function, no need of the parameters and add 
             parentheses.
         </p>
+
+    <h2> Function Invocation:</h2>
 <pre>
     <code>
         sayHello();
@@ -60,7 +62,64 @@ function sayHello(){
             be ready to go. Actually, nothing is going to happen until we call the fucntion. Then it'll jump 
             back to the curly braces, where 'console.log()' and will display the result.
         </p>
+
+        <h3>Example 2:</h3>
+<pre>
+    <code>
+    function sum(lhs, rhs){
+        returh lhs + rhs;
+    }
+    </code>
+</pre>
+
+    <p>So this is just a slight modification of our existing function. We have our function keyword, 
+        name of our funciton, we have our we have two parameters in this case. And once we have parameters, 
+        we're able to access them within the body.  We're adding them together and we're returning the result 
+        of that addition.
+    </p>
+<pre>
+    <code>
+        const answer = sum(2,2)
+        console.log(answer)
+    </code>
+</pre>
+<p>
+    Here..we're going to call our function 'sum' with arguments '2,2' and the result we'll place into 'answer' variable. Then 
+    we call the 'log' funciton and print out.
+</p>
+
+<p>
+    By now..we can use our function in a multiple ways.
+</p>
+
+<pre>
+    <code>
+        const answer2 = sum(sum(1,1), sum(2,2))
+        console.log(answer2)
+    </code>
+</pre>
+        <p>
+            What's happening? Here we have some for the 'lhs', the function is going to get called again and return 2..
+            then we have the function for 'rhs' and the return will be 4... and now the 'sum' function is going to get 
+            called again...and the return will be 6.
+        </p>
+        <p>
+            The nesting of function can become very messy..so what we can do is:
+        </p>
+
+<pre>
+    <code>
+        const lhs = sum(1,1);
+        const rhs = sum(2,2);
+
+        const answer3 = sum(lhs, rhs)
+    </code>
+</pre>
+
+
+
     </article>
     
+
 </body>
 </html>
