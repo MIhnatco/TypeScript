@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ternary operator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Ternary operator</h1>
+        <p>
+            The <strong>ternary</strong> operator is a shorthand way to express conditional logic. It allows you to make decisions and choose between two values or expressions based on a condition. 
+            The <strong>ternary</strong> operator is useful for concise conditional assignments.
+        </p>
+    </header>
+    <article>
+       <h2>Syntax and Usage of the Ternary Operator:</h2>
+       <p>
+           The syntax of the ternary operator is as follows:
+       </p>
+
+<pre>
+    <code>
+        condition ? expressionIfTrue : expressionIfFalse
+    </code>
+</pre>
+        <ul>
+            <li>
+                condition: A condition that evaluates to either true or false.
+            </li>
+            <li>
+                expressionIfTrue: The value or expression to return if the condition is true.
+            </li>
+            <li>
+                expressionIfFalse: The value or expression to return if the condition is false.
+            </li>
+        </ul>
+
+        <p>
+            Here's an example:
+        </p>
+
+
+<pre>
+    <code>
+        let isRaining = true;
+        let weatherMessage = isRaining ? "Don't forget your umbrella!" : "Enjoy the sunshine!";
+    </code>
+</pre>
+        <p>
+            In this example, <strong>isRaining</strong> is <strong>true</strong>, so the ternary operator returns "Don't forget your umbrella!"
+        </p>
+
+       <h3>
+           Ternary Operator vs. if Statements:
+       </h3>
+       <p>
+           The <strong>ternary operator</strong> is a more concise way to express simple conditional logic compared to if statements. However, it's not suitable for complex conditions with multiple branches. if statements are still more flexible in such scenarios.
+
+       </p>
+    </article>
+
+    <article>
+        <h3>Exercise: Temperature Message</h3>
+        <p>
+            <strong>Pseudo-Code:</strong> 
+            You are building a temperature message program. Given a numeric temperature in degrees Celsius, you should determine the corresponding message based on the following criteria:
+
+        </p>
+
+        <ul>
+            <li>
+                If the temperature is below 0°C, display "It's freezing!"
+            </li>
+            <li>
+                If the temperature is between 0°C (inclusive) and 15°C (exclusive), display "It's cold."
+            </li>
+            <li>
+                If the temperature is between 15°C (inclusive) and 25°C (exclusive), display "It's pleasant."
+            </li>
+            <li>
+                If the temperature is 25°C or higher, display "It's warm."
+            </li>
+        </ul>
+        <p>
+            Use the ternary operator to implement this. You should assign the temperature message to a variable based on the temperature value.
+        </p>
+
+
+
+    </article>
+
+    <footer>
+        <h3>Mnemonic Devices:</h3>
+        <ul>
+            <li>
+                Think of the ternary operator as a mini decision maker: it quickly picks between two options based on a condition.
+            </li>
+            <li>
+
+                The ? symbol resembles a question mark, representing the condition you're asking.
+            </li>
+        </ul>
+        <p>
+            It's particularly useful for simple one-liner conditions.
+        </p>
+    </footer>
+        
+        
+    
+</body>
+</html>
