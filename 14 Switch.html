@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch statement</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+       <h1>The switch statement</h1>
+       <p>
+           The switch statement is used to evaluate a single expression against multiple possible values or cases. 
+           It provides an alternative to a series of if and else if statements when you need to compare one value against many possible values.
+       </p>
+
+    </header>
+    <article>
+        <h1>Case labels and the 'default' Case</h1>
+        <p>
+            In a <strong>switch</strong> statement, you define different <strong>cases</strong> with case labels. If the expression matches a case label, the code within that case is executed. 
+            You can also provide a default case, which is executed when none of the cases match.
+        </p>
+
+<pre>
+    <code>
+        let day = "Wednesday";
+
+        switch(day){
+            case "Monday":
+                console.log("It's the start of the week.")
+                break;
+
+            case "Wednesday":
+                console.log("It's midweek.");
+                break;
+
+            case "Friday":
+                console.log("It's before the weekend.")
+                break;
+
+            default:
+                console.log("What day is today?")
+        }
+    </code>
+</pre>
+
+        <p>
+            The  <strong>switch</strong> statement is particularly useful when you need to compare a single value against several cases. 
+            It makes your code more concise and easier to read compared to a series of <strong>if</strong> statements.
+        </p>
+        <h3>The 'break' statement</h3>
+        <p>
+            Each case in a <strong>switch</strong> statement typically ends with a <strong>break</strong> statement. The <strong>break</strong> statement is used to exit the switch statement once a case is matched.
+             Without <strong>break</strong>, the code would continue to execute for subsequent cases.
+        </p>
+
+        <h3>The 'default' case</h3>
+        <p>
+            The <strong>default</strong> case in a <strong>switch </strong>statement is used to provide a code block that will be executed when none of the specified case labels match the value of the expression being evaluated. 
+            It serves as a fallback or "catch-all" case, and it's optional. If no matching cases are found, the code within the <strong>default</strong> case will run.
+        </p>
+        <p>
+            Here's an example of how the default case is used:
+        </p>
+<pre>
+    <code>
+let day = "Sunday";
+switch (day) {
+  case "Monday":
+    console.log("It's the start of the week.");
+    break;
+  case "Wednesday":
+    console.log("It's midweek.");
+    break;
+  default:
+    console.log("It's not Monday or Wednesday.");
+}
+    </code>
+</pre>
+        <p>
+        In this example, since day is "Sunday," it doesn't match any of the defined cases ("Monday" or "Wednesday"). Therefore, the code within the default case is executed, and it prints "It's not Monday or Wednesday."
+        </p>
+    </article>
+
+    <article>
+        <h3>Exercise: Grade Calculator</h3>
+
+<p>
+        <strong>Scenario:</strong>
+    You are building a grade calculator program. 
+    Given a numeric score, you should determine the corresponding letter grade based on the following scale:
+
+</p>
+<pre>
+    <code>
+        A: 90 or above
+        B: 80-89
+        C: 70-79
+        D: 60-69
+        F: Below 60
+
+    </code>
+</pre>
+<p>
+    You should use a <strong>switch</strong> statement to implement this. 
+    If the score doesn't fall into any of the specified ranges, you should display "Invalid score."
+
+</p>
+    </article>
+    <footer>
+        <h3>Mnemonic Devices:</h3>
+        <ul>
+            <li>
+                Think of the <strong>switch</strong> statement as a menu with various options. 
+                The single expression is like your selection, and the <strong>case</strong> labels are the different menu items.
+            </li>
+            <li>
+                The <strong>break</strong> statement is like finishing your meal and leaving the restaurant. 
+                It helps you exit the <strong>switch</strong> statement when the appropriate case is matched.
+
+            </li>
+        </ul>
+
+    </footer>
+    
+</body>
+</html>
