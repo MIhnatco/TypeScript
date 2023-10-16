@@ -232,12 +232,51 @@ console.log(x >= 5)     //true
             Due to this behavior of the && and || operator, they are called as <strong>short-circuit operators</strong>.
 
         </p>
+    </article>
+    <article>
+        <h3>Exercise: Temperature Checker</h3>
+        <p>
+            <strong>Scenario:</strong>
+             You are building a temperature checker program. It should take a user's temperature input and provide feedback based on the temperature range.
+        </p>
 
+        <p>Pseudo-Code:</p>
+        <ul>
+            <li>
+                Prompt the user to enter their temperature.
+            </li>
+            <li>
+                Check the user's temperature against the following conditions:
+                    <ul>
+                        <li>
+                            If the temperature is less than 98.6°F, display "Your temperature is below normal."
+                        </li>
+                        <li>
+                            If the temperature is between 98.6°F (inclusive) and 100.4°F (inclusive), display "Your temperature is normal."
+                        </li>
+                        <li>
+                            If the temperature is greater than 100.4°F, display "Your temperature is elevated."
+                        </li>
+                        <li>
+                            If none of the conditions are met, display "Invalid temperature input."
+                        </li>
+                    </ul>
+            </li>
+        </ul>
 
+        <p>
+            Your Task: Fill in the TypeScript code to make this program work. You should use if, else if, and else statements to handle the conditions and provide the appropriate feedback based on the user's input.
+        </p>
+    </article>
 
+    <article>
+        <input type="text" id="temperature">
 
+        <button id="btn">Check</button>
 
+        <div id="result">
 
+        </div>
     </article>
 
     <footer>
@@ -272,6 +311,8 @@ console.log(x >= 5)     //true
             These statements are essential for building programs that can make decisions and respond to different situations. 
         </p>
     </footer>
+
+
     
 </body>
 </html>
