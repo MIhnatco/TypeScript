@@ -57,6 +57,11 @@
     </code>
 </pre>
 
+<p>
+    You cannot change the value using a different data type other than the declared data type of a variable. 
+    If you try to do so, TypeScript compiler will show an error. This helps in catching JavaScript errors. 
+</p>
+
 <h2>Type Annotations for function parameters and return values</h2>
 <p>
     <strong>Type Annotations</strong> can be applied to function parameters and return values, ensuring that 
@@ -74,6 +79,8 @@
         Here, the parameters must be numbers...and the third "number" word, shows, that return from this function 
         must be a number as well.
     </p>
+
+
 
     <p>
         In TypeScript, the <strong>'void'</strong> type is used to indicate that a function does not return any value. 
@@ -127,6 +134,11 @@
                 code more readable.
 <pre>
     <code>
+
+        type myString = string;
+        let country: myString = "USA";
+
+
         type Point = { x: number; y: number};
         let origin: Point = {x: 0, y: 0}
     </code>

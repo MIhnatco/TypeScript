@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Flow</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Control Flow</h1>
+        <p>
+            Conditional statements in TypeScript allow you to execute different blocks of code based on whether a condition is true or false.
+             These statements help your program make decisions.
+        </p>
+    </header>
+    <article>
+        <h2>The 'if' statement</h2>
+        <p>
+            The <strong>'if'</strong> statement is one of the most fundamental conditional statements in TypeScript. 
+            It allows you to execute a block of code if a specified condition is <strong>'true'</strong>.
+        </p>
+<pre>
+    <code>
+        let age = 18;
+        if (age >= 18){
+            console.log("You are an adult.")
+        }
+    </code>
+</pre>
+        <p>
+            In this example, the  code inside the <strong>'if'</strong> block will only run if the condition 
+            <strong>'age >= 18'</strong> is true.
+        </p>
+    </article>
+    <article>
+        <h2>The 'else' statement</h2>
+        <p>
+            You can use the <strong>'else'</strong> statement to provide an alternative code block to run if the 
+            <strong>'if'</strong> condition is <strong>'false'</strong>.
+        </p>
+<pre>
+    <code>
+        let temperature = 25;
+        if (temperature > 30){
+            console.log("It's hot outside.")
+        } else {
+            console.log("It's not too ht outside.")
+        }
+    </code>
+</pre>
+        <p>
+            In this example, if the temperature is greater than 30, the first message is displayed. Otherwise, 
+            the message in the <strong>'else'</strong> block is shown.
+        </p>
+    </article>
+    <article>
+        <h2>The 'else if' statement</h2>
+        <p>
+            The <strong>'else if'</strong> statement is used when you have multiple conditions to check in a controlled 
+            and organized manner. It comes after the initial <strong>'if'</strong> statement and before the 
+            optional <strong>'else'</strong> statement.
+        </p>
+<pre>
+    <code>
+        let score = 75
+
+        if (score >= 90){
+            console.log("You got an A.")
+        } else if (score >= 80){
+            console.log("You got a B.")
+        } else if (score >= 70){
+            console.log("You got a C.")
+        } else {
+            console.log("You need to improve your score.")
+        }
+    </code>
+</pre>
+        <p>
+            In this example, the code will check the score against multiple conditions. If the score is greater than or equal to 90, it prints 
+            "You got an A." If not, it moves to the next else if block and checks if the score is greater than or equal to 80, and so on.
+        </p>
+
+        <p>
+            The else if statement allows you to create a chain of conditions that are evaluated in order. 
+            As soon as one condition is met, the corresponding block of code is executed, and the remaining conditions are skipped.
+        </p>
+
+    </article>
+
+    <article>
+        <h2>Comparison operators</h2>
+        <p>Comparison operators such as ==, !=, &lt;, &gt;, &lt;=, and &gt;= are used to compare values in conditions.</p>
+
+        <h3>Equality Operators == & ===</h3>
+        <p>
+            There are two operators for checking equality in Typescript. One is (==) known as an equality operator or loose equality operator. 
+            The other one is (===) strict Equality operator.
+        </p>
+
+
+        <h3>
+            Not Equal Operators != & !==
+        </h3>
+        <p>
+            != operator checks the un equality of two operands. It is similar to == except it returns true if operands are not equal. !== operator is similar to === except it returns true if operands are not equal.
+        </p>
+
+        <h3>
+            Less than (&lt;)
+        </h3>
+        <p>
+            The Less than (&lt;) comparison operator checks if the left operand is less than its right operand. 
+            If yes then it returns true otherwise returns false
+        </p>
+
+        <h3>Greater than (&gt;)</h3>
+        <p>
+            The greater than &gt; operator checks if the value of the left operand is greater than the right operator. 
+            If yes then it returns true else false.
+        </p>
+        <h3>
+            Less than or equal (&lt;=)
+        </h3>
+        <p>
+            The less than or equal (&lt;=) operator returns true if the left operand is less than or equal to its right operand. else it evaluates to false.
+        </p>
+        <h3>Greater than or equal (&gt;=)</h3>
+        <p>
+            The Greater than or equal (&gt;=) relational operator returns true if its left operand is greater than or equal to its right operand else it returns false.
+        </p>
+
+
+<pre>
+    <code>
+let x = 10;
+if (x > 5) {
+  // Code to execute if x is greater than 5.
+}
+
+console.log(x &lt;= 20)    //true
+console.log(x &lt;= 15)    //true
+console.log(x &lt;= 10)    //true
+console.log(x &lt;= 5)     //false
+
+console.log(x >= 20)    //false
+console.log(x >= 15)    //false
+console.log(x >= 10)    //true
+console.log(x >= 5)     //true
+    </code>
+</pre>
+    </article>
+
+    <article>
+        <h2>Logical operators</h2>
+        <p>
+            <strong>Logical operators</strong> are used to combine two or more conditions. <strong>Logical operators</strong> 
+            retun a Boolean value. <br>
+            Assume the value of variable A is 10 and B is 20. 
+        </p>
+
+        <table>
+            <tr>
+                <th>Operator</th>
+                <th>Description</th>
+                <th>Example</th>
+            </tr>
+            <tr>
+                <td>
+                    && (And)
+                </td>
+                <td>
+                    The operator returns true only if all the expressins specified return true
+                </td>
+                <td>
+                    (A > 10 && B > 10) is False
+                </td>
+            </tr>
+            <tr>
+                <td>|| (Or)</td>
+                <td>The operator returns true if at least one of the expressions specified 
+                    return true
+                </td>
+                <td>
+                    (A > 10 || B > 10) is True
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    ! (NOT)
+                </td>
+                <td>
+                    The operator returns the inverse of the expression's result. 
+                </td>
+                <td>
+                    !(A > 10) is True
+                </td>
+            </tr>
+        </table>
+
+
+       <h2>Short-circuit Operators (&& and ||)</h2>
+       <p>
+           The <strong>&&</strong> and <strong>||</strong> operators are used to combine expressions. 
+           The <strong>&&</strong> operator returns true only when both the conditions return true. Let us consider an expression −
+
+       </p>
+<pre>
+    <code>
+        var a = 10 
+        var result = ( a<10 && a>5)
+
+    </code>
+</pre>
+<p>
+    In the above example, a < 10 and a > 5 are two expressions combined by an && operator. Here, the first expression returns false. However, the && operator requires both the expressions return true. So, the operator skips the second expression.
+</p>
+
+
+    <p>The <strong>||</strong> operator returns true, if one of the expressions returns true. For example:</p>
+<pre>
+    <code>
+        var a = 10 
+        var result = ( a &lt; 5 || a &gt;10)
+    </code>
+</pre>
+        <p>
+            In the above snippet, two expressions a &gt; 5 and a &lt; 10 are combined by a <strong>||</strong> operator. Here, the first expression returns true. Since, the first expression returns true, the || operator skips the subsequent expression and returns true.
+
+        </p>
+        <p>
+            Due to this behavior of the && and || operator, they are called as <strong>short-circuit operators</strong>.
+
+        </p>
+
+
+
+
+
+
+    </article>
+
+    <footer>
+
+       <h3>Mnemonic Devices:</h3>
+        <ul>
+            <li>
+                Think of the <strong>if</strong> statement as a gatekeeper: it lets code through only if a certain condition is met.
+            </li>
+            <li>
+                The else statement is the backup plan for when the if condition is not satisfied.
+            </li>
+        </ul>
+
+        <p>Here are a few key points to keep in mind when using else if:</p>
+        <ul>
+            <li>
+                Conditions are evaluated from top to bottom. Once a condition is true, the associated block of code is executed, and the rest of the else if and else blocks are skipped.
+            </li>
+            <li>
+                You can have multiple <strong>'else if'</strong> blocks, creating a hierarchy of conditions.
+            </li>
+            <li>
+                You can have an <strong>else</strong> block at the end to provide a default action in case none of the conditions are met.
+            </li>
+            <li>
+                The <strong>else if</strong> statement is an effective way to handle complex decision-making scenarios and offers a structured approach to handling various cases in your code.
+            </li>
+        </ul>
+
+        <p>
+            These statements are essential for building programs that can make decisions and respond to different situations. 
+        </p>
+    </footer>
+    
+</body>
+</html>
