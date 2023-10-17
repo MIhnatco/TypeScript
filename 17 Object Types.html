@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Types in TS</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Object Types in TypeScript</h1>
+        <p>
+            An <strong>object</strong> is a data structure in TypeScript used to store related data and methods. 
+            It allows you to group together properties and functions that are related to a specific entity, concept, or thing.
+        </p>
+    </header>
+
+    <article>
+        <h2>Creating Objects Using Object Literals:</h2>
+        <p>
+            You can create objects using object literals, which is a straightforward way to define an object and its properties.
+             Properties are defined as key-value pairs within curly braces.
+        </p>
+
+<pre>
+    <code>
+        let person = {
+            name: "Alice",
+            age: 30,
+            greet: function() {
+              console.log("Hello!");
+            }
+          };
+    </code>
+</pre>
+
+    <h2>Object-Oriented Programming (OOP) Concepts:</h2>
+    <p>
+        <strong>Objects</strong> are a fundamental concept in object-oriented programming. Understanding objects, classes, and instances is crucial for building complex systems.
+
+    </p>
+
+    <h3>
+        Mnemonic Devices:
+    </h3>
+    <ul>
+        <li>
+            Think of an object as a container that holds data and functions related to a specific entity or concept.
+        </li>
+        <li>
+            Use the analogy of a real-world object, like a car, with properties (e.g., color, speed) and methods (e.g., startEngine).
+        </li>
+    </ul>
+
+
+
+    </article>
+
+    <article>
+        <header>
+
+            <h1>Object Types</h1>
+            <p>
+                <strong>TypeScript</strong> allows you to define and work with <strong>object types.</strong> <br>
+                <strong>Object types</strong> specify the structure of objects, including the properties they can have 
+                and the data types of those properties. <strong>Object types</strong> are especially useful for 
+                type checking and ensuring that objects adhere to a specific structure.
+            </p>
+        </header>
+
+        <section>
+            <h2>Using custom types</h2>
+            <p>You can define object types using custom types created with <strong>'type'</strong> declaration:</p>
+
+
+<pre>
+    <code>
+        type Car = {
+            make: string;
+            model: string;
+            year: number;
+        }
+
+        let myCar: Car = {
+            make: "Toyota",
+            model: "Camry",
+            year: 2022
+        }
+    </code>
+</pre>
+
+            <p>
+                In this case, the Car type specifies the structure of a car object, including make, model, and year properties.
+            </p>
+
+            <p><strong>Example:</strong></p>
+
+<pre>
+    <code>
+        type Coordinate = {
+            x: number;
+            y: number;
+        }
+
+        const origin: Coordinate = {
+            x: 0, 
+            y: 0
+        }
+    </code>
+</pre>
+
+            <p>
+                To access the individual property we can use (dot) notation:
+            </p>
+<code>
+    <pre>
+        const xPosition = origin.x;
+        const yPosition = origin.y;
+    </pre>
+</code>
+
+            <p>Working with the object</p>
+<pre>
+    <code>
+        let coord1: Coordinate = {
+            x: 1,
+            y: 1
+        }
+
+    //To modify the properties
+        coord1.x = 20;
+        coord1.y = 10;
+
+
+        //here we can see that type aliases are interchangeable and we 
+        //can use it with different types of data
+
+        function printCoord(coord: Coordinate){
+            console.log(coord.x, coord.y)
+        }
+
+        printCoord(coord)
+        printCoord({x: 5, y: 7})
+    </code>
+</pre>
+
+        <p>
+            We can have 'Type aliases' within 'Type aliases'.
+        </p>
+
+<pre>
+    <code>
+        type PersonName = string;
+
+        type Location = {
+            coord: Coordinate;
+            name: PersonName;
+        }
+
+        let home = {
+            coord: {x: 0, y: 0},
+            name: "Home"
+        }
+    
+    </code>
+</pre>
+            <p>Here we have nested objects..to access properties: </p>
+<pre>
+    <code>
+        console.log(home.coord.x)
+        console.log(home.coord.u)
+    </code>
+</pre>
+
+        </section>
+
+    </article>
+
+    <footer>
+        <p>
+            Understanding object types in TypeScript is essential for building robust and maintainable applications, as it allows you to specify the expected structure of objects and perform type checking to catch potential errors early.
+        </p>
+    </footer>
+    
+</body>
+</html>
