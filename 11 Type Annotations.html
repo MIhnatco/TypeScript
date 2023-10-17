@@ -132,16 +132,81 @@
             </li>
             <li>
                 <strong>Type Aliases:</strong> Let you create custom names for complex types, making your 
-                code more readable.
+                code more readable. Type aliases in TypeScript are used to assign a name to any type,
+                 making it easier to reuse throughout the code. <br>
+                 They do not create a new type, but rather provide a name for an existing type.
+                 To create a type alias, use the type keyword followed by the name of the alias and the type it refers to. <br>
+                 Here are some examples:
+
+                 <ul>
+                    <li>
+                        <strong>Primitives:</strong> <strong>Type aliases</strong> can be used to name primitive types 
+                        like <strong>'string'</strong>, <strong>'number'</strong>, <strong>'boolen'</strong>. For 
+                        example: 
+        <pre>
+            <code>
+                type myString = string
+                type myNumber = number
+                type isNew = boolean
+            </code>
+        </pre>
+                    </li>
+                    <li>
+                        <strong>Unions:</strong> <strong>Type aliases</strong> can also be used to name union types. 
+                        For example:
+    <pre>
+        <code>
+            type myUnion = string || number;
+        </code>
+    </pre>
+                    </li>
+                    <li>
+                        <strong>Objects:</strong> <strong>Type aliases</strong> can be used to name object types. 
+                        For example: 
+    <pre>
+        <code>
+            type myObject = {
+                name: string, 
+                age: number
+            }
+        </code>
+    </pre>
+                    </li>
+                 </ul>
 <pre>
     <code>
 
-        type myString = string;
-        let country: myString = "USA";
+        type myCountry = string;
+        let country: myCountry = "USA";
+        let alsoCountry: string = "Canada"
+
+        
 
 
         type Point = { x: number; y: number};
         let origin: Point = {x: 0, y: 0}
+    </code>
+</pre>
+
+To create a type alias, we're going to use the word <strong>type</strong>..In this case <code>type myCountry</code> and 
+if we're seeing <strong>type myCountry</strong> anywhere in the code, we must ensure it is going to be a string no matter what. <br>
+And this allows us to substitute these two for each other..So anywhere that requires a string we'll be able to use 'myCountry' and anywhere 
+that requires 'myCountry' we'll be able to use a string. So as far as TypeScript is concerned, 'myCountry' is a string.
+            </li>
+
+            <li>
+                Using Type aliases in action:
+<pre>
+    <code>
+        //bad function 
+        function print(country: string){
+            console.log(`The country is: ${country}`)
+        }
+
+        // good function 
+        function printCountry(countryName: myCountry){
+            console.log(`The country is: ${countryName}`)
+        }
     </code>
 </pre>
             </li>
