@@ -120,7 +120,7 @@ function sayHello(){
 
     </article>
 
-    <footer>
+    <article>
         <h3>Mnemonic Devices:</h3>
         
         <ul>
@@ -132,7 +132,204 @@ function sayHello(){
             </li>
         </ul>
 
-    </footer>
+    </article>
+
+    <article>
+        <header>
+
+            <h1>Function expressions</h1>
+            <h3>What is a function expression?</h3>
+    
+            <p>
+                A <strong>function expression</strong> is a way to define a function as an expression within an 
+                assignment statement, an argument to a function, or any other place where an expression is expected. <br>
+                Unlike <strong>function declaration</strong>, which are hoisted, <strong>function expressions </strong> are 
+                evaluated at runtime in the order they appear in the code.
+            </p>
+        </header>
+
+        <h2>Anonymous functions</h2>
+        <p><strong>Function expressions</strong> can be anonymous, meaning they don't have a name. <br>
+            <strong>Anonymous functions</strong> are useful for creating functions on the fly or when you only need to use 
+            a function in a specific context.
+        </p>
+<pre>
+    <code>
+        const add = function(a:number, b:number): number {
+            return a + b;
+        }
+    </code>
+</pre>
+<p>
+    In this example, <strong>'add'</strong> is assigned an anonymous function that takes two parameters and returns their sum.
+</p>
+<p>
+    You can assign function expressions to variable, as in the above example, allowing you to reuse and refernce the functions.
+</p>
+
+<pre>
+    <code>
+
+        let add2 = add(5,5)
+        console.log(add2())
+    </code>
+</pre>
+        <h2>Using function expressions as arguments</h2>
+        <p>
+            <strong>
+                Function expressions
+            </strong> can be used as arguments to other functions. This is common when working with 
+            higher-order function, which are functions that operate on other functions.
+        </p>
+<pre>
+    <code>
+        const numbers = [1,2,3,4]
+        const squared = numbers.map(function(num){
+            return num * num;
+        })
+    </code>
+</pre>
+        <p>
+            Here, the <strong>'map'</strong> function takes an anonymous function to square each 
+         element in the array.
+        </p>
+
+        <p>
+            Below, you can see a TypeScript function called calculate that takes a function fn as an argument. This is a great example of using a higher-order function, and the fn argument 
+            should be a function that takes two numbers as arguments and returns a number.
+        </p>
+<pre>
+    <code>
+        function calculate(fn: (lhs: number, rhs:number) => number){
+            const result = fn(5,5)
+            console.log(result);
+        }
+
+        calculate(add)
+    </code>
+</pre>
+
+    <p>
+        In this example, the add arrow function is passed as an argument to the calculate function, and it correctly calculates and logs the result.
+        <br>
+
+This demonstrates the flexibility and power of higher-order functions in TypeScript, as you can pass different functions to the calculate function to perform various calculations.
+    </p>
+<pre>
+    <code>
+        const sub = (lhs: number, rhs: number): number => {
+            return lhs - rhs;
+        }
+
+
+        calculate(sub)
+    </code>
+</pre>
+
+        <p>In 'calculate' function we can't set what numbers to work with. It has 5,5 hard coded, which is not that 
+            great. So, we can add additional parameters to allow the <strong>calculate</strong> function to calculate other numbers. </p>
+<pre>
+    <code>
+
+        type calculationFn = (lhs: number, rhs: number) => number;
+
+        function calculate(
+            fn: calculationFn, lhs: number, rhs: number) {
+                return fn(lhs, rhs);
+               
+            }
+     
+        calculate(add(10,12))
+        calculate(sub(20,12))
+    </code>
+</pre>
+
+        <p>
+            We can even add another functionality ...
+        </p>
+<pre>
+    <code>
+
+        type calculationFn = (lhs: number, rhs: number) => number;
+
+        function calculate(
+            fn: calculationFn, lhs: number, rhs: number) {
+                const result =  fn(lhs, rhs);
+                if(result === 7){
+                    console.log("You winn this one.");
+                }
+
+                return result;
+               
+            }
+     
+        calculate(add(10,12))
+        calculate(sub(20,12))
+    </code>
+</pre>
+
+        <footer>
+            <p>
+                Function expressions are versatile and valuable for writing clean, efficient code in TypeScript. They are a fundamental building block for functional programming concepts. 
+            </p>
+        </footer>
+
+    </article>
+    <article>
+        <header>
+            <h1>Arrow functions</h1>
+            <p>
+                <strong>Arrow functions,</strong> also known as fat arrow functions, are a more concise way to 
+                define functions in TypeScript and JavaScript. They provide a shorter syntax for defining functions, 
+                making code more readable, especially when working with anonymous functions, callbacks, and closures.
+            </p>
+        </header>
+
+        <main>
+            <h2>Syntax and usage of Arrow functions:</h2>
+            <p>
+                The basic syntax of an arrow function looks like this:
+            </p>
+
+<pre>
+    <code>
+        (parameters) => expression
+    </code>
+</pre>
+            <p>You can also use braces for a block of code:</p>
+<pre>
+    <code>
+        (parameters) => {
+            //code here
+        }
+
+
+        const arrowSum = (lhs: number, rhs: number): number => {
+            return lhs + rhs;
+        }
+
+        const ten = arrowSum(5,5)
+    </code>
+</pre>
+        </main>
+
+        <footer>
+            <h3>Mnemonic Devices:</h3>
+            <ul>
+                <li>
+                    Think of arrow functions as "concise arrows" that point to a shorter way to define functions.
+                </li>
+                <li>
+                    Arrow functions are like "function shorthand" for writing compact code.
+                </li>
+            </ul>
+            <p>
+                Arrow functions are a powerful tool for writing more readable and efficient code in TypeScript. 
+                They are especially valuable when working with functional programming and handling callback functions.
+            </p>
+
+        </footer>
+    </article>
     
 
 </body>
