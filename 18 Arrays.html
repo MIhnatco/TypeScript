@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Arrays</h1>
+
+        <p>
+            <strong>Arrays</strong> in TypeScript are ordered collections of values. They can hold values 
+            of the same or different data types. TypeScript allows you to specify the type of elements in an 
+            array, providing type safety.
+        </p>
+    </header>
+
+    <article>
+        <h2>Creating Arrays and specifying element types</h2>
+        <p>
+            You can create arrays using square brackets <strong>'[]'</strong> or the <strong>'Arrray'</strong> constructor. 
+            You can also specify the type of elements in the array using type annotations.
+        </p>
+<pre>
+    <code>
+        //creating an array of numbers
+        const numbers: number[] = [1,2,3,4,5]
+
+        //creating an array of strings 
+        const colors: string[] = ['red', 'blue', 'orange']
+    </code>
+</pre>
+
+    <h2>Accessing and modifying Array elements</h2>
+    <p>
+        You can access array elements by their index, and you can modify elements by assigning new values to them. Array 
+        indices start from '0'.
+    </p>
+<pre>
+    <code>
+        const fruits: string[] = ['apple', 'banana', 'cherry'];
+        const firstFruit: string = fruits[0]  //accessing the first element
+        fruits[1] = 'grape'  //modifying the second element
+    </code>
+</pre>
+
+
+    <p>Try to avoid this: </p>
+<pre>
+    <code>
+        const arr = [1, "home", true]
+    </code>
+</pre>
+<p>
+    In <strong>TypeScript</strong>, it's generally considered a good practice to use arrays to store elements of the same or compatible types.
+     While TypeScript is more permissive than JavaScript and allows arrays to contain mixed types, it's usually better to maintain consistency in your data structures for the following reasons:
+
+</p>
+        <ul>
+            <li>
+                <strong>Type Safety:</strong> Using arrays with consistent types ensures that you can catch type-related errors at compile-time. Mixing different types in an array may lead to unexpected runtime errors.
+            </li>
+            <li>
+                <strong>Readability:</strong> Code that uses arrays with consistent types is typically more readable and easier to understand, as it adheres to a clear and predictable structure.
+            </li>
+            <li>
+                <strong>Ease of Main</strong>tenance: When you or other developers work with your code in the future, it's simpler to understand and maintain code that follows best practices.
+            </li>
+        </ul>
+
+
+
+
+    <p></p>
+    </article>
+
+    <article>
+        <h2>Multidimensional Arrays</h2>
+        <p>
+            <strong>Multidimensional arrays</strong> are arrays of arrays, 
+            allowing you to create a grid or matrix-like data structure. 
+            In TypeScript, as in many programming languages, you can use multidimensional arrays to represent data in a structured and organized manner.
+
+        </p>
+        <h3>
+            Understanding Multidimensional Arrays:
+        </h3>
+        <p>
+            In a one-dimensional array, you have a single list of elements. In contrast, multidimensional arrays have multiple dimensions or "layers" of arrays. 
+            The most common form of multidimensional array is the two-dimensional array, which can be thought of as a table with rows and columns.
+            
+            <br>Here's a simple example of a two-dimensional array in TypeScript:
+        </p>
+
+<pre>
+    <code>
+        const matrix: number[][] = [
+          [1, 2, 3],
+          [4, 5, 6],
+          [7, 8, 9],
+        ];
+
+    </code>
+</pre>
+        <p>
+            In this example:
+        </p>
+        <ul>
+            <li>
+                matrix is a two-dimensional array.
+            </li>
+            <li>
+                It has three rows, each of which is an array.
+            </li>
+            <li>
+                Each row contains three elements, creating a 3x3 grid.
+            </li>
+        </ul>
+
+        <h3>Accessing Elements in Multidimensional Arrays:</h3>
+        <p>
+            To access elements in a multidimensional array, you use multiple indices. <br>
+             For example, to access the element 5 in the matrix, you would use matrix[1][1], as it's in the second row and second column (zero-based index).
+
+        </p>
+
+        <p>
+            You can provide <strong>type annotations</strong> for multidimensional arrays just like for 
+            one-dimensional arrays. For instance, if you have a two-dimensional array of numbers, you can use <strong>'number[][]'</strong> 
+            to specify its type.
+        </p>
+
+        <p>
+            Multidimensional arrays are a valuable tool for managing structured data and handling grid-like structures. Understanding their usage can be particularly beneficial when dealing with complex data representations. 
+        </p>
+
+   </article>
+
+   <article>
+    <p>
+        Arrays provide a lot of methods.
+    </p>
+    <h3>push():</h3>
+    <p>
+        The <strong>push()</strong> method adds one or more elements to the end of an array and returns the 
+        updated length of the array. It modifies the original array.
+    </p>
+
+
+<pre>
+    <code>
+        const fruits: string[] = ["apple", "banana", "cherry"];
+        fruits.push("date");
+        console.log(fruits); // Output: ["apple", "banana", "cherry", "date"]
+    </code>
+</pre>
+
+    <h3>pop():</h3>
+    <p>
+        The <strong>pop()</strong> method removes the last element from an array and returns that element. 
+        It also modifies the original array by removing the last item.
+
+    </p>
+
+<pre>
+    <code>
+        const numbers: number[] = [1, 2, 3, 4];
+        const lastNumber = numbers.pop();
+        console.log(lastNumber); // Output: 4
+        console.log(numbers); // Output: [1, 2, 3]
+
+    </code>
+</pre>
+    <h3>splice():</h3>
+    <p>
+        The <strong>splice()</strong> method allows you to change the contents of an array by removing, replacing, or adding elements. It takes three arguments: the starting index, the number of elements to remove, and optional elements to add. It returns an array containing the removed elements.
+
+    </p>
+
+<pre>
+    <code>
+        const fruits: string[] = ["apple", "banana", "cherry", "date"];
+        const removed = fruits.splice(1, 2, "grape", "kiwi");
+        console.log(removed); // Output: ["banana", "cherry"]
+        console.log(fruits); // Output: ["apple", "grape", "kiwi", "date"]
+
+    </code>
+</pre>
+    <h3>forEach():</h3>
+    <p>
+        The <strong>forEach()</strong> method is used to iterate over each element in an array and execute a provided function for each element. It does not modify the original array; it's often used for performing actions on array elements without changing the array itself.
+    </p>
+
+
+<pre>
+    <code>
+        const numbers: number[] = [1, 2, 3, 4, 5];
+        numbers.forEach((number) => {
+          console.log(number * 2);
+        });
+
+    </code>
+</pre>
+    <p>
+        This will output the doubled values of each element in the array.
+    </p>
+    <p>
+        These array methods are fundamental for working with arrays in TypeScript and JavaScript. Understanding their use cases and how to apply them effectively can greatly simplify array manipulation in your code.
+    </p>
+   </article>
+
+
+
+
+    <footer>
+        Arrays offer a way to store and manipulate collections of values of the same type. <br>
+         They are defined using square brackets and can be populated with values at initialization, 
+         or later using various methods such as push(),
+        splice(), and concat(). 
+        <br>
+        Arrays can be of a fixed length or dynamically
+        resized as needed, and they can be used with various array methods to
+         perform common operations like sorting, filtering, and mapping.
+    </footer>
+    
+</body>
+</html>
