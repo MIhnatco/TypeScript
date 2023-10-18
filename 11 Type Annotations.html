@@ -103,6 +103,70 @@
         an operation without returning a value, use <strong>'void'</strong> return type.
     </p>
 
+
+    <h2>Type Annotations for objects.</h2>
+    <p>
+        In <strong>TypeScript</strong>, you can use type annotations to specify the structure and types of the properties within an object. 
+        You can define a type that represents the shape of an object and then annotate the object with that type.
+    </p>
+    <p>
+        Here's how you can add type annotations for the you object in your code:
+    </p>
+
+<pre>
+    <code>
+        type User = {
+          userName: {
+            firstName: string;
+            lastName: string;
+          };
+          isReturning: string;
+        };
+        
+        const you: User = {
+          userName: { firstName: 'Bobby', lastName: 'Brown' },
+          isReturning: 'yes',
+        };
+
+    </code>
+</pre>
+        <p>
+            In this example:
+        </p>
+        <ul>
+            <li>
+                We define a User type that specifies the structure of the you object.
+            </li>
+            <li>
+                Inside the User type, we describe the userName property as an object with firstName and lastName properties, both of type string.
+            </li>
+            <li>
+                We also specify the isReturning property as a string.
+            </li>
+
+        </ul>
+        <p>
+            By adding these type annotations, you provide clear information to TypeScript about the expected structure and types of the you object, which can help catch type-related errors and provide better code documentation.
+        </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <h2>Type Inference</h2>
     <p>
         TypeScript can often infer the data type based on the value assigned to a variable. This is known as <strong>type inference</strong>.
@@ -192,6 +256,11 @@ To create a type alias, we're going to use the word <strong>type</strong>..In th
 if we're seeing <strong>type myCountry</strong> anywhere in the code, we must ensure it is going to be a string no matter what. <br>
 And this allows us to substitute these two for each other..So anywhere that requires a string we'll be able to use 'myCountry' and anywhere 
 that requires 'myCountry' we'll be able to use a string. So as far as TypeScript is concerned, 'myCountry' is a string.
+            </li>
+
+            <li>
+                By adding these type annotations, you provide clear information to TypeScript about the expected structure 
+                and types of the you object, which can help catch type-related errors and provide better code documentation.
             </li>
 
             <li>

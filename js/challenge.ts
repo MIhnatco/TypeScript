@@ -59,7 +59,15 @@ displayReviews(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
 const returningUserDisplay = document.querySelector('#returning-user')
 const userNameDisplay = document.querySelector('#user')
 
-const you = {
+type User = {
+    userName: {
+        firstName: string;
+        lastName: string;
+    };
+    isReturning: string;
+}
+
+const you: User = {
     userName: {firstName: 'Bobby', lastName: 'Brown'},
     isReturning: 'yes',
 }
