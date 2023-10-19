@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loops</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Loops</h1>
+        <p>
+            <strong>Loops</strong> are a fundamental concept in programming, and they serve several crucial purposes:
+        </p>
+        <ul>
+            <li>
+                <strong>Repetition: </strong> Loops allow you to execute a block of code multiple times, often with slight variations. This is essential for automating repetitive tasks, which can save time and reduce the risk of errors in manual repetition.
+            </li>
+            <li>
+                <strong>Iterating over data:</strong>Loops are commonly used to iterate over collections of data, such as arrays, lists, or databases. They enable you to process each element of the data one at a time.
+            </li>
+            <li>
+                <strong>Dynamic control flow:</strong>Loops provide dynamic control flow by allowing your program to adapt to changing conditions. For example, you can use loops to respond to user input, process data until certain conditions are met, or perform tasks based on real-time events.
+            </li>
+            <li>
+                <strong>Efficiency:</strong> Loops are more efficient than writing the same code multiple times. They enable you to reuse a block of code and change only the parts that need variation, leading to more concise and maintainable code.
+            </li>
+            <li>
+                <strong>Generating sequences:</strong>Loops can be used to generate sequences of numbers or other data, making them invaluable for tasks like counting, creating patterns, or generating random values.
+            </li>
+            <li>
+                <strong>Data manipulation:</strong>oops are essential for data manipulation, including sorting, filtering, and transforming data. They provide a way to apply operations consistently to multiple data items.
+            </li>
+            <li>
+                <strong>Algorithm implementation:</strong> Many algorithms, from basic searching and sorting to complex machine learning algorithms, rely on loops to iterate through data and perform calculations.
+            </li>
+            <li>
+                <strong>Creating dynamic interfaces:</strong>Loops are used to generate dynamic content in user interfaces, such as populating dropdown menus, creating tables, or displaying lists of items.
+            </li>
+            <li>
+                <strong>Handling events:</strong> Loops can be used to manage event handling in applications. For example, 
+                you can continuously check for user input or respond to real-time events like mouse movements.
+            </li>
+        </ul>
+    </header>
+
+    <article>
+        <header>
+            <h1>for loop</h1>
+            <p>
+                A <strong>'for'</strong> loop is a control structure that allows you to execute a block of code 
+                repeatedly based on a specified condition. It's commonly used when you know the number of iterations  
+                you want to perform or when you need to iterate over a collection of values, like an array.
+            </p>
+        </header>
+        <section>
+            <h2>Syntax of a 'for' loop.</h2>
+            <p>
+                The basic syntax of a 'for' loop in TypeScript is as follows:
+            </p>
+<pre>
+    <code>
+        for (initialization; condition; increment){
+            //code to be executed in each iteration
+        }
+    </code>
+</pre>
+        <ul>
+            <li>
+                Initialization: this is where you initialize a loop control variable.
+            </li>
+            <li>
+                Condition: the loop continues as long as this condition is true.
+            </li>
+            <li>
+                Increment: the loop control variable is modified in this part of the loop. The loop control variable 
+                is often used to track the current iteration or index. You can increment or decrement it in each iteration 
+                to control the loop's behavior.
+            </li>
+        </ul>
+
+        <p>
+            Simple example: The code is a "for" loop in TypeScript that iterates through a range of numbers from 0 to 5 (inclusive) and logs each number to the console. 
+        </p>
+<pre>
+    <code>
+        for (let i = 0; i <= 5; i++){
+            console.log(`${i}`)
+        }
+    </code>
+</pre>
+            <ul>
+                <li>
+                    <strong>'let i = 0':</strong>  Initialization, where 'i' s declared and set to 0
+                </li>
+                <li>
+                    <strong>'i <= 5':</strong> Condition, the loop will continue as long as 'i' is less than or equal to 5.
+                </li>
+                <li>
+                    <strong>'i++'</strong> Increment, 'i' is incremented by 1 after each iteration.
+                </li>
+                <li>
+                    <strong>'console.log('${i}'):</strong>  Inside the loop, this line logs the current value of 'i' 
+                    to the console.
+                </li>
+            </ul>
+            <p>
+                This loop demonstrates how you can use a "for" loop to iterate over a range of numbers and perform actions for each value in the range. In this case, it's logging the numbers from 0 to 5.
+            </p>
+
+            <p>
+                Let's consider a real-life example, where you might use a 'for' loop: calculating the total cost of 
+                items in a shopping cart. In this scenario, you want to iterate through each item in the cart and sum 
+                their prices to get the total cost.
+            </p>
+
+<pre>
+    <code>
+        //Step 1: Create a shopping cart with items
+            const shoppingCart: {name: string; price: number}[] = [
+                { name: "Product A", price: 10.99},
+                { name: "Product B", price: 5.49},
+                { name: "Product C", price: 7.99}
+            ]
+        //Step 2: Initialize the total cost
+            let totalCost: number = 0;
+
+        //Step 3 and 4: Use the 'for' loop to iterate through the shopping cart and calculate the total cost
+            for (let i = 0; i < shoppingCart.length; i++){
+                totalCost += shoppingCart[i].price
+            }
+
+        //Step 5: The totalCost variable now holds the total cost of items in the cart 
+            console.log("Total Cost: $" + totalCost.toFixed(2))
+
+    </code>
+</pre>
+        <p>
+            In this code, the "for" loop iterates through each item in the shopping cart, and the prices of the items are added to the totalCost variable. After the loop, the total cost is calculated and displayed. This is a practical use of a "for" loop for calculating totals in a real-life scenario.
+        </p>
+        </section>
+
+        <footer>
+            <h3>Mnemonic Devices:</h3>
+            <ul>
+                <li>
+                    Think of a "for" loop as a repetitive task performed "for" a specific number of times.
+                </li>
+                <li>
+                    Use initialization, condition, and increment to remember the structure of a "for" loop.
+                </li>
+            </ul>
+
+        </footer>
+    </article>
+
+    <article>
+        <header>
+            <h1>'break' statement </h1>
+            <p>
+                The <strong>break</strong> statement is used within a loop, including a "for" loop, to prematurely exit the loop before it reaches its normal termination condition. When break is encountered, 
+                it immediately terminates the loop and program control is transferred to the first statement after the loop.
+            </p>
+        </header>
+
+        <section>
+            <p>
+                In the context of 'for' loop, here's how <strong>'break'</strong> is typically used:
+            </p>
+
+<pre>
+    <code>
+        for (let i = 0; i < 10; i++){
+            if(i === 5){
+                break; //exit the loop when i equals 5
+            }
+
+            console.log(i)
+        }
+    </code>
+</pre>
+            <p>
+                In this example, the loop iterates through values of 'i' from 0 to 9. However, 
+                when 'i' becomes equal to 5, the <strong>'break'</strong> statement is encountered, 
+                causing the loop to texit immediately. As a result, only values from 0 to 4 are 
+                printed to the console.
+            </p>
+
+            <p>Key points about using break in a "for" loop:</p>
+
+            <ul>
+                <li>
+                    <strong>
+                        Premature Termination:
+                    </strong> <strong>break</strong> provides a way to prematurely exit the loop, even if the loop's termination condition hasn't been met. It's often used to respond to specific conditions within the loop.
+                </li>
+                <li>
+                    <strong>Use Cases:</strong>Common use cases for break include early exit based on certain conditions, implementing search or matching algorithms, and stopping the loop in response to user input.
+                </li>
+                <li>
+                    <strong>Control flow:</strong>Once the break statement is executed, the loop is terminated, and control is passed to the first statement after the loop, skipping any remaining iterations.
+                </li>
+                <li>
+                    Nested Loops:When dealing with nested loops (loops within loops), break will exit the innermost loop it is placed in. To exit an outer loop, you may need to use additional logic or labels.
+                </li>
+            </ul>
+
+        </section>
+    </article>
+
+    <article>
+        <header>
+            <h1>'continue' statement </h1>
+            <p>
+                The <strong>continue</strong> statement is used within a loop, including a "for" loop, to skip the current iteration and move to the next one. Unlike the break statement, 
+                which exits the loop entirely, <strong>continue</strong> allows you to bypass the current iteration and proceed to the next iteration.
+            </p>
+        </header>
+        <section>
+            <p>
+                In the context of a 'for' loop, here's how <strong>'contiune'</strong> is typically used:
+            </p>
+<pre>
+    <code>
+        for (let i = 0; i < 10; i++){
+            if (i % 2 === 0){
+                continue;  //skip even numbers
+            }
+
+            console.log(i)
+        }
+    </code>
+</pre>
+            <p>
+                In this example, the loop iterates through values of 'i' from 0 to 9. When 'i' is 
+                an even number, the <strong>'continue'</strong> statement is encounterd, and that 
+                iteration of the loop is skipped. The loop then proceeds to the next value of 'i'.
+            </p>
+            <p>Key points about using continue in a "for" loop:</p>
+            <ul>
+                <li>
+                    <strong>Skipping Iterations:</strong> continue skips the current iteration and proceeds to the next iteration. It's often used to bypass certain iterations based on specific conditions within the loop.
+                </li>
+                <li>
+                    <strong>Use Cases:</strong> Common use cases for continue include filtering or processing specific elements in an array or sequence, and executing different code for different iterations.
+                </li>
+                <li>
+                    <strong>Control Flow:</strong> When continue is executed, the loop jumps back to the loop's increment statement (e.g., i++), and the next iteration begins. Any code after the continue statement within the current iteration is skipped.
+                </li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>
+                Using continue allows you to control the flow of your "for" loop, skipping specific iterations as needed, while continuing to iterate through the rest of the elements.
+            </p>
+        </footer>
+
+    </article>
+
+    <article>
+        <header>
+            <h1>while loop</h1>
+            <p>
+                A "while" loop is a control structure that repeatedly executes a block of code while a specified condition is true. It's particularly useful when you want to keep executing a block of code until a certain condition is met.
+            </p>
+        </header>
+        <section>
+            <h2>Syntax of a 'while' loop</h2>
+            <p>
+                The basic syntax of a 'while' loop in TypeScript is as follows:
+            </p>
+<pre>
+    <code>
+        while (condition){
+            //code to be executed as long as the condition is true
+        }
+    </code>
+</pre>
+            <p>
+                The 'condition' is a Boolean expression that determines whether the loop should continue or 
+                terminate. If the condition is false when the loop is first encounterd, the loop's block 
+                of code is never executed.
+            </p>
+            <p>
+                To use 'while' loop effectively, you often need to initialize and update variables 
+                within the loop block to control the loop's behavior.
+            </p>
+            <h3>Use cases for 'while' loops</h3>
+            <p>
+                <strong>'while'</strong> loops are commonly used in scenarios where the number of iterations is 
+                not known  in advance but is determined by some condition. Use cases include input validation, interactive 
+                applications, and event handling.
+            </p>
+            <p>
+                Here's a simple example of a 'while' loop that counts from 1 to 5:
+            </p>
+<pre>
+    <code>
+        let count = 1;
+        while (count <= 5){
+            console.log(count);
+            count++;
+        }
+    </code>
+</pre>
+            <p>This loop continues executing as long as the condition 'count <= 5' is true. The 
+            variable 'count' is updated in each iteration to control the loop.</p>
+        </section>
+        <footer>
+            <h3>Mnemonic Devices:</h3>
+            <ul>
+                <li>
+                    Think of a "while" loop as a continuous process that repeats while a condition holds true.
+
+                </li>
+                <li>
+                    Use the while keyword to remember the loop's structure.
+                </li>
+            </ul>
+            
+            
+        </footer>
+    </article>
+
+    <article>
+       <h2> Assignment: Guess the Number Game</h2>
+       <h3>
+           Objective:
+       </h3>
+       <p>
+           Create a simple guessing game in TypeScript where the player must guess a randomly generated number between 1 and 100. The game will continue until the player correctly guesses the number.
+
+       </p>
+
+       <h4>
+           Pseudo Code:
+       </h4>
+
+       <ol>
+        <li>
+            Generate a random number between 1 and 100 (inclusive) and store it in a variable, e.g., randomNumber.
+        </li>
+        <li>
+            Initialize a variable, e.g., guesses, to keep track of the number of guesses and set it to 0.
+        </li>
+        <li>
+            Initialize a variable, e.g., i, to control the loop, and set it to 0.
+        </li>
+        <li>
+            Start a "while" loop with the condition i < 100. The loop continues while i is less than 100, but you can use true for an indefinite game.
+        </li>
+        <li>
+                Inside the loop:
+
+                <ul>
+                    
+                    <li>a. Prompt the player to enter their guess using prompt().</li>
+                    <li>b. Read the player's guess and store it in a variable, e.g., playerGuess.</li>
+                    <li>c. Increment the guesses variable by 1 to track the number of guesses.</li>
+
+                    <li>d. Check if playerGuess is less than randomNumber.
+
+                    If true, display an alert indicating that the guess is less than the random number.</li>
+                    <li>e. Check if playerGuess is greater than randomNumber.
+
+                    If true, display an alert indicating that the guess is greater than the random number.</li>
+                    <li>f. If neither condition in steps 5d and 5e is met, it means the player's guess is correct. Display:
+                        <ul>
+                            <li>A congratulatory message in the console. </li>
+                            <li>The random number. </li>
+                            <li>The number of guesses it took the </li>
+                        </ul>
+
+                    </li>
+                </ul>
+        </li>
+        <li>
+            End the "while" loop when the player correctly guesses the number by using the break statement. <br>
+        </li>
+       </ol>
+
+    </article>
+
+
+    <script src="js/whileLoop.js"></script>
+    
+</body>
+</html>
