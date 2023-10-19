@@ -200,7 +200,7 @@
         const numbers: number[] = [1, 2, 3, 4, 5];
         numbers.forEach((number) => {
           console.log(number * 2);
-        });
+        }); 
 
     </code>
 </pre>
@@ -210,6 +210,38 @@
     <p>
         These array methods are fundamental for working with arrays in TypeScript and JavaScript. Understanding their use cases and how to apply them effectively can greatly simplify array manipulation in your code.
     </p>
+   </article>
+
+   <article>
+    <h2>Arrays && Objects</h2>
+
+<pre>
+    <code>
+        type Link = {
+            title: string;
+            url: string;
+        }
+
+        const miscrosoft: Link = {
+            title: "miscrosoft",
+            url: 'miscrosoft.com'
+        }
+        const typescript: Link = {
+            title: "TypeScript",
+            url: 'typescriptlang.com'
+        }
+
+        const links = [microsoft, typescript]
+
+
+        //need access to typescript url:
+        const tsUrl = links[1].url
+
+
+        //need to edit a property 
+        links[0].title = "Microsoft"      // here we don't reasign 'const links'... just something inside it
+    </code>
+</pre>
    </article>
 
 

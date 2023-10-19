@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuples</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <header>
+        <h1>Tuples</h1>
+        <p>
+            Tuples are ordered collections of elements with a fixed number of elements, where each element can have its own specified data type. 
+            Unlike arrays, tuples allow you to define the type of each element in a structured manner.
+        </p>
+    </header>
+    <article>
+        <h2>Creating Tuples and specifying element types:</h2>
+        <p>
+            You can create tuples by specifying the types for each element within parentheses. The 
+            number of specified types must match the number of elements in the tuple.
+        </p>
+
+<pre>
+    <code>
+        const person: [string, number, boolean] = ["Alice", 30, true]
+    </code>
+</pre>
+
+    <p>
+        In this example, <strong>'person'</strong> is a tuple with three elements, and their types are specified.
+    </p>
+
+        <h2>Accessing Tuple elements:</h2>
+        <p>
+            You can access tuple elements using square brackets and zero-based indices:
+        </p>
+<pre>
+    <code>
+        const name: string = person[0];
+        const age: number = person[1];
+        const isStudent: boolean = person[2]
+    </code>
+</pre>
+
+        <h2>Modifying Tuples:</h2>
+        <p>
+            You can modify tuple elements directly by assigning new values to them, as long as 
+            the new values match the specified types.
+        </p>
+
+<pre>
+    <code>
+        person[1] = 31;  //modifying the age
+    </code>
+</pre>
+
+    <h2>Use cases for Tuples:</h2>
+    <p>
+        <strong>Tuples</strong> are useful for scenarios where you need to maintain a structured collection 
+        of elements with specific types. Some common use cases include representing pairs of triplets of values, 
+        such as coordinates, database records, or function return types.
+    </p>
+
+    <p>
+        We can return a tuple from a function:
+    </p>
+<pre>
+    <code>
+        function coord(): [number, number]{
+            return [3,3]
+        }
+    </code>
+</pre>
+
+    <ul>
+        <li>
+            <strong>'function coord(): [number, number]':</strong> this function is explicitly annotated to return 
+            a tuple with two elements, both of type <strong>'number'</strong>. This means the function is expected 
+            to return an array-like structure with exactly two numbers.
+        </li>
+        <li>
+            <strong>'return [3,5]'</strong> the function returns a tuple containing two numbers, 3 and 5.
+        </li>
+    </ul>
+    <p>
+        You can call this function to get the coordinates:
+    </p>
+<pre>
+    <code>
+        const coordinates: [number, number] = coord();
+        console.log(coordinates); // Output: [3,5]
+    </code>
+</pre>
+        <p>
+            In this example, the <strong>coord</strong> function is called, and the returned 
+            tuple is assigned to the <strong>'coordintes'</strong> variable.
+        </p>
+
+        <p>
+            This demonstrates how yu can use tuples in TypeScript to represent structured data, 
+            such as coodinates, where you have specific types for each element. Tuples are useful for 
+            maintainig type safety and clear data structure definitions.
+        </p>
+
+        <p>
+            You can create an array of tuples in TypeScript by specifying the tuple types for each 
+            element within the array. <br>
+            Here is an example of an array of tuples:
+        </p>
+
+<pre>
+    <code>
+        const people: [string, number][] = [
+            ["Alice", 30],
+            ["Bob", 25],
+            ["Charlie", 35]
+        ]
+    </code>
+</pre>
+        <p>In this example:</p>
+        <ul>
+            <li>
+                <strong>'people'</strong> is an array of tuples where each tuple has two elements.
+            </li>
+            <li>
+                The first element in each tuple is of type <strong>'string'</strong> and the second element is 
+                of type <strong>number</strong>.
+            </li>
+        </ul>
+    </article>
+
+    <footer>
+       <h3>Mnemonic Devices:</h3>
+       <ul>
+        <li>
+            Think of tuples as "typed arrays" with a predefined structure.
+        </li>
+        <li>
+            Use parentheses to remember tuple creation, and square brackets to access elements.
+        </li>
+       </ul>
+
+    </footer>
+    
+</body>
+</html>

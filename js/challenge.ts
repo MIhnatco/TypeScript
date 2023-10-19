@@ -14,10 +14,19 @@
 // parameters the function takes.
 // : boolean
 
+// Array Types mini-challenge
+//Can you assign the correct Type to the reviews const? Please bear in mind everything
+// we have learnt about String, Boolean, Number, Object and Array Types for this.
+
 const reviewTotalDisplay = document.querySelector('#reviews') as HTMLInputElement;
 
 
-const reviews = [
+const reviews: {
+    name: string;
+    stars: number;
+    loyaltyUser: boolean;
+    date: string;
+}[] = [
     {
         name: 'Sheia',
         stars: 5,
