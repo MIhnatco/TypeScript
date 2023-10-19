@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modules</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Modules</h1>
+        <p>
+            Modules allow you to organize and encapsulate your code into reusable and maintainable units. 
+            They are essential for structuring large-scale applications and facilitating code separation and reusability.
+        </p>
+    </header>
+
+    <article>
+        <p>
+            Modules in TypeScript are a way to structure and organize code. They allow you to group 
+            related functions, classes and variables into a single unit. <strong>Modules</strong> help 
+            in avoiding naming conflicts, enhancing code maintainability, and making your code more organized 
+            and reusable.
+        </p>
+
+        <h2>Exporting and Importing Modules</h2>
+        <ul>
+            <li>
+                <strong>Exporting:</strong> In TypeScript, you can mark specific elements within a module 
+                as exportable using the <strong>'export'</strong> keyword. These elements become accessible 
+                to other modules. 
+            </li>
+            <li>
+                <strong>Importing:</strong> You can use the <strong>'import'</strong> statement to bring exported elements 
+                from one module into another module, allowing you to use those 
+                elements in your code.
+            </li>
+        </ul>
+        <p>
+            Modules can be organized in files. Each TypeScript file can be a module, and the structure of 
+            your code should reflect the organization of your module. This facilitates code navigation and 
+            organization.
+        </p>
+    </article>
+
+    <article>
+        <h3>Examples:</h3>
+        <ul>
+            <li>
+                Creating and exporting a module:
+<pre>
+    <code>
+        //mymodule.ts 
+
+        export function greet(name: string): string {
+            return `Hello, ${name}!`;
+        }
+    </code>
+</pre>
+            </li>
+            <li>
+                Importing and using a module:
+<pre>
+    <code>
+        //app.ts 
+    import {greet} from './mymodule';
+
+    const message = greet("Alice");
+
+    console.log(message);  //Output: Hello, Alice!
+    </code>
+</pre>
+            </li>
+        </ul>
+    </article>
+
+    <footer>
+        <p>
+            Understanding modules is crucial for building organized, maintainable, and scalable TypeScript applications.
+        </p>
+    </footer>
+    
+</body>
+</html>

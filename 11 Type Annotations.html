@@ -58,10 +58,20 @@
     </code>
 </pre>
 
-<p>
-    You cannot change the value using a different data type other than the declared data type of a variable. 
-    If you try to do so, TypeScript compiler will show an error. This helps in catching JavaScript errors. 
-</p>
+        <p>
+            You cannot change the value using a different data type other than the declared data type of a variable. 
+            If you try to do so, TypeScript compiler will show an error. This helps in catching JavaScript errors. 
+        </p>
+
+        <p>If you assign a string to the counter variable, you'll get an error:</p>
+
+<pre>
+    <code>
+        let counter: number;
+        counter = 'Hello'; // compile error  Type '"Hello"' is not assignable to type 'number'.
+
+    </code>
+</pre>
 
 <h2>Type Annotations for function parameters and return values</h2>
 <p>
@@ -103,6 +113,25 @@
         an operation without returning a value, use <strong>'void'</strong> return type.
     </p>
 
+    <h2>Type Annotations for Arrays</h2>
+    <p>Annotate an array type you use use a specific type followed by a square bracket : type[] :</p>
+
+<pre>
+    <code>
+let arrayName: type[];
+
+    </code>
+</pre>
+        <p>
+            For example, the following declares an array of strings:
+        </p>
+<pre>
+    <code>
+        let names: string[] = ['John', 'Jane', 'Peter', 'David', 'Mary'];
+    </code>
+</pre>
+
+
 
     <h2>Type Annotations for objects.</h2>
     <p>
@@ -112,6 +141,20 @@
     <p>
         Here's how you can add type annotations for the you object in your code:
     </p>
+
+    <pre>
+        <code>
+    let person: {
+        name: string;
+        age: number
+    };
+    
+    person = {
+        name: 'John',
+        age: 25
+    }; 
+        </code>
+    </pre>
 
 <pre>
     <code>
