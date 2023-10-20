@@ -8,8 +8,9 @@ body {
 }
 
 .container {
-    margin: 1.25rem;
+
     text-align: center;
+    
 }
 
 nav {
@@ -27,5 +28,21 @@ nav {
     width: 3rem;
     background-size: 3rem;
     background-image: url('../images/sofa-logo.png');
+}
+
+.properties {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 80%;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+
+.card {
+    width: 250px;
+    margin: 5px;
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: rgb(0 0 0 / 12%) 0 1px 8px;
 }
 
