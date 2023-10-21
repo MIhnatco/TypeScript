@@ -68,13 +68,22 @@ function populateUser(isReturning: boolean, userName: object ) {
 
 populateUser(Boolean(you.isReturning), you.userName)
 
-// Add the properties to the Dashboard
-// This is a continuation of the Challenge, in which you are asked to add
-// the 3 properties image and title to the dashboard based on the 
-// properties array
-
 
 const propertyContainer = document.querySelector('.properties')
+
+// Tuple Types
+// 1. Replace the contact values to take an array that contains a
+// phone number and email.
+// 2. Check the inferred Type that appears in the Object Type.
+// 3. Overwrite the inferred type to be a Tuple.
+
+// Tuples challenge
+// 1. Add an array to the variable of currentLocation I have added. This array
+// must have your current location, time, and degrees celsius of your location
+// NOTE: make sure to make this a Tuple, to only allow those types in that
+// structure.
+// 2. Add this visually to a footer on your site
+
 
 
 type Props = {
@@ -87,7 +96,7 @@ type Props = {
         code: number;
         country: string;
     };
-    contact: string;
+    contact: [number, string];
     isAvailable: boolean;
 
 }
@@ -103,7 +112,7 @@ const properties : Props[] =  [
             code: 45632,
             country: 'Colombia'
         },
-        contact: 'marywinkle@gmail.com',
+        contact: [+11234950824856,'marywinkle@gmail.com'],
         isAvailable: true  
     },
     {
@@ -116,7 +125,7 @@ const properties : Props[] =  [
             code: 343903,
             country: 'Poland'
         },
-        contact: 'garydavis@hotmail.com',
+        contact: [+11234523524856,'garydavis@hotmail.com'],
         isAvailable: false 
     },
     {
@@ -129,7 +138,7 @@ const properties : Props[] =  [
             code: 35433,
             country: 'United Kingdom',
         },
-        contact: 'andyluger@aol.com',
+        contact: [+1125632124856,'andyluger@aol.com'],
         isAvailable: true
     }
 ]
@@ -152,3 +161,9 @@ for (let i = 0; i < properties.length; i++){
 
     propertyContainer.appendChild(card)
 }
+
+
+let currentLocation : [string, string, number] = ["Humenne", "4:52 AM", 3];
+
+const footer = document.querySelector('.footer')
+footer.innerHTML = `<h2>${currentLocation[0]} - ${currentLocation[1]} - ${currentLocation[2]} °C</h2>`

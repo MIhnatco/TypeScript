@@ -37,10 +37,6 @@ function populateUser(isReturning, userName) {
     userNameDisplay.innerHTML = userName['firstName'];
 }
 populateUser(Boolean(you.isReturning), you.userName);
-// Add the properties to the Dashboard
-// This is a continuation of the Challenge, in which you are asked to add
-// the 3 properties image and title to the dashboard based on the 
-// properties array
 var propertyContainer = document.querySelector('.properties');
 //Array of Properties 
 var properties = [
@@ -54,7 +50,7 @@ var properties = [
             code: 45632,
             country: 'Colombia'
         },
-        contact: 'marywinkle@gmail.com',
+        contact: [+11234950824856, 'marywinkle@gmail.com'],
         isAvailable: true
     },
     {
@@ -67,7 +63,7 @@ var properties = [
             code: 343903,
             country: 'Poland'
         },
-        contact: 'garydavis@hotmail.com',
+        contact: [+11234523524856, 'garydavis@hotmail.com'],
         isAvailable: false
     },
     {
@@ -80,7 +76,7 @@ var properties = [
             code: 35433,
             country: 'United Kingdom',
         },
-        contact: 'andyluger@aol.com',
+        contact: [+1125632124856, 'andyluger@aol.com'],
         isAvailable: true
     }
 ];
@@ -96,3 +92,6 @@ for (var i = 0; i < properties.length; i++) {
     card.appendChild(image);
     propertyContainer.appendChild(card);
 }
+var currentLocation = ["Humenne", "4:52 AM", 3];
+var footer = document.querySelector('.footer');
+footer.innerHTML = "<h2>".concat(currentLocation[0], " - ").concat(currentLocation[1], " - ").concat(currentLocation[2], " \u00B0C</h2>");
