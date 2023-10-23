@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>enum</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>enum type</h1>
+        <p>
+            In TypeScript, an <strong>'enum'</strong> (short for 'enumeration') is a data type used to define 
+            a set of named constants, which represents a set ofo related values. Enums make your code more readable, 
+            and self-documenting by providing meaningful names for values, rather than using raw number or strings. They 
+            are particularly useful when you have a fixed and well-defined set of options or values.
+        </p>
+    </header>
+    <article>
+        <h2>Definig an Enum:</h2>
+        <p>
+            To define an <strong>'enum'</strong>, use the <strong>'enum'</strong> keyword followed by a name 
+            for the enum and a set of named constants enclosed in curly braces. Each constant should have a name 
+            and an optional associated value. The associated value can be of any type (number or string).
+        </p>
+
+<pre>
+    <code>
+        enum Days {
+            Sunday,   //0
+            Monday,   //1
+            Tuesday,  //2
+            Wednesday,  //3
+            Thursday,   //4
+            Friday,     //5
+            Saturday    //6
+        }
+    </code>
+</pre>
+        <p>
+            In the example above, we've defined an enum named <strong>"Days"</strong> with seven named constants. By 
+            default, each constant is assigned a numeric value starting from 0, and subsequent values are incremented by 1.
+        </p>
+
+        <h2>
+            Using an Enum:
+        </h2>
+        <p>
+            You can use the enum in your code to represent values and provide meaningful names. For example:
+        </p>
+
+<pre>
+    <code>
+        let today: Days = Days.Wednesday;
+        console.log("Today is " + today);   //Output: Today is 3
+    </code>
+</pre>
+
+        <h2>Reverse Mapping:</h2>
+        <p>
+            Enums in TypeScript support reverse mapping, which means you can convert from a numeric 
+            value or string to the corresponding enum member name. For example:
+        </p>
+<pre>
+    <code>
+        let dayName: string = Days[3]; //This returns "Wednesday"
+    </code>
+</pre>
+        <p>
+            This is particularly useful when you need to display or work with human-readable names based on 
+            enum values.
+        </p>
+
+
+        <h2>Custom Values for enum members:</h2>
+        <p>You can also assign custom values to enum members:</p>
+<pre>
+    <code>
+        enum Color {
+            Red = "#f00",
+            Green = "#0f0", 
+            Blue = "#00f"
+        }
+    </code>
+</pre>
+
+        <p>
+            Here, we've defined an enum <strong>"Color"</strong> with custom string values representing color codes.
+        </p>
+
+        <p>
+            <strong>Reverse mapping</strong> is primarily designed for use with numeric <strong>enum</strong> values and may not work as expected with custom values 
+            for <strong>enum</strong> members. When you have custom values for enum members, TypeScript doesn't generate a <strong>reverse mapping</strong> from values to member names automatically. 
+            Instead, <strong>reverse mapping</strong> is primarily applicable when using the default incremental numeric values.
+        </p>
+    </article>
+
+
+    <footer>
+        <h2>Use cases for Enums:</h2>
+        <p>
+            <strong>Enums</strong> are commonly used whne you have a set of options or categories, that need 
+            to be represented in your code, such as days of the week, colors, status codes, or error types. They 
+            provide a structured and type-safe way to work with these values. 
+        </p>
+        <p>
+            <strong>Enums</strong> help prevent accidental misuse of values and improve code quality by making 
+            it clear what each value represents. They also enhance code maintainability and readability.
+        </p>
+    </footer>
+
+
+
+    <script src="enum/enums.js"></script>
+    
+</body>
+</html>

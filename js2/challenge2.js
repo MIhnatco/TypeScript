@@ -1,26 +1,38 @@
+// Enum Types mini-challenge
+// Replace the value of loyaltyUser to a GOLD_USER, SILVER_USER or BRONZE_USER, making sure to
+// use what we learnt about Enums in the previous lesson. Make Sheia GOLD, Andrzej BRONZE 
+// and Omar SILVER.
+// 2. export the enum
+// 3. Fix the function in the utils to show Sheias star as she is a GOLD_USER.
 var reviewTotalDisplay = document.querySelector('#reviews');
+var UserStats;
+(function (UserStats) {
+    UserStats[UserStats["GOLD_USER"] = 0] = "GOLD_USER";
+    UserStats[UserStats["SILVER_USER"] = 1] = "SILVER_USER";
+    UserStats[UserStats["BRONZE_USER"] = 2] = "BRONZE_USER";
+})(UserStats || (UserStats = {}));
 var reviews = [
     {
         name: 'Sheia',
         stars: 5,
-        loyaltyUser: true,
+        loyaltyUser: UserStats[0],
         date: '01-04-2021'
     },
     {
         name: 'Andrzej',
         stars: 3,
-        loyaltyUser: false,
+        loyaltyUser: UserStats[2],
         date: '28-03-2021'
     },
     {
         name: 'Omar',
         stars: 4,
-        loyaltyUser: true,
+        loyaltyUser: UserStats[1],
         date: '27-03-2021'
     },
 ];
 function displayReviews(reviews, reviewer, isLoyalty) {
-    var icon = isLoyalty ? '⭐' : '';
+    var icon = isLoyalty === "GOLD_USER" ? '⭐' : '';
     reviewTotalDisplay.textContent = "Total reviews: ".concat(reviews.toString(), " | last reviewed by: ").concat(reviewer, " ").concat(icon);
 }
 displayReviews(reviews.length, reviews[0].name, reviews[0].loyaltyUser);

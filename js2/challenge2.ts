@@ -1,37 +1,48 @@
-
+// Enum Types mini-challenge
+// Replace the value of loyaltyUser to a GOLD_USER, SILVER_USER or BRONZE_USER, making sure to
+// use what we learnt about Enums in the previous lesson. Make Sheia GOLD, Andrzej BRONZE 
+// and Omar SILVER.
+// 2. export the enum
+// 3. Fix the function in the utils to show Sheias star as she is a GOLD_USER.
 
 const reviewTotalDisplay = document.querySelector('#reviews') as HTMLInputElement;
 
 
+enum UserStats {
+    GOLD_USER, 
+    SILVER_USER, 
+    BRONZE_USER
+}
+
 const reviews: {
     name: string;
     stars: number;
-    loyaltyUser: boolean;
+    loyaltyUser: string;
     date: string;
 }[] = [
     {
         name: 'Sheia',
         stars: 5,
-        loyaltyUser: true,
+        loyaltyUser: UserStats[0],
         date: '01-04-2021'
     },
     {
         name: 'Andrzej',
         stars: 3,
-        loyaltyUser: false,
+        loyaltyUser: UserStats[2],
         date: '28-03-2021'
     },
     {
         name: 'Omar',
         stars: 4,
-        loyaltyUser: true,
+        loyaltyUser: UserStats[1],
         date: '27-03-2021'
     },
 ]
 
 
-function displayReviews(reviews: number, reviewer: string, isLoyalty: boolean): void {
-    const icon = isLoyalty ? '⭐' : '';
+function displayReviews(reviews: number, reviewer: string, isLoyalty: string): void {
+    const icon = isLoyalty === "GOLD_USER" ? '⭐' : '';
 
     reviewTotalDisplay.textContent = `Total reviews: ${reviews.toString()} | last reviewed by: ${reviewer} ${icon}` 
 
@@ -70,21 +81,6 @@ populateUser(Boolean(you.isReturning), you.userName)
 
 
 const propertyContainer = document.querySelector('.properties')
-
-// Tuple Types
-// 1. Replace the contact values to take an array that contains a
-// phone number and email.
-// 2. Check the inferred Type that appears in the Object Type.
-// 3. Overwrite the inferred type to be a Tuple.
-
-// Tuples challenge
-// 1. Add an array to the variable of currentLocation I have added. This array
-// must have your current location, time, and degrees celsius of your location
-// NOTE: make sure to make this a Tuple, to only allow those types in that
-// structure.
-// 2. Add this visually to a footer on your site
-
-
 
 type Props = {
     image: string;
