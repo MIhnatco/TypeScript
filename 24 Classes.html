@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Classes</h1>
+        <p>
+            <strong>Classes</strong> are a fundamental concept in object-oriented programming that allows you 
+            to define a blueprint for creating objects. They encapsulate both data (properties) and behavior 
+            (methods) into a single unit, making it easier to create and manage objects.
+        </p>
+    </header>
+    <article>
+        <h2>Class Syntax and Structure:</h2>
+        <p>
+            To define a class in TypeScript, use the <strong>'class'</strong> keyword followed by the class name. <br>
+            In TypeScript, the <strong>'class'</strong> keyword provides a more familiar syntax for generating constructor functions and performing simple inheritance.
+            Inside the class, you can declare properties and methods. Here's a basic example:
+        </p>
+<pre>
+    <code>
+        class Person {
+            //properties
+            name: string;
+            age: number;
+
+            //Constructor 
+             constructor(name: string, age: number){
+                this.name = name;
+                this.age = age;
+             }
+
+             //method
+             sayHello(){
+                console.log(`Hello, my name is ${this.name} and I am ${this.age} years old.)
+             }
+        }
+
+
+    </code>
+</pre>
+        <h3>Constructor:</h3>
+        <p>A <strong>constructor</strong> is a special method that is automatically called when an object is created from 
+            a class. It's used to initialize the object's properties. In the example above, the <strong>'constructor'</strong> 
+            initializes the <strong>'name'</strong> and <strong>'age'</strong> properties.
+        </p>
+
+        <h3>Properties and methods:</h3>
+        <p>
+            <strong>Properties</strong> are variables that store data within a class. <br>
+             <strong>Methods</strong> are functions that define the behavior of the class. <br>
+              In the example above, <strong>'name'</strong> and <strong>'age'</strong> are properties, and <strong>'sayHello' is a method.</strong>
+        </p>
+
+
+        <h2>Instance of a class</h2>
+        <p>
+            Create an instance of the <strong>"Person"</strong> class by using the <strong>'new'</strong> 
+            keyword and passing the required constructor parameters.
+        </p>
+
+<pre>
+    <code>
+        const Alice = new Person("Alice", 21)
+    </code>
+</pre>
+        <p>
+            Now, you have an instance of the <strong>"Person"</strong> class named <strong>"Alice"</strong>. You 
+            can access its properties and methods using the dot  notation.
+        </p>
+<pre>
+    <code>
+        console.log(Alice.name)  //Output: Alice
+        console.log(Alice.age)  //Outuput: 21
+
+        //using method 
+        console.log(Alice.sayHello())  //Output: Hello, my name is Alice and I am 21 years old.
+    </code>
+</pre>
+
+        <h2>Inheritance and Access Modifiers:</h2>
+        <p>
+            In <strong>TypeScript</strong>, we can use common object-oriented patterns. One of the most fundamental 
+            patterns in class-based programming is being able to extend existing classes to create new ones using 
+            <strong>inheritance</strong>.
+        </p>
+        <p>
+            <strong>Inheritance</strong> allows you to create new classes based on existing classes, inheriting 
+            their properties and methods. TypeScript supports access modifiers like <strong>'public'</strong>, 
+            <strong>'private'</strong> and <strong>'protected'</strong> to control the visibility and accessibility 
+            of class members.
+        </p>
+
+<pre>
+    <code>
+        class Student extends Person {
+            studentId: number;
+
+            constructor(name: string, age: number, studentId: number){
+                super(name, age)  //Call the parent class's constructor
+                this.studentId = studentId
+            }
+
+
+            study(){
+                console.log(`${this.name} is studying with student ID ${this.studentId}.`)
+            }
+        }
+    </code>
+</pre>
+
+    <p>
+        In this example, the <strong>"Student"</strong> class extends the <strong>'Person'</strong> class 
+        and adds a <strong>'studentId'</strong> property and a <strong>'study'</strong> method.
+    </p>
+
+    <p>
+        Derived classes are often called <em>subclasses</em>, and base classes are often called <em>superclasses.</em> <br>
+        A derived class can also override a base class field or property. You can use the super. syntax to access base class methods.
+    </p>
+
+<pre>
+    <code>
+        class Animal {
+            name: string;
+
+            constructor(theName: string){
+                this.name = theName;
+            }
+
+            move(distanceInMeters: number = 0){
+                console.log(`${this.name} moved ${distanceInMeters} m.`)
+            }
+        }
+
+        class Snake extends Animal {
+            constructor(name: string){
+                super(name)
+            }
+
+            move(distanceInMeters = 5){
+                console.log("Slithering...");
+                super.move(distanceInMeters)
+            }
+        }
+
+        class Horse extends Animal {
+            constructor(name: string){
+                super(name);
+            }
+
+            move(distanceInMeters = 45){
+                console.log("Galloping...");
+                super.move(distanceInMeters);
+            }
+        }
+
+        let sam = new Snake("Sammy, the Python");
+        let tom: Animal = new Horse("Tommy, the Palomino")
+
+        sam.move()
+        tom.move(34)
+    </code>
+</pre>
+
+
+        <h2>Access modifier</h2>
+        <p>
+            <strong>Access modifier</strong> in TypeScript allow you to control the visibility and accessibility of class 
+            members (properteis and methods). TypeScript supports three main access modifiers: 
+        </p>
+        <ul>
+            <li>
+                <strong>'public'</strong>
+            </li>
+            <li>
+                <strong>'private'</strong>
+            </li>
+            <li>
+                <strong>'protected'</strong>
+            </li>
+        </ul>
+
+        <ol>
+            <li>
+                <strong>'public' Access Modifier:</strong> <br>
+                The <strong>'public'</strong> access modifier is the default visibility for class members. Members 
+                declared as <strong>'public'</strong> are accessible from anywhere in your code, both inside and outside 
+                the class. 
+<pre>
+    <code>
+        class Person {
+            public name: string;
+
+            constructor(name: string){
+                this.name = name;
+            }
+        }
+
+        const person = new Person("Alice");
+        console.log(person.name)  //Accessing the public property is allowed
+    </code>
+</pre>
+            </li>
+            <li>
+                <strong>'private Access Modifier:</strong> <br>
+                Members with the <strong>'private'</strong> access modifier are only accessible from within the 
+                class where they are defined. They are not accessible from outside the class.
+<pre>
+    <code>
+        class Employee {
+            private employeeId: number;
+
+            constructor(id: number){
+                this.employeeId = id;
+            }
+
+            getEmployeeId(){
+                return this.employeeId;
+            }
+        }
+
+        const employee = new Employee(123);
+
+        console.log(employee.getEmployeeId()); //Accessing the private proprety via method 
+        console.log(employee.employeeId); //This would result in a compilation error
+    </code>
+</pre>
+
+        Here, the <strong>'employeeId'</strong> property is <strong>'private'</strong>, so it cannot be accessed 
+        directly from outside the class.
+
+            </li>
+
+            <li>
+                <strong>'protected' Access Modifier:</strong> <br>
+                Members with the <strong>'protected'</strong> access modifier are accessible within the class and 
+                its subclasses (when using inheritance). They are not accessible from outside the class or its 
+                subclasses.
+<pre>
+    <code>
+        class Animal {
+            protected species: string;
+
+            constructor(species: string){
+                this.species = species;
+            }
+        }
+
+        class Dog extends Animal {
+            bark() {
+                console.log(`The ${this.species} dog is barking.`)
+            }
+        }
+
+
+        const dog = new Dog("German Shepherd");
+
+        console.log(dog.species);  //This would result in a compilation error
+        dog.bark(); // Accessing the protected property withing a subclass is allowed.
+    </code>
+</pre>
+            </li>
+        </ol>
+
+
+        <footer>
+            <p>Access modifiers help you encapsulate the internal implementation of a class and protect the integrity of its data. They are crucial for maintaining the principle of encapsulation in object-oriented programming. Here's a brief summary:</p>
+            <ul>
+                <li>public: Accessible from anywhere.</li>
+                <li>private: Accessible only from within the class.</li>
+                <li>protected: Accessible within the class and its subclasses (when using inheritance).</li>
+            </ul>
+            <p>Choosing the appropriate access modifier for each member of your class is essential for maintaining clean, organized, and secure code.</p>
+        </footer>
+
+
+    </article>
+
+    <article>
+        <h2>Getters and Setters</h2>
+        <p>
+            <strong>Getters</strong> and <strong>setters</strong> are methods that allow you to control the access and 
+            modification of object properties. <strong>Getters</strong> are used to retrieve the value of a property, 
+            while <strong>setters</strong> are used to change the value of a property. They provide a layer of abstraction for 
+            working with object data.
+        </p>
+
+        <h3>Defining Getters and Setters in TypeScript:</h3>
+        <p>
+            In <strong>TypeScript</strong>, you can define getters and setters using the <strong>'get'</strong> and 
+            <strong>'set'</strong> keywords withing a class. <strong>Getters</strong> are methos with the <strong>'get</strong> 
+            keyword that retrieve property values, and <strong>setters</strong> are methods with the <strong>'set'</strong> keyword 
+            that change property values.
+        </p>
+
+        <ul>
+            <li>
+                <strong>Getters</strong> are used to read the value of a property as if it were a regular property. You 
+                can perform calculations or return modified values in a getter.
+            </li>
+            <li>
+                <strong>Setters</strong> are used to assign new values to a property. They allow you to validate 
+                input, trigger actions, or perform data manipulation when a property is being set.
+            </li>
+        </ul>
+        <p>
+            <strong>Getters</strong> and <strong>setters</strong> provide a way to encapsulate property access, 
+            making it esier to maintain and control data integrity. You can use setters to validate incoming data 
+            and prevent invalid values from being assigned.
+        </p>
+
+<pre>
+    <code>
+        class Cirlce {
+            private _radius: number;
+
+            constructor(radius: number){
+                this._radius = radius;
+            }
+
+            //Getter for retrieving the radius
+            get radius(): number {
+                return this._radius;
+            }
+
+            //Setter for setting the radius with validation
+            set radius(newRadius: number){
+                if(newRadius >= 0){
+                    this._radius = newRadius
+                } else {
+                    console.log("Invalid radius. Please, provide a non-negative value.")
+                }
+            }
+
+            //Getter for calculating the area of the circle.
+            get area(): number {
+                return Math.PI * this._radius * this._radius;
+            }
+        }
+
+
+
+        //create a Circle instance 
+        const myCircle = new Circle(5);
+
+        //Get the radius 
+        console.log(`Radius: ${myCircle.radius})
+
+        // Set the radius using the setter
+        myCircle.radius = 7; // Valid input
+        console.log(`New Radius: ${myCircle.radius}`); // Output: New Radius: 7
+
+        // Attempt to set an invalid radius using the setter
+        myCircle.radius = -1; // Invalid input, error message is displayed
+
+        // Get the area of the circle using the getter
+        console.log(`Area: ${myCircle.area.toFixed(2)}`); // Output: Area: 153.94
+    </code>
+</pre>
+    
+    <p>
+        When you define a property with a getter using the <strong>'get'</strong> keyword, you can access it like a regular property without the need for parentheses. 
+        It's a convenient way to retrieve the value as if it were a property, rather than a function.
+    </p>
+    </article>
+
+
+
+
+
+
+
+
+    <article>
+        <h2>Assignment 1: Create a Class for a Library</h2>
+        <h3>Objective:</h3>
+        <p>
+            Create a TypeScript class to model a library with books. Implement methods to add and remove 
+            books from the library, as well as a method to display all the books in the library.
+        </p>
+
+
+        <h3>Pseudo Code:</h3>
+        <ol>
+            <li>
+                Create a class <strong>"Library"</strong>
+            </li>
+            <li>
+                Add a property to store an array of books.
+            </li>
+            <li>
+                Implement a method to add a book to the library.
+            </li>
+            <li>
+                Implement a method to remove a book from the library.
+            </li>
+            <li>
+                Implement a method to display all the books in the library.
+            </li>
+        </ol>
+    </article>
+
+    <article>
+        <h2>Assignment 2: Modeling Geometric Shapes</h2>
+        <h3>
+            Objective: 
+        </h3>
+        <p>
+            Create a TypeScript class hierarchy to model geometric shapes such as circles and rectangles. 
+            Implement methods to calculate the area and perimeter of each shape.
+        </p>
+
+        <h3>
+            Pseudo Code:
+        </h3>
+
+        <ul>
+            <li>
+                Create a base class Shape with methods for calculating the area and perimeter.
+            </li>
+            <li>
+                Create a class Circle that extends Shape to represent circles. Implement methods to calculate the area and perimeter of a circle.
+            </li>
+            <li>
+                Create a class Rectangle that extends Shape to represent rectangles. Implement methods to calculate the area and perimeter of a rectangle.
+            </li>
+        
+        </ul>
+        <p>
+            These assignments will help you practice creating and working with classes, including inheritance and methods. Once you have completed the pseudo code, you can proceed to implement the actual TypeScript code based on the provided structure and instructions. 
+        </p>
+
+            
+    </article>
+
+
+
+    <script src="classes/index.js">    </script>
+    <script src="classes/animal.js">    </script>
+    <script src="classes/radius.js">    </script>
+    <script src="classes/shape.js">    </script>
+    
+</body>
+</html>
