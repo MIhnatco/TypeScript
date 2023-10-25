@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interfaces</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Interfaces</h1>
+        <p><strong>Interfaces</strong> allow you to define the structure and contract for objects in you code, making it 
+            easier to work with complex dat types and ensure type safety.  
+        </p>
+    </header>
+    <article>
+        <h2>What are Interfaces?</h2>
+        <ul>
+            <li>
+                <strong>Interfaces</strong> are a way to define the shape or structure of objects.
+            </li>
+            <li>
+                They describe the contract that an object must adhere to.
+            </li>
+        </ul>
+        <h2>Defining and using Interfaces:</h2>
+        <ul>
+            <li>
+                You can define interfaces using the <strong>'interface'</strong> keyword in TypeScript.
+            </li>
+            <li>
+                Interfaces can include properties, methods, and even optional members.
+            </li>
+            <li>
+                Interfaces can be used to define the structure of object literals or class instances.
+            </li>
+        </ul>
+
+        <p>
+        Here's an example of how you can use an <strong>interface</strong> in TypeScript with an object:
+        </p>
+<pre>
+    <code>
+//Define an interface for a User object
+interface User {
+    id: number;
+    username: string;
+    email: string;
+}
+
+//Create an object hat adheres to the User interface
+const user1: User = {
+    id: 1,
+    username: "John Doe", 
+    email: "john@example.com"
+}
+
+const user2: User = {
+    id: 2,
+    username: "Jane Smith", 
+    email: "jane@example.com"
+}
+
+//function that accepts a User object 
+function displayUser(user: User){
+    console.log(`User ID: ${user.id}`);
+    console.log(`Username: ${user.username}`)
+    constole.log(`Email: ${user.email}`)
+}
+
+//Display user information
+displayUser(user1)
+displayUser(user2)
+
+    </code>
+</pre>
+
+    <p>In this example:</p>
+    <ul>
+        <li>
+            We define an <strong>"User"</strong> interface with three properties: <strong>'id'</strong>, 
+            <strong>'username'</strong> and <strong>'email'</strong>. This <strong>interface</strong> specifies 
+            the structure that objects representing users should adhere to.
+        </li>
+
+        <li>We create two objects, <strong>user1</strong> and <strong>user2</strong>, that conform to the structure defined by the <strong>User</strong> interface. 
+            Each object has an <strong>id</strong>, <strong>username</strong>, and <strong>email</strong>.</li>
+
+        <li>The <strong>displayUser</strong> function takes a User object as a parameter and displays the user's information.</li>
+
+        <li>We call the <strong>displayUser</strong> function with the user1 and user2 objects, demonstrating how 
+            TypeScript enforces the object structure defined by the User interface.</li>
+    </ul>
+
+    <h2>Interface Properties and Methods:</h2>
+    <ul>
+        <li>
+            <strong>Interfaces</strong> can include properties with data types and methods with function signatures.
+        </li>
+        <li>
+            You can specify optional properties using the <strong>'?'</strong> modifier.
+        </li>
+    </ul>
+
+<pre>
+    <code>
+//Define an interface for a Person
+interface IPerson {
+    //Properties with data types 
+    firstName: string;
+    lastName: string;
+    age: number;
+
+    //Method with a function signatures
+    getFullName(): string;
+}
+
+//Implement a class that adheres to the IPerson interface
+    class Person implements IPerson {
+        constructor( public firstName: string, public lastName: string, public age: number){
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.age = age;
+        }
+
+        //Implement the method specified by the interface
+        getFullName(): string {
+            return `${this.firstName} ${this.lastName}`
+        }
+    }
+
+//Create an instance of the Person class
+const person = new Person("John", "Doe", 30);
+
+//Access properteis and call the method
+console.log(`First Name: ${person.firstName}`);
+console.log(`Last Name: ${person.lastName}`);
+console.log(`Age: ${person.age}`);
+console.log(`Full Name: ${person.getFullName()}`);
+
+    </code>
+</pre>
+
+<p>In this example:</p>
+<ul>
+    <li>
+        We define an <strong>IPerson</strong> interface that includes three properties (firstName, lastName, and age) with their respective data types and one method (getFullName) with a function signature specifying its return type.
+    </li>
+    <li>
+        We implement a <strong>Person </strong>class that adheres to the <strong>IPerson</strong> interface. The class includes properties that match the interface properties and implements the getFullName method, as required by the interface.
+    </li>
+    <li>
+        We create an instance of the Person class and demonstrate how to access the properties and call the method defined in the interface.
+    </li>
+</ul>
+
+        <p>
+            This example illustrates how <strong>interfaces</strong> can define a structure that includes both 
+            data properties and methods, helping ensure that classes adhere to a specific contract.
+        </p>
+    </article>    
+    <article>
+
+    </article>
+
+
+
+    <script src="interface/index.js"></script>
+    <script src="interface/interface.js"></script>
+</body>
+</html>
