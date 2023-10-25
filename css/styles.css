@@ -72,6 +72,15 @@ article p {
   margin-bottom: 1rem;
 }
 
+.container {
+  display: flex;
+}
+
+.container > div {
+  max-width: 44%;
+  padding: 1rem;
+}
+
 
 @media (min-width: 568px){
   .containerFlex {

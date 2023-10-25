@@ -159,13 +159,263 @@ console.log(`Full Name: ${person.getFullName()}`);
             data properties and methods, helping ensure that classes adhere to a specific contract.
         </p>
     </article>    
-    <article>
 
-    </article>
+    <section>
+        <h2>Optional properties</h2>
+        <p>
+            One usefule feature of TypeScript is the ability to specify <strong>optional properties</strong> in 
+            interfaces and classes, allowing you to define an object type that may or may not have certain properties. 
+        </p>
+        <p>
+            We can specify <strong>optional properties</strong> in interfaces and classes by the use of question mark <strong>'?'</strong> 
+            symbol after the property name.
+        </p>
+
+<pre>
+    <code>
+//Define na interface for a book
+interface IBook {
+    title: string;
+    author: string;
+    publishedYear?: number;  //Optional property
+}
+
+//create objects that adhere to the Book interface
+const book1: IBook = {
+    title: "The Great Gatsby", 
+    author: "F. Scott Fitzgerald", 
+    publishedYear: 1925
+}
+
+const book2: IBook = {
+    title: "To Kill a Mockingbird", 
+    author: "Harper Lee"
+    //The 'publishedYear' property is optional and may be omitted
+}
+
+//function to display book information 
+function displayBookInfo(book: IBook){
+    console.log(`Title: ${book.title}`);
+    console.log(`Author: ${book.author}`);
+
+    if(book.publishedYear){
+        console.log(`Published Year: ${book.publishedYear}`);
+    }else {
+        console.log('Published Year: N/A')
+    }
+}
+
+//Display information for  the books 
+console.log("Book 1:")
+displayBookInfo(book1)
+
+console.log("Book 2:")
+displayBookInfo(book2)
+    </code>
+</pre>
+
+        <p>This example demonstrates how you can use optional properties in interfaces to allow 
+            flexibility when working with objects, allowing certain properties to be present or omitted.
+        </p>
+    </section>
+
+
+
+
+
+
+
+
+
+    <section>
+        <p>
+            <strong>Type annotations</strong> and <strong>interfaces</strong> are both used in TypeScript for different 
+            purposes, and they have some key differences:
+        </p>
+
+        <div class="container">
+            <div>
+                <h3>Type Annotations:</h3>
+                <ul>
+                    <li>
+                        A type annotation is a way to specify the data type of a variable, function parameter, or return value.
+                    </li>
+                    <li>
+                        Type annotations are often used to declare the data type of a specific value or entity.
+                    </li>
+                    <li>
+                        They are used to define the type of a single variable or value;
+                    </li>
+                    <li>
+                        Type annotations can be simple, like <strong>'number'</strong>, <strong>'string'</strong> or 
+                        more complex, like custom types or unions.
+                    </li>
+                    <li>
+                        Type annotations are especially useful for defining the type of function parameters or the 
+                        return type of functions.
+                    </li>
+                </ul>
+
+            </div>
+
+            <div>
+                    <h3>Interface:</h3>
+                    <ul>
+                        <li>An interface is a way to define a contract for the shape or structure of objects.</li>
+                        <li>Interfaces are typically used to define the structure that objects should adhere to, 
+                            specifying the properties they must have.
+                        </li>
+                        <li>
+                            They are used to create a bluepring for objects, defining their properties and methods.
+                        </li>
+                        <li>
+                            Interfaces are used to describe the structure of object literals, class instances, and custom types.
+                        </li>
+                        <li>
+                            Interfaces can include properties, methods, and optional members.
+                        </li>
+                    </ul>
+            </div>
+        </div>
+
+        <h4>
+            Key Differences
+        </h4>
+        <ul>
+            <li>
+                Type annotations are primarily concerned with specifying data types for variables, parameters, 
+                and return values, while interfaces are concerned with defining the structure of objects.
+            </li>
+            <li>
+                Type annotations are used to declare the type of specific values, while interfaces describe 
+                the expected structure of objects.
+            </li>
+            <li>
+                Interfaces are often used when working with objects, classes, and custom data structures, 
+                while type annotations are used for variables and function signatures.
+            </li>
+            <li>
+                You can use interfaces to create reusable type contracts, making your code more maintainable 
+                and readable.
+            </li>
+        </ul>
+
+    </section>
+
+    <section>
+        <h2>Assignment: Building a Student Grading System</h2>
+        <h3>Objective:</h3>
+        <p>
+            You are tasked with building a student grading system for a school. Each student has the 
+            following information:
+        </p>
+        <ul>
+            <li>
+                name
+            </li>
+            <li>
+                Student Id
+            </li>
+            <li>
+                List of test scores (an array of numbers)
+            </li>
+        </ul>
+        <p>
+            You need to design TypeScript interfaces and class to model this system and implement the following 
+            functionality:
+        </p>
+
+        <ol>
+            <li>
+                Create an interface Student that defines the structure of a student object.
+                    <ul>
+                        <li>
+                            It should have properties for name, studentId, and testScores.
+                        </li>
+                        <li>
+                            The testScores property is an array of numbers.
+                        </li>
+                    </ul>
+            </li>
+            <li>
+                Create a class StudentRecord that implements the Student interface.
+                <ul>
+                    <li>
+                        The class should have a constructor that accepts the name and studentId as parameters and initializes 
+                        the testScores array as an empty array.
+                    </li>
+                    <li>
+                        Implement a method <strong>'addTestScore(score: number)'</strong> that allows adding test 
+                        scores to the <strong>'testScores'</strong> array.
+                    </li>
+                    <li>
+                        Implement a method <strong>'getAverageTestScore()'</strong> that calculates and returns the average 
+                        test score for the student.
+                    </li>
+                    <li>
+                        Implement a method addTestScore(score: number) that allows adding test scores to the testScores array.
+                    </li>
+                    <li>
+                        Implement a method getAverageTestScore() that calculates and returns the average test score for the student.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Create an array of StudentRecord instances to represent multiple students.
+            </li>
+            <li>
+                Display the student information and their average test scores.
+            </li>
+        </ol>
+
+       <h3>Instructions:</h3>
+       <ul>
+            <li>
+                Create the TypeScript interface Student.
+            </li>
+            <li>
+                Implement the StudentRecord class according to the Student interface.
+            </li>
+            <li>
+                Create at least three instances of the StudentRecord class to represent different students.
+            </li>
+            <li>
+                Add test scores for each student using the addTestScore method.
+            </li>
+            <li>
+                Calculate and display the average test scores for each student using the getAverageTestScore method.
+            </li>
+        
+       </ul>
+        <p>
+            This assignment will require you to use interfaces, classes, methods, and arrays to model and manage student records and their test scores. It's a practical exercise that reflects a real-world scenario.
+        </p>
+
+    </section>
+
+
+    <footer>
+        <h3>Type Checking and Type Safety:</h3>
+
+        <ul>
+            <li>
+                Interfaces provide type checking, helping catch type-related errors at compile time.
+            </li>
+            <li>
+                Interfaces promote type safety by clearly defining the expected object structure.
+            </li>
+        </ul>
+
+        <p>
+            <strong>Type annotations </strong> help ensure that individual values ahve the correct data type, while 
+            <strong>interfaces</strong> define the structure of more complex data, such as objects and classes.
+        </p>
+    </footer>
 
 
 
     <script src="interface/index.js"></script>
     <script src="interface/interface.js"></script>
+    <script src="interface/gradeSystem.js"></script>
 </body>
 </html>
