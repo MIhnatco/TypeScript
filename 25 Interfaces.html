@@ -303,7 +303,48 @@ displayBookInfo(book2)
     </section>
 
     <section>
-        <h2>Assignment: Building a Student Grading System</h2>
+
+        <h2>Assignment 1: Using Interface</h2>
+        <h3>
+            Objective:
+        </h3>
+
+        <p>
+            Given the data, define the interface "User" and use it accordingly.
+        </p>
+
+<pre>
+    <code>
+
+        interface User = unknown;
+        
+        const users: unknown[] = [
+            {
+                name: 'Max Mustermann',
+                age: 25,
+                occupation: 'Chimney sweep'
+            },
+            {
+                name: 'Kate Müller',
+                age: 23,
+                occupation: 'Astronaut'
+            }
+        ];
+        
+        function logPerson(user: unknown) {
+            console.log(` - ${user.name}, ${user.age}`);
+        }
+        
+        console.log('Users:');
+        users.forEach(logPerson);
+    </code>
+</pre>
+
+
+
+
+
+        <h2>Assignment 2: Building a Student Grading System</h2>
         <h3>Objective:</h3>
         <p>
             You are tasked with building a student grading system for a school. Each student has the 
@@ -395,6 +436,8 @@ displayBookInfo(book2)
 
 
     <footer>
+
+        <h2>Summary</h2>
         <h3>Type Checking and Type Safety:</h3>
 
         <ul>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for...of</title>
+</head>
+<body>
+    <header>
+        <h1>Iterators</h1>
+        <p>
+            <strong>Iterators</strong> are used to traverse collections of data , and the <strong>'for...of'</strong> loop 
+            provides an elegant way to iterate over elements.
+        </p>
+
+        <ul>
+            <li>
+                <strong>Iterators</strong> are objects that provide a way to traverse through a collection of data step by step.
+            </li>
+            <li>
+                They allow you to access elements one at a time, making it easy to work with large data sets efficiently.
+            </li>
+        </ul>
+    </header>
+    <section>
+        <h2>Using the 'for..of' loop:</h2>
+        <ul>
+            <li>
+                The <strong>'for..of'</strong> loop simplifies the process of iterating over iterable objects, such as arrays, 
+                maps, and custom collections.
+            </li>
+            <li>
+                It provides a clean syntax for iterating through the elements.
+            </li>
+        </ul>
+
+        <h3>Example:</h3>
+<pre>
+    <code>
+//Define an array of tasks
+const tasks: string[] = ['Buy groceries', "Complete assignment", "Walk the dog"] 
+
+//Use the for...of loop to iterate over the tasks
+console.log('To-Do List:')
+
+for (const tasks of tasks){
+    console.log(`- ${task}`);
+}
+    </code>
+</pre>
+
+        <p>In this example:</p>
+        <ol>
+            <li>
+                We have an array called <strong>'tasks'</strong> that contains a list of to-do items.
+            </li>
+            <li>
+                We use the <strong>'for...of'</strong> loop to iterate over the <strong>'tasks'</strong> array. 
+                The <strong>'task'</strong> variable in the loop represents each individual task in the array.
+            </li>
+            <li>
+                Within the loop, we print each task with a bullet point in front of it, creating a simple to-do list.
+            </li>
+        </ol>
+
+            <p>
+                When you run this code, it will iterate over the <strong>'tasks'</strong> array and display each task 
+                in the console.
+            </p>
+
+
+    </section>
+
+    <section>
+        <p>
+            In TypeScript, the <strong>for...of</strong> loop is typically used with iterable data structures like arrays, maps, sets, and custom iterable objects. 
+            <strong>Objects</strong> are not inherently iterable, so you can't directly use a <strong>for...of</strong> loop with them.  <br>
+            However, you can use the <strong>for...in</strong> loop to iterate over the properties of an object. Here's an example:
+
+        </p>
+
+<pre>
+    <code>
+// Define an object with properties
+const person = {
+    firstName: "John",
+    lastName: "Doe",
+    age: 30,
+};
+
+// Use a for...in loop to iterate over the object's properties
+console.log("Person's Information:");
+for (const key in person) {
+    if (person.hasOwnProperty(key)) {
+        console.log(`${key}: ${person[key]}`);
+    }
+}
+    </code>
+</pre>
+
+    <p>In this example:</p>
+    <ul>
+        <li>
+            We have an object named person with properties like <strong>firstName</strong>, <strong>lastName</strong>, and <strong>age</strong>.
+        </li>
+        <li>
+            We use a <strong>for...in</strong> loop to iterate over the properties of the person object. 
+            The loop iterates over the keys (property names) of the object.
+        </li>
+        <li>
+            We use the <strong>hasOwnProperty</strong> method to ensure that we only access the object's own properties and not properties inherited from the prototype chain.
+        </li>
+    </ul>
+
+
+    <p>
+        When you run this code, it will iterate over the properties of the person object and display their names and values. Please note that this is not 
+        a typical use case for for...of, as it's more commonly used with iterable data structures like arrays.
+    </p>
+
+    </section>
+    
+</body>
+</html>

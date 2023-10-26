@@ -1,6 +1,6 @@
 /**
  * Defines the structure of a student object
- * @type Interface
+ * @interface Interface
  */
 
 interface Student {
@@ -49,7 +49,9 @@ class StudentRecord implements Student {
      * @returns {number} The average score
      */
     getAverageTestScore(){
-        return Math.round(this.testScores.reduce((nmb, acc) => acc += nmb) / this.testScores.length)
+        const sum = this.testScores.reduce((acc, nmb) => acc += nmb);
+        const average = sum / this.testScores.length;
+        return parseFloat(average.toFixed(2))
 
     }
 }
