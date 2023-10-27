@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maps</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Data Structure: Map</h1>
+        <ul>
+            <li>
+                <strong>Maps</strong> are a data structure that stores key-value paris, providing efficinet data retrieval.
+            </li>
+            <li>
+                Each 'key' in a Map is unique, and it maps to a specifi value.
+            </li>
+            <li>
+                They differ from regular objects by allowing any data type as keys and maintaining key order.
+            </li>
+            <li>
+                Unlike regural objects, <strong>Maps</strong> can use a wide range of data types as keys, 
+                including objects, functions, and primitive values like strings and numbers.
+            </li>
+        </ul>
+    </header>
+    <section>
+        <h2>How Maps differ from Objects:</h2>
+        <p>While regular JavaScript objects can also store key-value pairs, Maps have several advantages:</p>
+        <ul>
+            <li>
+                Keys can be of various data types, making Maps more flexible.
+            </li>
+            <li>
+                Map keys maintain their insertion order, which means the order in which you add key-value pairs is preserved.
+            </li>
+            <li>
+                Maps are more suitable for scenarios where you need to associate data and perform key-based operations efficiently.
+            </li>
+        </ul>
+
+        <h2>Key Characteristics of Maps:</h2>
+        <ul>
+            <li>
+                Keys in a Map are unique. If you add the same key multiple times, it will only store the latest associated value.
+            </li>
+            <li>
+                Maps provide methods to add, access, and manipulate key-value pairs.
+            </li>
+            <li>
+                Maps maintain the insertion order of keys, which is beneficial for certain operations.
+            </li>
+        </ul>
+
+        <h3>Adding Key-Value Pairs:</h3>
+        <p>
+            You can add 'key-value' pairs to a Map using <strong>'set(key,value)'</strong> method. <br>
+            Here's how it works:
+        </p>
+
+<pre>
+    <code>
+        type Name = string;
+        type Score = number;
+
+        const testScores: Map&lt;Name, Score&gt; = new Map()
+
+        testScores.set("Alice", 96);
+        testScores.set("Bob", 88);
+        testScores.set("Carol", 92);
+
+
+//To find out the size of the Map 
+console.log(testScores.size)  //Output: 3
+    </code>
+</pre>
+
+        <h3>Accessing Values by Keys:</h3>
+        <p>
+            To retrieve the value associated with a specific key, you can use the <strong>'get(key)'</strong> method:
+        </p>
+<pre>
+    <code>
+const Alice's score = testScores.get('Alice')
+const Bob's score = testScores.get('Bob')
+const Carol's score = testScores.get('Carol')
+    </code>
+</pre>
+
+        <h3>Updating Key-Value Pairs:</h3>
+        <p>
+            If you want to update the value associated with an existing key, you can use the 
+            <strong>'set'</strong> method again with the same key. This will replace the old value 
+            with the new one:
+        </p>
+
+<pre>
+    <code>
+testScores.set("Alice", 99);  //Updates the 'Alice' value to 99
+    </code>
+</pre>
+    <p>The key remains the same, but the value is updated.</p>
+
+    <h3>Adding multiple key-value pairs at once:</h3>
+    <p>
+        You can initialize a Map with multiple key-value pairs by passing an iterable, such as an array 
+        of arrays containing key-value pairs:
+    </p>
+<pre>
+    <code>
+        const myMap = new Map([
+            ['name', "Alice"], 
+            ['age', 25], 
+            ['city', "New York"]
+        ])
+    </code>
+</pre>
+        <p>This creates a Map with three key-value pairs.</p>
+        
+        
+        <h3>Handling Non-existent keys:</h3>
+        <p>
+            When attempting to access a key that does not exist in the Map, the <strong>'get'</strong> method 
+            returns <strong>'undefined'</strong>. It's a good practice to check if a key exists in the Map before 
+            attempting to access it.
+        </p>
+
+        <p>
+            To check if the 'key' exists in a Map() we can use <strong>'has'</strong> method:
+        </p>
+
+<pre>
+    <code>
+        myMap.has('age')
+    </code>
+</pre>
+        
+            <h3>Deleting key-value pairs</h3>
+            <p>To remove a key-value pair from a Map, you can use the <strong>'delete(key)'</strong> method:</p>
+<pre>
+    <code>
+        myMap.delete("age");   //Deletes the 'age' key-value pair
+    </code> 
+</pre>
+
+        <h3>Reset the Map</h3>
+        <p>The <strong>'Map.clear()'</strong> method is used to remove all key-value pairs from a Map, 
+            effectively emptying it. This method does not return any value, and it operates directly on the Map, 
+            modifying it in place.
+        </p>
+
+<pre>
+    <code>
+        myMap.clear()
+    </code>
+</pre>
+        
+    </section>
+
+    <section>
+        <h2>Iterating over Maps</h2>
+        <h3>Using 'for...of' loop:</h3>
+        <p>TypeScript provides a convenient way to iterate over the key-value pairs in a Map using the <strong>for...of</strong> loop. <br>
+             Here's how it works:</p>
+
+<pre>
+    <code>
+        const myMap = new Map([
+    ["name", "Alice"],
+    ["age", 25],
+    ["city", "New York"],
+]);
+
+for (const [key, value] of myMap) {
+    console.log(`Key: ${key}, Value: ${value}`);
+}
+    </code>
+</pre>
+
+        <h3>Using the forEach Method:</h3>
+        <p>
+            Maps have a <strong>forEach</strong> method that can be used to iterate over the key-value pairs. It takes a callback function as an argument:
+        </p>
+<pre>
+    <code>
+        myMap.forEach((value, key) => {
+            console.log(`Key: ${key}, Value: ${value}`);
+        });
+
+    </code>
+</pre>
+        <p>
+            The <strong>forEach</strong> method iterates through the Map and invokes the provided callback function for each key-value pair.
+        </p>
+    
+    
+                <h3>Iterating Over Keys and Values Separately:</h3>
+                <p>
+                    If you need to iterate over keys or values alone, you can do so using the keys() and values() methods of the Map. For example:
+                </p>
+
+<pre>
+    <code>
+        for (const key of myMap.keys()) {
+            console.log(`Key: ${key}`);
+        }
+        for (const value of myMap.values()) {
+            console.log(`Value: ${value}`);
+        }
+
+    </code>
+</pre>
+        <h3>Iterating Over Entries:</h3>
+
+        <p>
+            The entries() method returns an iterable of key-value pairs, making it similar to the default behavior of the for...of loop. For example:
+        </p>
+
+        
+<pre>
+    <code>
+        for (const [key, value] of myMap.entries()) {
+            console.log(`Key: ${key}, Value: ${value}`);
+        }
+    </code>
+</pre>
+       <p>
+           You can use Map iteration to perform various tasks, such as filtering data, searching for specific values, or transforming the data as needed.
+       </p>
+        
+    
+    
+    
+    </section>
+
+    <section>
+        <h2>Assignment 1: Student Management System</h2>
+        <h3>
+            Objective:
+        </h3>
+        <p>
+            Create a TypeScript program to manage students' information, including their names and grades.
+        </p>
+
+
+        <h3>
+            Requirements:
+        </h3>
+        <ol>
+            <li>
+                Create an interface named Student with the following properties:
+                <ul>
+                    <li>
+                        id (number): A unique student ID.
+                    </li>
+                    <li>
+                        name (string): The name of the student.
+                    </li>
+                    <li>
+                        grades (Map<string, number>): A Map that stores subject names (string) as keys and the corresponding grades (number) 
+                            as values. Each student can have multiple subjects and grades.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Implement a class called StudentRecord that implements the Student interface. 
+                This class should have the following methods:
+                    <ul>
+                        <li>
+                            constructor(id: number, name: string): Initializes a student's ID and name. Initialize an empty Map for grades.
+                        </li>
+                        <li>
+                            addGrade(subject: string, grade: number): Adds a subject and its corresponding grade to the student's record. If the subject already exists, update the grade.
+                        </li>
+                        <li>
+                            getAverageGrade(): Calculates and returns the average grade for the student. Use the grades stored in the Map.
+                        </li>
+                        <li>
+                            printStudentInfo(): Displays the student's ID, name, and their grade information (subject and grade).
+                        </li>
+                    </ul>
+
+            </li>
+        </ol>
+        
+
+
+            <p>
+                Create at least two instances of the StudentRecord class, add grades for different subjects to each student, and calculate and display their average grades and information.
+
+            </p>
+
+            <p>
+                Ensure that you handle student data efficiently using the provided class and interface. Make sure the code is well-organized and adheres to good TypeScript practices.
+            </p>
+    </section>
+
+
+    <section>
+        <h2>Assignment 2: Library Catalog</h2>
+        <h3>
+            Objective:
+        </h3>
+        <p>
+            Create a TypeScript program that simulates a library catalog. The catalog will store 
+            information about books, their availibility, and the users who have borrowed them.
+        </p>
+
+
+        <h3>
+            Requirements:
+        </h3>
+        <ol>
+            <li>
+                Create an interface named <strong>"Book"</strong> with the following properties:
+                <ul>
+                    <li>
+                        <strong>'title'</strong>(string): The title of the book.
+                    </li>
+                    <li>
+                        <strong>'author'</strong>(string): The author's name.
+                    </li>
+                    <li>
+                        <strong>'ISBN'</strong>(string): The Internation Standard Book Number.
+                    </li>
+                    <li>
+                        <strong>'isAvailable'</strong>(boolean): Indicates if the book is available for borrowing.
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Implement a class named <strong>"Library"</strong> that manages the library catalog. This class 
+                should have the following methods:
+                <ul>
+                    <li>
+                        <strong>'constructor()'</strong>: initializes the library catalog as an empty Map.
+                    </li>
+                    <li>
+                        <strong>'addBook(book: Book)'</strong>: Adds a book to the catalog with the provided information. The 
+                        ISBN should be unique, and the book should be available by default.
+                    </li>
+                    <li>
+                        <strong>'borrowBook(title: string, userName: string)'</strong>: Allows a user to borrow a book. 
+                        If the book is available, mark it as borrowed and associate it with the user.
+                    </li>
+                    <li>
+                        <strong>'returnBook(title: string, book: Book)'</strong>: Marks a borrowed book as returned and makes it available again.
+                    </li>
+                    <li>
+                        <strong>'listCatalog()'</strong>': Displays the current catalog of books, including their title, author, ISBN, and availability status.
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                Implement a class named <strong>User</strong> that represents library users. Each user should have a name and 
+                a <strong>borrowedBooks</strong> Map that associates borrowed books (by title) with the due date. A user can borrow multiple books.
+            </li>
+            <li>
+                Create at least three instances of the Book class and add them to the library catalog. Simulate user interactions where users borrow and return books.
+                </li>
+                <li>
+                Ensure that the program handles unique ISBNs, keeps track of book availability, and provides clear information about the catalog and users' borrowed books.
+            </li>
+        </ol>
+
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+        <script src="maps/map.js"></script>
+        <script src="maps/assignment1.js"></script>
+        <script src="maps/assignment2.js"></script>
+    
+</body>
+</html>
