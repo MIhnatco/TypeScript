@@ -82,6 +82,58 @@ article p {
 }
 
 
+.calculator {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+
+  max-width: 50%;
+  margin: 0 auto;
+}
+
+.input-group {
+  margin: 10px 0;
+}
+
+.input-field {
+  padding: 5px;
+  width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.calculate-button, 
+.reset-button {
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s;
+}
+
+.reset-button {
+  background-color: #e60404;
+}
+
+.calculate-button:hover {
+background-color: #0056b3;
+}
+
+.reset-button:hover {
+  background-color: #860505;
+}
+.result-text {
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+
+
 @media (min-width: 568px){
   .containerFlex {
     flex-direction: row;

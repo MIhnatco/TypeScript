@@ -1,3 +1,4 @@
+
 /**
  * Interfaces for Book
  * @interface
@@ -200,6 +201,8 @@ const Peter = new User("Peter Doe");
 const Lena = new User("Lena Zenday")
 
 localLibrary.borrowBook("Mastery", Peter);
+
+
 localLibrary.borrowBook("Mastery", Lena);
 localLibrary.borrowBook("Prelude to Foundation", Peter)
 console.log("Peter's collection: ", Peter.privateCollection())

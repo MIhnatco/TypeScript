@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exceptions</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Handling Exceptions in TypeScript.</h1>
+        <ul>
+            <li>
+                <strong>Exceptions</strong> are unexpected or erroneous situations that can occur during the execution of a program.
+            </li>
+            <li>
+                They disrupt the normal flow of code execution and must be handled to prevent crashes and provide graceful error reporting.
+            </li>
+        </ul>
+    </header>
+    <section>
+        <h2>Using 'try' and 'catch'</h2>
+        <ul>
+            <li>
+                In TypeScript, you can handle exceptions using <strong>'try'</strong> and <strong>'catch'</strong> blocks.
+            </li>
+            <li>
+                Code that might raise an exceptions is placed within a <strong>'try'</strong> block.
+            </li>
+            <li>
+                If an exception occurs, it's caught and handled in the corresponding <strong>'catch'</strong> block.
+            </li>
+        </ul>
+
+        <h3>Syntax</h3>
+<pre>
+    <code>
+        try {
+            //code that might throw an exception
+        } catch (error){
+            //code to handle the exception
+        }
+    </code>
+</pre>
+
+        <h3>Example:</h3>
+<pre>
+    <code>
+        try {
+            const result 10 / 0;   //This will throw a division by zero exception
+            console.log(result);   //This won't be executed
+        } catch (error){
+            console.error(`An error occurred: ${error.message}`)
+        }
+    </code>
+</pre>
+    </section>
+
+    <section>
+        <h2>Throwing Custom exceptions:</h2>
+        <ul>
+            <li>
+                You can throw custom exceptions using the <strong>'throw'</strong> statement.
+            </li>
+            <li>
+                This allows you to create specific error messages and types for your application.
+            </li>
+        </ul>
+        <h3>Syntax:</h3>
+<pre>
+    <code>
+        throw new Error("Custom error message")
+    </code>
+</pre>
+
+        <h3>Example:</h3>
+<pre>
+    <code>
+        function divide(x: number, y: number): number {
+            if(y===0){
+                throw new Error("Division by zero is not allowed.")
+            }
+
+            return x / y;
+        }
+
+
+        try {
+            const result = divide(10,0);
+            console.log(result)
+        } catch(error){
+            console.error(`An error occurred: ${error.message}`)
+        }
+    </code>
+</pre>
+
+    <h2>Using "finally":</h2>
+    <ul>
+        <li>
+            You can also use a <strong>'finally'</strong> block to execute code regardless of whether an exception 
+            is thrown or not.
+        </li>
+    </ul>
+
+    <h3>Syntax:</h3>
+<pre>
+    <code>
+        try {
+            // Code that might throw an exception
+        } catch (error) {
+            // Code to handle the exception
+        } finally {
+            // Code that always executes
+        }
+    </code>
+</pre>
+        <h3>Example:</h3>
+<pre>
+    <code>
+
+        try {
+            console.log("Inside try block");
+            throw new Error("An exception occurred.")
+        } catch (error) {
+            console.error(`An error occurred: ${error.message}`)
+        } finally {
+            console.log("This code always executes.")
+        }
+    </code>
+</pre>
+
+   </section>
+   <section>
+    <h2>Assignment: Handling Exceptions</h2>
+    <h3>Objective:</h3>
+    <p>
+        You are tasked with creating a simple calculator program that can perform addition and subtraction. 
+        However, you need to ensure that division by zero is handled gracefully using exceptions.
+    </p>
+
+    <h3>Requirements:</h3>
+    <ol>
+        <li>
+            Create a  <strong>'Calculator'</strong> class with two methods: 'add', 'divide'.
+        </li>
+        <li>
+            The <strong>'add'</strong> method should take two numbers as input and return their sum.
+        </li>
+        <li>
+            The <strong>'divide'</strong> method should take two numbers as input and return the result of the division. 
+            If the second number is 0, it should throw a custom exception to handle division by zero.
+        </li>
+        <li>
+            Implement a <strong>'try'</strong> and <strong>'catch'</strong> block to handle the division by zero exception in the 
+            <strong>'divide'</strong> method.
+        </li>
+        <li>
+            Create a simple user interface to input two numbers and the operation to perform (addition or division).
+        </li>
+        <li>
+            If an exception occurs during division, display an error message. Otherwise, show the result.
+        </li>
+    </ol>
+   </section>
+
+
+   <footer>
+  
+
+    <div class="calculator">
+        <h2> Calculator</h5>
+        <div class="input-group">
+            <label for="firstNumber">Enter the first number:</label>
+            <input type="text" id="firstNumber" class="input-field">
+        </div>
+        <div class="input-group">
+            <label for="secondNumber">Enter the second number:</label>
+            <input type="text" id="secondNumber" class="input-field">
+        </div>
+        <div class="input-group">
+            <label for="operation">Choose operation:</label>
+            <select id="operation" class="input-field">
+                <option value="add">Add</option>
+                <option value="divide">Divide</option>
+            </select>
+        </div>
+        <button onclick="calculate()" class="calculate-button">Calculate</button>
+        <button onclick="reset()" class="reset-button">Reset</button>
+        <p id="result" class="result-text"></p>
+
+    </div>
+    
+   </footer>
+
+
+   <script src="exceptions/exceptions.js"></script>
+    
+</body>
+</html>
