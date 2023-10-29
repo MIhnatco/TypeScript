@@ -1,6 +1,8 @@
 /**
  * class representing Calculator
  * @class
+ * @method add - Add two numbers
+ * @method divide - Divide two numbers
  */
 var Calculator = /** @class */ (function () {
     function Calculator() {
@@ -24,6 +26,16 @@ var Calculator = /** @class */ (function () {
     Calculator.prototype.divide = function (x, y) {
         //Implement the division logic
         return x / y;
+    };
+    /**
+     * Subtract two numbers
+     * @param {number} x - The first number
+     * @param {number} y - The second number
+     * @returns {number} - The result of subtraction
+     */
+    Calculator.prototype.subtract = function (x, y) {
+        //Implement the subtraction logic
+        return x - y;
     };
     return Calculator;
 }());
@@ -65,15 +77,22 @@ function calculate() {
     }
     else {
         try {
+            //Addition  logic
             if (operation.value === 'add') {
                 var result = calculator.add(firstNumber, secondNumber);
                 resultElement.textContent = "Result: ".concat(result);
+                //Division logic
             }
             else if (operation.value === 'divide') {
                 if (secondNumber === 0) {
                     throw new Error("Cannot divide by zero.");
                 }
                 var result = calculator.divide(firstNumber, secondNumber);
+                resultElement.textContent = "Result: ".concat(result);
+                //Subtraction logic
+            }
+            else if (operation.value === 'subtract') {
+                var result = calculator.subtract(firstNumber, secondNumber);
                 resultElement.textContent = "Result: ".concat(result);
             }
         }

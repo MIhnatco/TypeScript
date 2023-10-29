@@ -170,21 +170,28 @@
 
     <div class="calculator">
         <h2> Calculator</h5>
+            
         <div class="input-group">
             <label for="firstNumber">Enter the first number:</label>
             <input type="text" id="firstNumber" class="input-field">
         </div>
+
         <div class="input-group">
             <label for="secondNumber">Enter the second number:</label>
             <input type="text" id="secondNumber" class="input-field">
         </div>
+
         <div class="input-group">
+
             <label for="operation">Choose operation:</label>
             <select id="operation" class="input-field">
                 <option value="add">Add</option>
                 <option value="divide">Divide</option>
+                <option value="subtract">Subtract</option>
             </select>
+
         </div>
+
         <button onclick="calculate()" class="calculate-button">Calculate</button>
         <button onclick="reset()" class="reset-button">Reset</button>
         <p id="result" class="result-text"></p>

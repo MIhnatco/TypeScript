@@ -2,11 +2,14 @@
 /**
  * class representing Calculator
  * @class 
+ * @method add - Adds two numbers
+ * @method divide - Divides two numbers
+ * @method subtract - Subtracts two numbers
  */
 
 class Calculator {
     /**
-     * Add two numbers
+     * Adds two numbers
      * @param {number} x - The first number
      * @param {number} y - The second number
      * @returns {number} - The result of addition
@@ -18,7 +21,7 @@ class Calculator {
 
 
     /**
-     * Divide two numbers
+     * Divides two numbers
      * @param {number} x - The first number 
      * @param {number} y - The second number
      * @returns {number} - The result of division
@@ -26,6 +29,18 @@ class Calculator {
     divide(x: number, y: number): number {
         //Implement the division logic
         return x / y;
+    }
+
+
+    /**
+     * Subtracts two numbers
+     * @param {number} x - The first number 
+     * @param {number} y - The second number
+     * @returns {number} - The result of subtraction
+     */
+    subtract(x: number, y: number): number {
+        //Implement the subtraction logic
+        return x - y;
     }
 }
 
@@ -75,10 +90,13 @@ function calculate(){
         resultElement.textContent = 'Error: Please enter valid numbers.';
     } else {
         try {
+
+            //Addition  logic
             if (operation.value === 'add'){
                 const result = calculator.add(firstNumber, secondNumber);
                 resultElement.textContent = `Result: ${result}`;
-
+            
+            //Division logic
                 } else if (operation.value === 'divide'){
                     if(secondNumber === 0){
                             throw new Error("Cannot divide by zero.")
@@ -86,7 +104,13 @@ function calculate(){
 
                     const result = calculator.divide(firstNumber, secondNumber);
                     resultElement.textContent = `Result: ${result}`;
+
+            //Subtraction logic
+                } else if(operation.value === 'subtract'){
+                    const result = calculator.subtract(firstNumber, secondNumber);
+                    resultElement.textContent = `Result: ${result}`;
                 }
+
             } catch(error){
                 resultElement.textContent = `Error: ${error.message}`;
             }
