@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Union types</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Union types in TypeScript</h1>
+        <p>
+            In <strong>TypeScript</strong>, you can use union types to indicate that a value can have more 
+            than one type. Union types are a powerful feature that can help you write flexible and expressive 
+            code. <br>
+            Here's an overview of how union types work and how to use them:
+        </p>
+    </header>
+
+    <section>
+        <h3>Defining Union Types:</h3>
+        <p>
+            To define a <strong>union type</strong>, use the pipe <strong>'|'</strong> character between the type options. 
+            For example, if a variable can be either a <strong>'string'</strong> or a <strong>'number'</strong>, you can 
+            define its type as <strong>'string | number'</strong>.
+        </p>
+
+<pre>
+    <code>
+type Color = 'red' | 'green' | 'blue';
+const r: Color = "red";
+
+function setBgColor(c: Color){
+    switch (c){
+        case "red":
+        //some code
+        break;
+        
+        case 'blue':
+        //some code 
+        break;
+        
+        case 'green':
+        //some code 
+        break;
+    }
+}
+
+type OneTwoThree = 1 | 2 | 3;
+const one: OneTwoThree = 1;
+
+
+let value: string | number;
+value = "Hello";   //Valid 
+value = 45;        //Valid
+value = true;       //Invalid
+
+
+</code>
+</pre>
+
+        <h3>Combining Multiple Types:</h3>
+        <p>
+            You can use union types with more than two types. For example, string | number | boolean.
+        </p>
+<pre>
+    <code>
+let multiType: string | number | boolean;
+multiType = 'Hello';         // Valid
+multiType = 42;             // Valid
+multiType = true;           // Valid
+    </code>
+</pre>
+
+        <h3>Nullable Types:</h3>
+        <p>
+            You can use union types to represent nullable types by including null and undefined.
+        </p>
+
+<pre>
+    <code>
+        let nullableValue: string | null;
+        nullableValue = 'Hello'; // Valid
+        nullableValue = null; // Valid
+    </code>
+</pre>
+
+
+        <h3>Handling Union Types with Conditional Statements:</h3>
+        <p>
+            When dealing with union types, you can use conditional statements to check the type before performing specific operations.
+        </p>
+
+<pre>
+    <code>
+type StrOrNmb = string | number;
+
+function sample(data: StrOrNmb){
+    it (typeof data === "string"){
+        console.log(`Message: $[data.toUpperCase()]`)
+    } else if (typeof data === 'number'){
+        console.log(`Total: ${10 + data}`);
+    }
+}
+    </code>
+</pre>
+
+    <p>
+        We can also use 'Union types' as return type for a function:
+    </p>
+<pre>
+    <code>
+function add(x: string | number, y: string | number): string | number {
+    if (typeof x === 'number' && typeof y === 'number') {
+        return x + y;
+    } else {
+        return `${x}${y}`;
+    }
+}
+    </code>
+</pre>
+    <h3>Using the 'typeof' operator:</h3>
+    <p>
+        The <strong>'typeof'</strong> operator helps check the type of a value, especially when dealing with 
+        union types.
+    </p>
+
+<pre>
+    <code>
+        function processValue(value: string | number): void {
+            if (typeof value === 'string') {
+                console.log('Processing string:', value);
+            } else {
+                console.log('Processing number:', value);
+            }
+        }
+    </code>
+</pre>
+
+    <h3>Combining with Custom Types:</h3>
+    <p>
+        You can use <strong>union types</strong> with custom types and interfaces to create more complex type definitions:
+    </p>
+<pre>
+    <code>
+        type Result = {success: boolean} | {error: string};
+    </code>
+</pre>
+
+</section>
+
+
+<section>
+    <h3>Example: User Authentication Status</h3>
+    <p>
+        In a user authentication system, you may encounter various states or conditions related to user 
+        authentication. <strong>Union types</strong> and <strong>custom types</strong> are handy for defining these 
+        states and handling them. 
+
+        <br>
+        Consider the following example:
+    </p>
+
+<pre>
+    <code>
+
+interface User = {
+    username: string;
+    email: string;
+}
+
+type AuthStatus = {status: "unauthenticated"} | {status: "pending"} | {status: "authenticated", user: User} | {status: 'error', message: string}
+
+function authenticateUser(username: string, password: string): AuthStatus {
+    //simulate an authentication process
+
+    if (username === 'user' && password === 'password'){
+        const user: User = {username: username, email: 'user@example.com'};
+        return {status: "authenticated", user: user}
+    } else if (username === "user" && password === 'wrongpassword'){
+        return {status: 'error', message: "Incorrect password"};
+    } else {
+        return {status: 'unauthenticated'}
+    }
+}
+
+//Usage example:
+
+const result = authenticateUser('user', 'password')
+
+switch (result.status){
+    case 'unauthenticated':
+        console.log("User is not authenticated");
+        break;
+    
+    case 'pending':
+        console.log("Authentication is pending");
+        break;
+
+    case 'authenticated':
+        console.log(`Welcome, ${result.user.username}!`)
+        break;
+
+    case 'error':
+        console.error(`Authentication failed: ${result.message}`)
+        break;
+}
+
+    </code>
+</pre>
+
+        <p>
+            In this example, we use a custom type AuthStatus to represent various authentication states: 
+            unauthenticated, pending, authenticated (with user details), and error (with an error message). 
+            The authenticateUser function returns these different states based on the provided username and password. 
+            Union types allow us to define these distinct states within the AuthStatus type. 
+            We then use a switch statement to handle each case appropriately.
+
+            <br>
+
+
+            This demonstrates how you can use custom types and union types to model and handle real-life scenarios where 
+            multiple states or conditions need to be expressed in your TypeScript code.
+        </p>
+</section>
+
+<section>
+    <h3>Assignment: Customer Order Status</h3>
+    <p>
+        Imagine you're building a system to manage customer orders for an e-commerce platform. You need 
+        to handle different order statuses based on the order's progress. Implement a TypeScript 
+        program using <strong>union types</strong> to represent various order states and process a sample 
+        order through your system.
+    </p>
+    <ol>
+        <li>
+            Define a union type called OrderStatus that includes the following states:
+                <ul>
+                    <li>
+                        'new': The order is newly placed.
+                    </li>
+                    <li>
+                        'processing': The order is being prepared.
+                    </li>
+                    <li>
+                        'shipped': The order has been shipped.
+                    </li>
+                    <li>
+                        'delivered': The order has been successfully delivered.
+                    </li>
+                    <li>
+                        'canceled': The order has been canceled.
+                    </li>
+
+                </ul>
+                
+            </li>
+            <li>
+                
+                Create a function <strong>processOrder</strong> that takes an <strong>OrderStatus</strong> as an argument. 
+                Inside the function, use a <strong>'switch'</strong> statement to handle different order statuses and log appropriate messages based on the provided status.
+            </li>
+            <li>
+            Process a sample order by calling the <strong>processOrder</strong> function with different order statuses. Log the relevant messages for each order status.
+
+             </li>
+    </ol>
+    <p>
+        Here's some pseudo code to get you started:
+    </p>
+<pre>
+    <code>
+        Define the OrderStatus union type
+        type OrderStatus = 'new' | 'processing' | 'shipped' | 'delivered' | 'canceled';
+        
+        // Create the processOrder function
+        function processOrder(status: OrderStatus) {
+            switch (status) {
+                case 'new':
+                    // Log a message for a new order
+                    break;
+                case 'processing':
+                    // Log a message for a processing order
+                    break;
+                case 'shipped':
+                    // Log a message for a shipped order
+                    break;
+                case 'delivered':
+                    // Log a message for a delivered order
+                    break;
+                case 'canceled':
+                    // Log a message for a canceled order
+                    break;
+                default:
+                    // Log an error message for an unknown order status
+            }
+        }
+        
+        // Process a sample order with different statuses and log messages
+        processOrder('new');
+        processOrder('shipped');
+        processOrder('delivered');
+        processOrder('processing');
+        processOrder('canceled');
+    </code>
+</pre>
+</section>
+
+
+
+
+
+
+
+
+
+
+<footer>
+    <p>
+        <strong>Union types</strong> are a versatile way to work with variables and function parameters that 
+        can have multiple data types. They make your TypeScript code more flexible and enable you to handle 
+        a wide range of data.
+    </p>
+</footer>
+
+
+<script src="unionTypes/customerStatus.js"></script>
+
+</body>
+</html>
