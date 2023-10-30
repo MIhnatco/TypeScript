@@ -26,6 +26,10 @@ const strLength: number = (greeting as string).length;
    </code>
 </pre>
 
+<p>
+    This is how you can use the assertion to invert one data type to another and than to use that without to make a new variable.
+</p>
+
     <p>Here's a brief explanation of when and how to use type assertions:</p>
     <ul>
         <li>
@@ -42,6 +46,63 @@ const strLength: number = (greeting as string).length;
         </li>
     </ul>
    </section>
+
+
+   <section>
+    <p>
+        This section is not directly related to 'Assertions'..but we can use <strong>'type annotations' </strong> to interpret 
+        one class as something else.
+    </p>
+<pre>
+    <code>
+interface Employee {
+    position(): string;
+}
+
+class Manager implements Employee {
+    position(): string {
+        return "Manager";
+    }
+
+    sayHello(): void {
+        console.log("hi")
+    }
+}
+
+
+//If we don't care about Manager portion and we just wan't do deal with Employee portion, we
+//use the 'type annotations'
+const Alice: Employee = new Manager()
+Alice.position()
+
+
+    </code>
+</pre>
+    <p>
+        Now TypeScript registers 'Alice' as Employee and we are only looking at the implemented portion in class from interface. <br>
+        This is useful, because sometimes we can have a class, that implements multiple 'interfaces' but we only want to deal with just 
+         a single 'interface'.
+    </p>
+   </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
    <section>
   
