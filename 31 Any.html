@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Any</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Any type</h1>
+        <p>
+            TypeScript supports various data types, allowing you to define the kind of values that variables can store.
+        </p>
+
+        <p>
+            <strong>Any:</strong> TypeScript has a data type called <strong>any</strong> that can hold values of any type. 
+            It effectively disables type checking for the variable, making it less type-safe.
+
+        </p>
+    </header>
+    <section>
+
+<pre>
+    <code>
+let data: any = 42;
+data = "Hello";
+data = true;
+
+    </code>
+</pre>
+            <p>
+                The <strong>any</strong> type is often used when you don't want to specify the type or when working with dynamically 
+                typed data, such as data from external sources or legacy JavaScript code.
+                <br>
+                However, it's best to avoid using <strong>any</strong> when possible, as it can weaken the benefits of TypeScript's type checking.
+            </p>
+
+        <h3>Caveat of Using the any type</h3>
+        <p>
+            When you use the <strong>any</strong> type, you are telling the TypeScript compiler to represent values without any constraints. 
+            Therefore, using the <strong>any</strong> type is like buying a high-end computer and throwing away the RAM, it doesn't help in 
+            many cases.
+
+        </p>
+        <p>
+            The code snippet below shows a student object with a name and age property. 
+            TypeScript throws an error when you try to access an undefined property like house.
+
+        </p>
+
+<pre>
+    <code>
+const student = {name: "Harry Potter", age: 12}
+
+console.log(student.house) //Output: index.ts(3,21): error TS2339: Property 'house' does not exist on type '{ name: string; age: number; }'.
+    </code>
+</pre>
+
+        <p>
+            When the <strong>any</strong> type is assigned to the student object, the undefined type checking the advantage is lost. 
+            We can access tje undefined properties on the student object as follows:
+        </p>
+
+<pre>
+    <code>
+        const student: any = {name: "Harry Potter", age: 12};
+        console.log(student.house) // Output: undefined
+    </code>
+</pre>
+
+
+    </section>
+
+    <section>
+        <h2>Review:</h2>
+        <p>
+            Here are some of the common data types in TypeScript:
+        </p>
+        <ul>
+            <li>
+                <strong>Number:</strong> Represents numeric values. TypeScript includes integers and floating-point numbers.
+
+<pre>
+    <code>
+let age: number = 30;
+String: Represents text values enclosed in single or double quotes.
+
+    </code>
+</pre>
+            </li>
+            <li>
+               <strong>String:</strong> Represents text values enclosed in single or double quotes.
+<pre>
+    <code>
+let name: string = "John";
+
+    </code>
+</pre>
+            </li>
+            <li>
+               
+            <strong>Boolean:</strong> Represents true or false values.
+<pre>
+    <code>
+        let isStudent: boolean = true;
+    </code>
+</pre>
+            </li>
+            <li>
+               
+                <strong>Array:</strong> Represents a collection of values, which can be of any type. TypeScript allows you to specify the type of elements in an array using generics.
+<pre>
+    <code>
+let numbers: number[] = [1, 2, 3];
+let names: string[] = ["Alice", "Bob"];
+    </code>
+</pre>
+            </li>
+            <li>
+               
+                <strong>Object:</strong> Represents an instance of a class or an object with properties and values.
+<pre>
+    <code>
+        let person: { name: string, age: number } = { name: "Alice", age: 25 };
+    </code>
+</pre>
+            </li>
+            <li>
+                <strong>Function:</strong> Represents functions, including their parameter types and return types.
+<pre>
+    <code>
+        let add: (x: number, y: number) => number = function (x, y) {
+            return x + y;
+        };
+    </code>
+</pre>
+            </li>
+            <li>
+                <strong>Enum:</strong> Represents a set of named constants.
+<pre>
+    <code>
+        enum Color {
+            Red,
+            Green,
+            Blue,
+        }
+        let chosenColor: Color = Color.Blue;
+    </code>
+</pre>
+            </li>
+      
+        </ul>
+    </section>
+    
+</body>
+</html>

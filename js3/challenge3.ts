@@ -1,0 +1,179 @@
+
+// Union Types Challenge
+// 1. Fix the function to show the price per night for each property card only
+// if isLoggedIn is true, or the you object has Permissions. (all permissions should work)
+// 2. See what happens when a null object to be passed to the you objects permissions.
+
+const reviewTotalDisplay = document.querySelector('#reviews') as HTMLInputElement;
+let isLoggedIn: boolean;
+
+enum UserStats {
+    GOLD_USER, 
+    SILVER_USER, 
+    BRONZE_USER
+}
+
+const reviews: {
+    name: string;
+    stars: number;
+    loyaltyUser: string;
+    date: string;
+}[] = [
+    {
+        name: 'Sheia',
+        stars: 5,
+        loyaltyUser: UserStats[0],
+        date: '01-04-2021'
+    },
+    {
+        name: 'Andrzej',
+        stars: 3,
+        loyaltyUser: UserStats[2],
+        date: '28-03-2021'
+    },
+    {
+        name: 'Omar',
+        stars: 4,
+        loyaltyUser: UserStats[1],
+        date: '27-03-2021'
+    },
+]
+
+
+function displayReviews(reviews: number, reviewer: string, isLoyalty: string): void {
+    const icon = isLoyalty === "GOLD_USER" ? '⭐' : '';
+
+    reviewTotalDisplay.textContent = `Total reviews: ${reviews.toString()} | last reviewed by: ${reviewer} ${icon}` 
+
+}
+
+displayReviews(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
+
+
+
+
+const returningUserDisplay = document.querySelector('#returning-user')
+const userNameDisplay = document.querySelector('#user')
+
+enum Permission {
+    ADMIN, 
+    READ_ONLY
+}
+
+
+const you = {
+    firstName: 'Bobby',
+    lastName: 'Brown',
+    permissions: Permission[0],
+    isReturning: true,
+    age: 35,
+    stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
+}
+
+
+function populateUser(isReturning: boolean, userName: object ) {
+    if (isReturning){
+        returningUserDisplay.innerHTML = 'back'
+    }
+    userNameDisplay.innerHTML = userName['firstName']
+}
+
+populateUser(Boolean(you.isReturning), you)
+
+
+const propertyContainer = document.querySelector('.properties')
+
+type Props = {
+    image: string;
+    title: string;
+    price: number;
+    location: {
+        firstLine: string;
+        city: string;
+        code: number;
+        country: string;
+    };
+    contact: [number, string];
+    isAvailable: boolean;
+
+}
+//Array of Properties 
+const properties : Props[] =  [
+    {
+        image: '../images/colombia-property.jpg',
+        title: 'Colombian Shack',
+        price: 45,
+        location: {
+            firstLine: 'shack 37',
+            city: 'Bogota',
+            code: 45632,
+            country: 'Colombia'
+        },
+        contact: [+11234950824856,'marywinkle@gmail.com'],
+        isAvailable: true  
+    },
+    {
+        image: '../images/poland-property.jpg',
+        title: 'Polish Cottage',
+        price: 34,
+        location: {
+            firstLine: 'no 23',
+            city: 'Gdansk',
+            code: 343903,
+            country: 'Poland'
+        },
+        contact: [+11234523524856,'garydavis@hotmail.com'],
+        isAvailable: false 
+    },
+    {
+        image: '../images/london-property.jpg',
+        title: 'London Flat',
+        price: 23,
+        location: {
+            firstLine: 'flat 15',
+            city: 'London',
+            code: 35433,
+            country: 'United Kingdom',
+        },
+        contact: [+1125632124856,'andyluger@aol.com'],
+        isAvailable: true
+    }
+]
+
+let authorityStatus: any;
+isLoggedIn = true;
+
+function showDetails(authorityStatus: boolean | Permission, element: HTMLDivElement, price: number){
+    if(authorityStatus){
+        const priceDisplay = document.createElement('div');
+        priceDisplay.innerHTML = price.toString() + '/night';
+        element.appendChild(priceDisplay)
+    }
+
+}
+
+
+//Add the properties
+
+for (let i = 0; i < properties.length; i++){
+    const card = document.createElement('div')
+    card.classList.add('card')
+
+    const title = document.createElement("h2")
+    title.textContent = properties[i].title;
+
+    card.appendChild(title)
+
+    const image = document.createElement('img');
+    image.setAttribute('src', properties[i].image);
+    card.appendChild(image);
+
+    propertyContainer.appendChild(card)
+    showDetails(isLoggedIn, card, properties[i].price)
+}
+
+
+let currentLocation : [string, string, number] = ["Humenne", "4:52 AM", 3];
+
+const footer = document.querySelector('.footer')
+footer.innerHTML = `<h2>${currentLocation[0]} - ${currentLocation[1]} - ${currentLocation[2]} °C</h2>`
