@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optional Fields</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Optional Fields</h1>
+        <p>
+            In <strong>TypeScript</strong>, you can declare fields in interfaces or object types as optional 
+            by adding a <strong>'?'</strong> symbol after the field name. This indicates that the field may or 
+            may not be present when creating objects of that type. <strong>Optional fields</strong> are useful 
+            when you want to allow flexibility in the shape of objects without requiring every field to be provided.
+        </p>
+    </header>
+    <section>
+        <p>Here's a basic example of optional fields in TypeScript:</p>
+<pre>
+    <code>
+        interface Person {
+            name: string;
+            age?: number; //age is an optional field
+        }
+
+        const person1: Person = {
+            name: "Alice"
+        }
+
+        const person2: Person = {
+            name: 'Bob', 
+            age: 25;
+        }
+    </code>
+</pre>
+
+
+<p>In this example, the <strong>Person</strong> interface defines two fields, <strong>name</strong> and <strong>age</strong>. 
+    However, <strong>age</strong> is marked as optional with <strong>?</strong>. As a result:</p>
+
+    <ul>
+        <li>
+            You can create an object with only the name field (as shown in person1).
+        </li>
+        <li>
+            You can also create an object with both name and age fields (as shown in person2).
+        </li>
+    </ul>
+    </section>
+
+    <section>
+        <h2>Assignment: User profile</h2>
+        
+        <p>Imagine you're developing a user profile system for a website. Users can create profiles with various pieces of information, 
+            some of which are optional. 
+            Your task is to create a TypeScript interface for a user profile that captures both required and optional fields.</p>
+
+    <ol>
+        <li>
+            Define an interface UserProfile that includes the following fields:
+                <ul>
+                    <li>username (a required string)</li>
+                    <li>email (a required string)</li>
+                    <li>age (an optional number)</li>
+                    <li>location (an optional string)</li>
+                    <li>bio (an optional string)</li>
+                </ul>
+
+        </li>
+        <li>
+            Create a function printUserProfile that takes an argument of type <strong>UserProfile</strong> and prints the user's profile information.
+
+        </li>
+        <li>
+            Create two user profiles, one with all required fields and another with some optional fields, and use the <strong>printUserProfile</strong> function to display their profiles.
+        </li>
+        <li>
+            Handle the optional fields gracefully in the function so that it doesn't display anything for those fields if they are not provided.
+        </li>
+    </ol>
+
+    <p>
+        Your solution should demonstrate the usage of optional fields in the <strong>UserProfile</strong> interface.
+
+    </p>
+
+
+    </section>
+
+
+    <footer>
+        Optional fields provide flexibility when dealing with objects that may not have all properties defined, which is common in real-world scenarios. They help you express this flexibility in the type system while still enforcing type safety where needed.
+    </footer>
+
+
+
+
+    <script src="optionalFields/index.js"></script>
+    <script src="optionalFields/userProfile.js"></script>
+    
+</body>
+</html>
