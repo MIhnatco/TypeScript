@@ -1,8 +1,5 @@
-
-// Union Types Challenge
-// 1. Fix the function to show the price per night for each property card only
-// if isLoggedIn is true, or the you object has Permissions. (all permissions should work)
-// 2. See what happens when a null object to be passed to the you objects permissions.
+// Instead of having a long 'review total 3', can you make the line say '3 reviews', or '1 review'
+// if there is only one? Use a function to do this and assing a type to the functions return.
 
 const reviewTotalDisplay = document.querySelector('#reviews') as HTMLInputElement;
 let isLoggedIn: boolean;
@@ -13,12 +10,15 @@ enum UserStats {
     BRONZE_USER
 }
 
-const reviews: {
+
+interface Review {
     name: string;
     stars: number;
     loyaltyUser: string;
     date: string;
-}[] = [
+}
+
+const reviews: Review[] = [
     {
         name: 'Sheia',
         stars: 5,
@@ -39,11 +39,18 @@ const reviews: {
     },
 ]
 
+function makeMultiple(value: number):string {
+    if (value > 1 || value === 0 ) {
+        return 's'
+    } else return ''
+}
+
+
 
 function displayReviews(reviews: number, reviewer: string, isLoyalty: string): void {
     const icon = isLoyalty === "GOLD_USER" ? '⭐' : '';
 
-    reviewTotalDisplay.textContent = `Total reviews: ${reviews.toString()} | last reviewed by: ${reviewer} ${icon}` 
+    reviewTotalDisplay.textContent = `Total reviews: ${reviews} Review'${makeMultiple(reviews)}  | last reviewed by: ${reviewer} ${icon}` 
 
 }
 
@@ -55,16 +62,16 @@ displayReviews(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
 const returningUserDisplay = document.querySelector('#returning-user')
 const userNameDisplay = document.querySelector('#user')
 
-enum Permission {
-    ADMIN, 
-    READ_ONLY
+enum Permissions {
+    ADMIN = 'ADMIN', 
+    READ_ONLY = 'READ_ONLY'
 }
 
 
 const you = {
     firstName: 'Bobby',
     lastName: 'Brown',
-    permissions: Permission[0],
+    permissions: Permissions[0],
     isReturning: true,
     age: 35,
     stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
@@ -143,7 +150,7 @@ const properties : Props[] =  [
 let authorityStatus: any;
 isLoggedIn = true;
 
-function showDetails(authorityStatus: boolean | Permission, element: HTMLDivElement, price: number){
+function showDetails(authorityStatus: boolean | Permissions, element: HTMLDivElement, price: number){
     if(authorityStatus){
         const priceDisplay = document.createElement('div');
         priceDisplay.innerHTML = price.toString() + '/night';
@@ -169,9 +176,44 @@ for (let i = 0; i < properties.length; i++){
     card.appendChild(image);
 
     propertyContainer.appendChild(card)
-    showDetails(isLoggedIn, card, properties[i].price)
+    showDetails(you.permissions, card, properties[i].price)
 }
 
+
+
+// Button functionality
+const button = document.querySelector('button')
+
+
+function getTopTwoReviews(reviews : Review[]) : Review[]  {
+    const sortedReviews = reviews.sort((a, b) => b.stars - a.stars)
+    return sortedReviews.slice(0,2)
+   }
+
+const reviewContainer = document.querySelector('.reviews')
+const container = document.querySelector('.container')
+let count = 0
+
+function addReviews(array : Review[]) : void {
+    if (!count ) {
+        count++
+        const topTwo = getTopTwoReviews(array)
+        for (let i = 0; i < topTwo.length; i++) {
+            const card = document.createElement('div')
+            card.classList.add('review-card')
+            card.innerHTML = topTwo[i].stars + ' stars from ' + topTwo[i].name
+            reviewContainer.appendChild(card)
+        }
+        container.removeChild(button) 
+    }
+}
+
+
+button.addEventListener('click', () => addReviews(reviews))
+
+
+
+//Footer
 
 let currentLocation : [string, string, number] = ["Humenne", "4:52 AM", 3];
 

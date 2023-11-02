@@ -1,7 +1,5 @@
-// Union Types Challenge
-// 1. Fix the function to show the price per night for each property card only
-// if isLoggedIn is true, or the you object has Permissions. (all permissions should work)
-// 2. See what happens when a null object to be passed to the you objects permissions.
+// Instead of having a long 'review total 3', can you make the line say '3 reviews', or '1 review'
+// if there is only one? Use a function to do this and assing a type to the functions return.
 var reviewTotalDisplay = document.querySelector('#reviews');
 var isLoggedIn;
 var UserStats;
@@ -30,22 +28,29 @@ var reviews = [
         date: '27-03-2021'
     },
 ];
+function makeMultiple(value) {
+    if (value > 1 || value === 0) {
+        return 's';
+    }
+    else
+        return '';
+}
 function displayReviews(reviews, reviewer, isLoyalty) {
     var icon = isLoyalty === "GOLD_USER" ? '⭐' : '';
-    reviewTotalDisplay.textContent = "Total reviews: ".concat(reviews.toString(), " | last reviewed by: ").concat(reviewer, " ").concat(icon);
+    reviewTotalDisplay.textContent = "Total reviews: ".concat(reviews, " Review'").concat(makeMultiple(reviews), "  | last reviewed by: ").concat(reviewer, " ").concat(icon);
 }
 displayReviews(reviews.length, reviews[0].name, reviews[0].loyaltyUser);
 var returningUserDisplay = document.querySelector('#returning-user');
 var userNameDisplay = document.querySelector('#user');
-var Permission;
-(function (Permission) {
-    Permission[Permission["ADMIN"] = 0] = "ADMIN";
-    Permission[Permission["READ_ONLY"] = 1] = "READ_ONLY";
-})(Permission || (Permission = {}));
+var Permissions;
+(function (Permissions) {
+    Permissions["ADMIN"] = "ADMIN";
+    Permissions["READ_ONLY"] = "READ_ONLY";
+})(Permissions || (Permissions = {}));
 var you = {
     firstName: 'Bobby',
     lastName: 'Brown',
-    permissions: Permission[0],
+    permissions: Permissions[0],
     isReturning: true,
     age: 35,
     stayedAt: ['florida-home', 'oman-flat', 'tokyo-bungalow']
@@ -120,8 +125,32 @@ for (var i = 0; i < properties.length; i++) {
     image.setAttribute('src', properties[i].image);
     card.appendChild(image);
     propertyContainer.appendChild(card);
-    showDetails(isLoggedIn, card, properties[i].price);
+    showDetails(you.permissions, card, properties[i].price);
 }
+// Button functionality
+var button = document.querySelector('button');
+function getTopTwoReviews(reviews) {
+    var sortedReviews = reviews.sort(function (a, b) { return b.stars - a.stars; });
+    return sortedReviews.slice(0, 2);
+}
+var reviewContainer = document.querySelector('.reviews');
+var container = document.querySelector('.container');
+var count = 0;
+function addReviews(array) {
+    if (!count) {
+        count++;
+        var topTwo = getTopTwoReviews(array);
+        for (var i = 0; i < topTwo.length; i++) {
+            var card = document.createElement('div');
+            card.classList.add('review-card');
+            card.innerHTML = topTwo[i].stars + ' stars from ' + topTwo[i].name;
+            reviewContainer.appendChild(card);
+        }
+        container.removeChild(button);
+    }
+}
+button.addEventListener('click', function () { return addReviews(reviews); });
+//Footer
 var currentLocation = ["Humenne", "4:52 AM", 3];
 var footer = document.querySelector('.footer');
 footer.innerHTML = "<h2>".concat(currentLocation[0], " - ").concat(currentLocation[1], " - ").concat(currentLocation[2], " \u00B0C</h2>");
