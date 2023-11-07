@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var textInput = document.getElementById("textInput");
     var setTextBtn = document.getElementById("setTextButton");
     var output = document.getElementById("output");
-    var error = document.getElementById('error');
+    var error = document.getElementById('err');
     var limitedText;
     setTextBtn.addEventListener('click', function () {
         var maxLength = parseInt(maxLengthInput.value);
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
             output.textContent = limitedText.getText();
         }
         catch (e) {
-            error.textContent = "Error ".concat(e.message);
+            error.textContent = "Error: ".concat(e.message);
         }
     });
 });

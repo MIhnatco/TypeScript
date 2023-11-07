@@ -66,8 +66,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const setTextBtn = document.getElementById("setTextButton");
 
     const output = document.getElementById("output");
-    const error = document.getElementById('error');
+    const error = document.getElementById('err');
     
+
     let limitedText;
 
     setTextBtn.addEventListener('click', function(){
@@ -80,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             } catch(e){
 
-                error.textContent = `Error ${e.message}`;
+                error.textContent = `Error: ${e.message}`;
             }
     })
     
