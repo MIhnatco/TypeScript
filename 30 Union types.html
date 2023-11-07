@@ -12,13 +12,15 @@
         <h1>Union types in TypeScript</h1>
         <p>
             In <strong>TypeScript</strong>, you can use union types to indicate that a value can have more 
-            than one type. Union types are a powerful feature that can help you write flexible and expressive 
+            than one type. 
+            <br> Union types are a powerful feature that can help you write flexible and expressive 
             code. <br>
-            Here's an overview of how union types work and how to use them:
         </p>
     </header>
-
+    
     <section>
+        <p>Here's an overview of how union types work and how to use them:</p>
+
         <h3>Defining Union Types:</h3>
         <p>
             To define a <strong>union type</strong>, use the pipe <strong>'|'</strong> character between the type options. 
@@ -62,7 +64,7 @@ value = true;       //Invalid
 
         <h3>Combining Multiple Types:</h3>
         <p>
-            You can use union types with more than two types. For example, string | number | boolean.
+            You can use union types with more than two types. For example: <em>string | number | boolean.</em>
         </p>
 <pre>
     <code>
@@ -86,6 +88,35 @@ multiType = true;           // Valid
     </code>
 </pre>
 
+        <p>
+            What about this function:
+        </p>
+<pre>
+    <code>
+        function trueOrNull(isTrue: boolean){
+            if(isTrue){
+                return 'true'
+            }
+            return null;
+        }
+    </code>
+</pre>
+
+        <p>
+            What is the type of the value this function returns? Well, it might be a 'string', or it might be 'null'. 
+        </p>
+        <p>How about this one?</p>
+<pre>
+    <code>
+        function(a: string, b: number){
+            return a || b;
+        }
+    </code>
+</pre>
+
+        <p>
+            If 'a' is truthy then the return type is 'string', and otherwise it's a 'number': in other words: string | number.
+        </p>
 
         <h3>Handling Union Types with Conditional Statements:</h3>
         <p>
@@ -140,7 +171,7 @@ function add(x: string | number, y: string | number): string | number {
 
     <h3>Combining with Custom Types:</h3>
     <p>
-        You can use <strong>union types</strong> with custom types and interfaces to create more complex type definitions:
+        You can use <strong>union types</strong> with <strong>custom types</strong> and <strong>interfaces</strong> to create more complex type definitions:
     </p>
 <pre>
     <code>
@@ -150,9 +181,100 @@ function add(x: string | number, y: string | number): string | number {
 
 </section>
 
+<section>
+    <h2>Arrays</h2>
+    <p>
+        <strong>TypeScript arrays</strong> are special kinds of objects that support things like concatenation, pushing, 
+        searching and slicing. Let's go through some examples:
+    </p>
+<pre>
+    <code>
+            let a = [1,2,3]           //number[]
+            let b = ['a', 'b']        //string[]
+            let c: string[] = ['a']   //string[]
+            let d = [1, "a"]          // (string | number)[]
+            const e = [2, 'b']       //(string | number)[]
+
+
+            let f = ['red'];
+            f.push("blue")
+            f.push(true)            //Error TS2345: Argument of type 'true' is not 
+                                    //assignable to parameter of type 'string'
+
+            let g = [];             //any[]
+            g.push(1);              //number[]
+            g.push('red')           //(string | number)[]
+
+            let h: number[] = []    //number[]
+            h.push(1)               //number[]
+            h.push('red')           //Error TS2345: Argument of type 'red' is not 
+                                    //assignable to parameter of type 'number'
+
+    </code>
+</pre>
+
+        <p>
+            The best practice is to keep <strong>arrays</strong> <em>homogeneous</em>. Create your programs so 
+            that every element of your array has the same type. To prove this...look at the example 'f' - the array 
+            has been initialized with string 'red' (when the array was declared, it contained only a 'string', so TypeScript 
+            inferred that it must be an array of strings). Then, when we have pushed 'true' onto the array, the process failed..
+            because f is an array of strings, and <strong>true</strong> is not a string.
+        </p>
+        <p>
+            But when you initialize an array as 'd'..with a 'number' and a 'string'...TypeScript inferrs that it must 
+            be an array of type 'number | string'. Because each element might be either a number or a string, you have to 
+            check which is before using it. 
+        </p>
+
+<pre>
+    <code>
+        let d = [1,"a"];
+
+        d.map( _ => {
+            if(typeof _ === 'number'){
+                return _ * 3;
+            }
+
+            return _.toUpperCase();
+        })
+    </code>
+</pre>
+
+    <p>
+        You have to query the type of each item with <strong>typeof</strong>, checking if it's a number or a string 
+        before you can do anything with it.
+    </p>
+
+    <p>
+        <strong>g</strong> is the special case: when you initialize an empty array, TypeScript doesn't know what type the 
+        array's elements should be, so it gives you the benefit of the doubt and makes them 'any'. As you manipulate the 
+        array and add elements to it, TypeScript starts to piece together your array's type. Once your array leaves the scope 
+        it was defined in (for example, if you declared it in a function, the returned it), TypeScript will assign it a final 
+        type that can't be expanded anymore:
+    </p>
+
+<pre>
+    <code>
+        function buildArray(){
+            let a = [];         //any[]
+            a.push(1);          //number[]
+            a.push('x');        //(number | string)[]
+            return a;
+        }
+
+        let myArr = buildArray()
+        myArr.push(true)        //Error 2345: Argument of type 'true' is not 
+                                //assignable to parameter of type 'string | number';
+    </code>
+</pre>
+
+
+
+</section>
+
 
 <section>
-    <h3>Example: User Authentication Status</h3>
+    <h2>Example: User Authentication Status</h2>
     <p>
         In a user authentication system, you may encounter various states or conditions related to user 
         authentication. <strong>Union types</strong> and <strong>custom types</strong> are handy for defining these 
@@ -226,7 +348,7 @@ switch (result.status){
 </section>
 
 <section>
-    <h3>Assignment: Customer Order Status</h3>
+    <h2>Assignment: Customer Order Status</h2>
     <p>
         Imagine you're building a system to manage customer orders for an e-commerce platform. You need 
         to handle different order statuses based on the order's progress. Implement a TypeScript 

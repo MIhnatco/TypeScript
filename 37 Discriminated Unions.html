@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discriminated Unions</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Discriminated Unions</h1>
+        <p>
+            <strong>Discriminated unions</strong> are a powerful feature in TypeScript that enable you to work 
+            with complex data structures, such as object shapes with different variants, in a type-safe way. 
+        </p>
+        <p>
+            <strong>Discriminated unions</strong> allow you to define a set of related types and provide a common 
+            property, known as a <strong>discriminant</strong>, which is used to distinguish between those types. This 
+            enables you to work with data that can take on different forms while preserving type safety.
+        </p>
+    </header>
+
+    <section>
+        <p>
+            Let's break down the key components of discriminated unions:
+        </p>
+        <ol>
+            <li>
+                <strong>Discriminant property:</strong> This is a property within each type of the union that 
+                distinguishes it from the other. The discriminant is typically a string or numeric literal.
+            </li>
+            <li>
+                <strong>Variants:</strong> are the individual types that form the union. Each type corresponds to a specific 
+                variant or shape of the data.
+            </li>
+            <li>
+                <strong>Pattern matching:</strong> <strong>Discriminated unions</strong> work hand-in-hand with pattern matching 
+                using the <strong>switch</strong> statement. You can switch on the discriminant property to access the properties 
+                specific to each variant.
+            </li>
+        </ol>
+
+        <p>
+            Here's an example to illustrate discriminated unions:
+        </p>
+<pre>
+    <code>
+        //Define a union of shapes
+        type Shape = {
+            kind: 'circle';
+            radius: number;
+        } | {
+            kind: 'rectangle';
+            width: number;
+            height: number;
+        }
+
+
+        //function to calculate area based on shape
+        function calculateArea(shape: Shape): number {
+            switch(shape.kind){
+                case "circle":
+                    return Math.PI * shape.radius ** 2;
+                case 'rectangle':
+                    return shape.width * shape.height;
+            }
+        }
+
+        //Example usage
+        const circle: Shape = { kind: "circle", radius: 5};
+        const rectanlge: Shape = {kind: 'rectangle', width: 4, height: 6}
+
+        console.log(calculateArea(circle))
+        console.log(calculateArea(rectangle))
+    </code>
+</pre>
+        <p>
+            In this example, we defined a discriminated union <strong>'Shape'</strong> with two variants: 'circle' and 
+            'rectangle'. The <strong>kind</strong> property serves as the discriminant. The <strong>'calculateArea' </strong> 
+            function uses pattern matching to calculate the area based on the shape.
+        </p>
+    </section>
+
+    <section>
+        <p>
+            <strong>Discriminated unions</strong> are important because they bring numerous benefits to TypeScript code.
+        </p>
+        <ul>
+            <li>
+                <strong>Improved Type Safety:</strong> With <strong>discriminated unions</strong>, TypeScript can 
+                ensure that all possible variants of a type are accounted for, eliminating the risk of undefined or unexpected 
+                behavior at runtime.
+            </li>
+            <li>
+                <strong>Better Code readability:</strong> <strong>Discriminated unions</strong> make code more 
+                readable and easier to understand by providing a clear and concise way to represent complex data structures.
+            </li>
+            <li>
+                <strong>Easier Maintenance:</strong> By using <strong>discriminated unions</strong>, developers can easily 
+                add new variants to a type without having to modify existing code.
+            </li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Messing system</h3>
+<pre>
+    <code>
+        type AccountCreationMessage = 
+                {kind: "ok" , greeting: string} 
+            | {kind:"passwordComplexityFailure", message: string} 
+            | {kind: "usernameExists"}
+
+
+        const ok: AccountCreationMessage = {
+            kind: "ok", 
+            greeting: "Welcome to the platform!"
+        }
+
+        cosnt passwordTooShort: AccountCreationMessage = {
+            kind: "passwordComplexityFailure", 
+            message: "Password must be at least 10 characters"
+        }
+
+
+        function showMesage(msg: AccountCreationMessage){
+            switch(msg.kind){
+                case "ok":
+                    console.log(`${msg.greeting});
+                    break;
+                case "passwordComplexityFailure":
+                    console.log(`${msg.message}`);
+                    break;
+                case 'usernameExists':
+                    console.log(`That username already exists`)
+                    break;
+            }
+        }
+
+        showMesage(ok);
+        showMesage(passwordComplexityFailure)
+    </code>
+</pre>
+    </section>
+
+    <section>
+        <h2>Assignment: Movie Ratings</h2>
+        <p>
+            You are tasked with building a simple application to display movie ratings. Each movie can 
+            be in one of three states: "Good," "Average," or "Bad".
+             Create a discriminated union to represent movie ratings and display the ratings for a list of movies.
+        </p>
+
+        <h3>Pseudo Code</h3>
+        <ol>
+            <li>
+                Define a discriminated union called <strong>MovieRating</strong> with three variants: Good, Average, and Bad.
+            </li>
+            <li>
+                Create some movie objects, and each object should have properties for 
+                rating (the movie's rating, using the MovieRating discriminated union) and description (message about the film).
+            </li>
+            <li>
+                Write a function called <strong>displayMovieRatings</strong> that takes an object and 
+                displays each movie's rating and description using <strong>switch</strong> statement.
+                 Use pattern matching to show "Good" for a good movie, "Average" for an average movie, and "Bad" for a bad movie.
+            </li>
+        </ol>
+    </section>
+
+
+
+    <footer>
+        <p>
+            <strong>Discriminated unions</strong> are particularly useful when working with APIs, file formats, 
+            or any scenario where data can take on different forms. They provide type safety, and make it easier 
+            to work with complex data structures.
+        </p>
+    </footer>
+
+
+
+    <script src="discriminatedUnion/index.js"></script>
+    <script src="discriminatedUnion/movieRating.js"></script>
+    
+</body>
+</html>
