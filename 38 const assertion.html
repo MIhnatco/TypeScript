@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>const Assertion</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>const assertion</h1>
+        <p>
+            In <strong>TypeScript</strong>, a <strong>'const assertion'</strong> is a way to inform the compiler that a variable should 
+            not be widened to its literal type when its value is assigned. This means that the variable will retain its 
+            specific type information even if it's assigned a more general value. It's like a signal to the TypeScript compiler 
+            to treat the variable as if it were declared with the specific literal type.
+        </p>
+    </header>
+    <section>
+        <p>Here's a brief explanation and an example to illustrate the concept:</p>
+
+        <h3>Without 'const' assertion:</h3>
+<pre>
+    <code>
+        let x = 5; //TypeScript infers x as number
+        x = 10;   //This is allowed because x is of type number 
+        x = 'hello'  //This is an error because the type of x has been widened to number
+    </code>
+</pre>
+
+        <h3>With 'const' assertion</h3>
+<pre>
+    <code>
+        let x = 5 as const; //x is explicitly declared as 5, not just a number
+        x = 10;  //This is an error because x is explicitly a constant with the value of 5
+        x = 'hello';  //This is also an error because x is not a string
+    </code>
+</pre>
+
+    <p>
+        By using <strong>'as const'</strong>, you're telling TypeScript that the variable should remain a specific 
+        literal value and not be changed. This can be particularly useful when you want to ensure that a variable's 
+        value remains constant and can only be a specific literal value.
+    </p>
+    </section>
+
+
+    <section>
+<pre>
+    <code>
+        type Rgb = 'red' | 'green' | 'blue';
+        const red: Rgb = 'red';
+
+        {
+            const Color = ['red', 'green', 'blue'] as const;
+            type Color = (typeof Color)[number];
+            const blue: Color = 'blue';
+
+            for (const c of Color){
+                console.log(c)
+            }
+        }
+    </code>
+</pre>
+
+    <ol>
+        <li>type Rgb = 'red' | 'green' | 'blue';: Here, a type Rgb is defined using a union of string literal types. It represents three possible string values: 'red', 'green', and 'blue'.</li>
+
+        <li>const red: Rgb = 'red';: A constant variable red is declared and assigned the value 'red'. This is allowed because 'red' is one of the possible values in the Rgb type.</li>
+
+        <li>The code enters a new block within curly braces { ... }, which is a separate scope from the outer scope.</li>
+
+        <li>const Color = ['red', 'green', 'blue'] as const;: An array Color is declared using const assertion. The as const part ensures that the array's elements have literal types. This means the elements of the Color array are of string literal types, not just string.</li>
+
+        <li>type Color = (typeof Color)[number];: A new type Color is defined. It extracts the types of the elements in the Color array using (typeof Color). It essentially represents the union type of 'red' | 'green' | 'blue'.</li>
+
+       <li> const blue: Color = 'blue';: A constant variable blue is declared and assigned the value 'blue'. This is allowed because 'blue' is one of the possible values in the Color type.</li>
+
+        <li>The for...of loop iterates over each element (c) in the Color array and logs the values ('red', 'green', 'blue') to the console. Since the Color array contains only string literal types, the loop iterates over those specific values.</li>
+    </ol>
+    </section>
+
+
+
+    <footer>
+        It's important to use const assertion carefully, as it restricts the flexibility of the variable. Use it when you need to enforce immutability and ensure that a variable's value doesn't change.
+    </footer>
+    
+</body>
+</html>
