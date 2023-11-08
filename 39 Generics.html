@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generics</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Generics</h1>
+        <p>
+            <strong>Generics</strong> in <strong>TypeScript</strong> allow you to create reusable, flexible, 
+            and type-safe components. <br>
+            They enable you to write code that works with a variety of data types while maintaining type 
+            safety. <strong>Generics</strong> are often used with data structures, functions, and classes.
+        </p>
+    </header>
+
+    <section>
+        <p>
+            <strong>Generics</strong> are denoted by angle brackets <strong>'<T>'</strong>, where <strong>"T"</strong> 
+                is a placeholder representing the type that will be provided when you use the generic component. 
+        </p>
+    </section>
+
+    <section>
+        <h2>A Generic function</h2>
+        <p>Imagine a scenario where we need first number from an array...</p>
+<pre>
+    <code>
+        function getFirstNumber(arr: number[]): number | undefined {
+            if(arr.length > 0){
+                return arr[0]
+            }
+
+            return undefined;
+        }
+    </code>
+</pre>
+
+        <p>
+            The code above wont work on this:
+        </p>
+<pre>
+    <code>
+        getFirstNumber(["a", "b"])
+    </code>
+</pre>
+        <p>So we would create a new function...</p>
+    
+<pre>
+    <code>
+    
+function getFirstStrOrNumber(arr: (string | number)[]): string | number | undefined {
+    if(arr.length > 0){
+        return arr[0]
+    }
+
+    return undefined;
+}
+
+    getFirstStrOrNumber(['a', 'b'])
+    getFirstStrOrNumber([2,3])
+
+    </code>
+</pre>
+    
+    <p>
+        We can add more types and that code becomes messy...
+    </p>
+    <p>
+        To make it generic...will help...
+    </p>
+<pre>
+    <code>
+        function getFirstOf<T>(arr: T[]): T | undefined {
+            if(arr.length > 0){
+                return arr[0]
+            }    
+
+            return undefined;
+        }
+    </code>
+</pre>
+
+    <p>
+        So, now for <strong>'T'</strong> we can substitute anything we want...and behind the scenes, 
+        the TypeScript will analyze the, in this case, array and continue
+    </p>
+
+<pre>
+    <code>
+        getFirstOf([1,2])
+    </code>
+</pre>
+        <p>
+            When we call the function with an array of numbers...TypeScript will jump to function definition
+            and will substitute <strong>'number[]'</strong> instead  <strong>T</strong> and will continue with 
+            the code in the function. And we can substitute anything because <strong>T</strong> gives us the possibility.
+        </p>
+
+        <ul>
+            <li>
+                <strong>Type Inference:</strong> TypeScript's type inference system can often infer the type of a generic parameter based on the argument passed to the function. 
+                This means you don't always have to explicitly specify the type when calling a generic function
+            </li>
+            <li>
+                <strong>Reusability:</strong> Generics allow you to create components that can work with different types, 
+                making your code more flexible and reusable. For example, you can create a generic function that works with arrays of any type:
+            </li>
+        </ul>
+<pre>
+    <code>
+        getFirstOf(["c", "d"])
+        getFirstOf([true, false])
+        getFirstOf([{}, {}])
+    </code>
+</pre>
+    
+    </section>
+
+    <section>
+        <h2>Generic Classes </h2>
+        <p>
+            We can alos use generics with classes to create reusable data structures and behaviors. For example, 
+            you can create a generic <strong>'Stack'</strong> class that works with any type:
+        </p>
+<pre>
+    <code>
+        class Stack &lt;T&gt;{
+            private elemenst: T[] = [];
+
+            public push(element: T): void {
+                this.elements.push(element)
+            }
+
+            public pop(): T | undefined {
+                return this.elements.pop();
+            }
+
+            public peek(): T | undefined {
+                return this.elements[this.elements.lenght - 1];
+            }
+
+            public showElements(): T | undefined {
+                return this.elements;
+            }
+
+            public isEmpty(): boolean {
+                return this.elements.length === 0;
+            }
+        
+        }
+    </code>
+</pre>
+
+        <p>
+            TypeScript will analyze what the type <strong>"T"</strong> is supposed to actually be.
+        </p>
+
+<pre>
+    <code>
+let numberStack = new Stack<number>();
+    numberStack.push(5)     //[5]
+    numberStack.push(7)     //[5,7]
+    numberStack.push(9)     //[5,7,9]
+    numberStack.isEmpty() // false
+    numberStack.peek()    //9
+
+
+let stringStack = new Stack<string>();
+    stringStack.push("one")
+    stringStack.push("two")
+    stringStack.push("three")
+
+    </code>
+</pre>
+    </section>
+
+    <section>
+        <h2>Generic Constraints: </h2>
+        <p>
+            You can add constraints to your generics to restrict the types that can be used. For example:
+        </p>
+<pre>
+    <code>
+        interface Lengthwise {
+            length: number;
+        }
+
+        function getLength&lt;T extends Lengthwise&gt;(arg: T): number {
+            return arg.length;
+        }
+
+
+        console.log(getLength("Hello, Generics!")); //15
+    </code>
+</pre>
+
+<p>
+    You can create a generic function that works with objects that have a specific property:
+</p>
+
+    <pre>
+        <code>
+function getProperty&lt;T, K extends keyof T&gt;(obj: T, key: K): T[K]{
+    return obj[key]
+};
+
+const person = {
+    name: "John", 
+    age: 30
+}
+
+console.log(getProperty(person, 'name'))  //John
+console.log(getProperty(person, 'age'))     //30
+        </code>
+    </pre>
+    </section>
+
+    <section>
+        <h2>Default types</h2>
+        <p>
+            You can also provide default types for your generics, which will be used when a 
+            type argument is not explicitly provided. This is done using the '=' sign. <br>
+            For example:
+        </p>
+
+<pre>
+    <code>
+        function identity<T = any>(arg: T): T{
+            return arg;
+        }
+
+        console.log(identity(1));  //1
+        console.log(identity("a"));  //"a"
+        console.log(identity(true));  //true
+
+    </code>
+</pre>
+    </section>
+
+    <section>
+        
+        <h2>Assignment: Implement a Generic Queue</h2>
+        <p>
+            Your task is to create a generic queue data structure that can work with any type of data. Here are the requirements:
+
+        </p>
+        <ul>
+            <li>
+                Implement a Queue class that supports the following methods:
+                    <ul>
+                        <li>
+                            enqueue(item: T): Add an item of type T to the end of the queue.
+                        </li>
+                        <li>
+                            dequeue(): T | undefined: Remove and return the item from the front of the queue. If the queue is empty, return undefined.
+                        </li>
+                        <li>
+                            peek(): T | undefined: Return the item at the front of the queue without removing it. If the queue is empty, return undefined.
+                        </li>
+                        <li>
+                            isEmpty(): boolean: Return true if the queue is empty; otherwise, return false.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Create the queue as a generic class so that it can work with any data type.
+                    
+                </li>
+                <li>
+                    Instantiate the Queue class with different data types (e.g., numbers, strings, custom objects) and demonstrate that the generic queue can be used with various data types while maintaining type safety.
+                </li>
+                <li>
+                    Write a sample program that uses the generic queue to perform operations, 
+                    such as enqueueing and dequeuing elements of different data types.
+                </li>
+                
+        </ul>
+        <p>
+            Please provide detailed comments and explanations in your code to demonstrate your understanding of generics. Test your generic queue with sample data to ensure it works correctly for different types.
+        </p>
+    </section>
+
+
+    <footer>
+        Generics are a powerful feature of TypeScript that can help you write more flexible and reusable code. By understanding the basics of generics and how to use them in different situations, you can improve the type safety and maintainability of your projects.
+    </footer>
+
+
+    <script src='Generics/queue.js'>
+
+    </script>
+</body>
+</html>

@@ -81,6 +81,58 @@
     </ol>
     </section>
 
+    <section>
+        <p>
+            We can do the same thing with objects:
+        </p>
+
+<pre>
+    <code>
+        const Department = {
+            Executive: "top floor", 
+            Sales: "middle floor", 
+            Warenhouse: 'bottom floor'
+        } as const;
+
+        type Department = (typeof Department)[keyof typeof Department];
+
+        let k keyof typeof Department;
+        for (k in Department){
+            console.log(`key = ${k}, floor = ${Department[k]}`);
+        }
+
+    </code>
+</pre>
+    <p>Here's what each part of the code does:</p>
+
+    <ol>
+        <li>
+            <em>const Department = { ... }</em>: This line defines an object Department with three properties: 
+            "Executive," "Sales," and "Warehouse." 
+            Each property is associated with a string that represents the department's location within the building.
+        </li>
+        <li>
+            <em>as const:</em> This is a const assertion. It tells TypeScript that the object and its properties should be treated as read-only constants. It prevents any modification of the properties and values of the Department object.
+        </li>
+        <li>
+            <em>type Department = (typeof Department)[keyof typeof Department];: </em>
+            This line defines a new type alias Department that represents the keys (department names) 
+            of the Department object. It uses (typeof Department)[keyof typeof Department] 
+            to access the keys of the Department object and create a union type of those keys. 
+            In this case, it results in a type Department that can only be one of the department names: 
+            "Executive," "Sales," or "Warehouse."
+
+        </li>
+        <li>
+            So, after this code, you can use the Department type to specify that a variable can only have one of these three 
+            department names. The as const assertion ensures that the properties and their values in the 
+            Department object remain constant and cannot be changed.
+
+        </li>
+
+   </ol>
+    </section>
+
 
 
     <footer>
