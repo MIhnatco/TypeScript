@@ -168,6 +168,42 @@
         </ol>
     </section>
 
+    <section>
+        <h2>Assignment: CMS</h2>
+        <p>
+            You are developing a content management system (CMS) for a website. You need to 
+            handle different types of content: articles, images, and videos. Create a discriminated 
+            union to represent these content types and implement a function to display content details.
+        </p>
+
+        <h3>Pseudo code:</h3>
+        <ol>
+            <li>
+                Define a discriminated union called <strong>'Content'</strong> with three variants: 
+                <strong>"Article"</strong>, <strong>"Image"</strong>, <strong>"Video"</strong>.
+            </li>
+            <li>
+                Each variant should have properties to represent its unique details. 
+                For an article, you need a <strong>'title'</strong>, <strong>'author'</strong>, 
+                <strong>'content'</strong>. For an image, you need a <strong>'title'</strong>, 
+                <strong>'url'</strong>, <strong>'caption'</strong>. For a video, you need a 
+                <strong>'title'</strong>, <strong>'videoUrl'</strong>, and <strong>'duration'</strong>.
+            </li>
+            <li>
+                Write a function called <strong>'displayContent'</strong> that 
+                takes content and displays its details. Use pattern matching to handle 
+                each content type differently. For example, for an article, 
+                display the title, author and content; for an image, dispaly the title, URL, and caption; 
+                and for a video, display the title, videoUrl, and duration.
+            </li>
+            <li>
+                Test you cod with at least one content of each type, and use the 
+                <strong>displayContent</strong> function to show their details.
+            </li>
+        </ol>
+
+    </section>
+
 
 
     <footer>
@@ -182,6 +218,7 @@
 
     <script src="discriminatedUnion/index.js"></script>
     <script src="discriminatedUnion/movieRating.js"></script>
+    <script src="discriminatedUnion/cms.js"></script>
     
 </body>
 </html>
