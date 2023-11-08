@@ -74,7 +74,7 @@ function getFirstStrOrNumber(arr: (string | number)[]): string | number | undefi
     </p>
 <pre>
     <code>
-        function getFirstOf<T>(arr: T[]): T | undefined {
+        function getFirstOf&lt;T&gt;(arr: T[]): T | undefined {
             if(arr.length > 0){
                 return arr[0]
             }    
@@ -229,7 +229,7 @@ console.log(getProperty(person, 'age'))     //30
 
 <pre>
     <code>
-        function identity<T = any>(arg: T): T{
+        function identity&lt;T = any&gt;(arg: T): T{
             return arg;
         }
 
@@ -239,6 +239,77 @@ console.log(getProperty(person, 'age'))     //30
 
     </code>
 </pre>
+    </section>
+
+    <section>
+        <h2>Interfaces with Generics</h2>
+        <p>In TypeScript, you can create an interface with generics to define a reusable contract for objects with 
+            varying data types. Generics allow you to specify type parameters when defining or implementing the interface, making it flexible and adaptable to different data structures and data types.</p>
+
+<pre>
+    <code>
+        // Define a generic interface
+interface Box<T> {
+  value: T;
+}
+
+// Implement the generic interface with specific types
+const numberBox: Box<number> = { value: 42 };
+const stringBox: Box<string> = { value: "Hello, World" };
+
+// You can also create interfaces with multiple generic type parameters
+interface Pair<T, U> {
+  first: T;
+  second: U;
+}
+
+// Implement the interface with specific types
+const numberStringPair: Pair<number, string> = { first: 42, second: "forty-two" };
+
+    </code>
+</pre>
+
+   <p>We define with generics that whatever we want we could pass</p>
+
+<pre>
+    <code>
+        interface Resource &lt;T&gt; {
+            uid: number;
+            resourceName: string;
+            data: T;
+        }
+
+        const docThree: Resource &lt;string&gt; = {
+            udi: 1,
+            resourceName: "person", 
+            data: 'shaun'
+        }
+    </code>
+</pre>
+
+    <p>But if we define something else... we get an error</p>
+<pre>
+    <code>
+    const docThree: Resource &lt;string&gt; = {
+        udi: 1,
+        resourceName: "person", 
+        data: {name: 'shaun'}
+    }
+</code>
+</pre>
+        <p>
+            Another example:
+        </p>
+<pre>
+    <code>
+        const docFour = Resource&lt;string[]&gt; = {
+            udi: 2,
+            resourceName: "shoppingList", 
+            data: ['bread', 'tomatoes', 'potatoes']
+        }
+    </code>
+</pre>
+
     </section>
 
     <section>
@@ -284,14 +355,63 @@ console.log(getProperty(person, 'age'))     //30
         </p>
     </section>
 
+    <section>
+        <h2>Assignment: Generic Sorting</h2>
+        <p>
+            Create a generic sorting function that can sort arrays of various data types. Your function should be able to sort arrays of numbers, strings, or objects based on a specific property. Use TypeScript generics to achieve this.
+        </p>
+
+        <h3>
+            Requirements:
+        </h3>
+        <ol>
+            <li>
+                Create a generic function called <strong>genericSort</strong> that takes two arguments:
+                    <ul>
+                        <li>
+                            An array of items to be sorted (e.g., numbers, strings, or objects).
+                        </li>
+                        <li>
+                            A sorting criteria function that specifies how to compare and sort items.
+                        </li>
+                    </ul>
+            </li>
+            <li>
+                The sorting criteria function should be a callback function that accepts two arguments and returns a value based on the comparison. For example:
+                <ul>
+                    <li>
+                        For numbers, you can use the standard comparison (a, b) => a - b.
+                    </li>
+                    <li>
+                        For strings, you can use alphabetical sorting (a, b) => a.localeCompare(b).
+                    </li>
+                    <li>
+                        For objects, you can specify the property to sort by (e.g., sorting by the name property).
+                    </li>
+                </ul>
+            </li>
+            <li>
+                The <strong>genericSort</strong> function should return a new sorted array based on the specified sorting criteria.
+
+            </li>
+        </ol>
+
+
+
+
+
+
+Test your genericSort function with at least three different use cases, including sorting numbers, strings, and objects.
+    </section>
+
 
     <footer>
+        <h2>Summary:</h2>
         Generics are a powerful feature of TypeScript that can help you write more flexible and reusable code. By understanding the basics of generics and how to use them in different situations, you can improve the type safety and maintainability of your projects.
     </footer>
 
 
-    <script src='Generics/queue.js'>
-
-    </script>
+    <script src='Generics/queue.js'> </script>
+    <script src='Generics/sorting.js'></script>
 </body>
 </html>
