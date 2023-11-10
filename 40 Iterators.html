@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iterators</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Iterators</h1>
+        <p>
+            
+            In TypeScript, iterators are objects that provide a way to access the elements 
+            of a collection (e.g., an array, set, or custom data structure) one at a time, 
+            without exposing the underlying details of the collection.
+        </p>
+    </header>
+
+    <section>
+        <h2>Generator</h2>
+        <p>
+            In TypeScript, a generator is a special type of function that can be paused and resumed, 
+            allowing for more flexible and efficient control flow. Generator functions are denoted by the function* syntax, 
+            and when called, 
+            they return a generator object that follows the iterator interface, which includes the <strong>next</strong>, <strong>return</strong>, and <strong>throw</strong> functions
+        </p>
+
+        <figure>
+            <img src="images/generator.png" alt="">
+        </figure>
+        <p>
+            Here's an example of a simple generator function:
+        </p>
+<pre>
+    <code>
+        function* generatorFunction(): Generator&lt;number&gt;{
+            console.lot("This is a generator function");
+            yield 1;
+            yield 2;
+            yield 3;
+        }
+
+        const generator = generatorFunction();
+        console.log(generator.next()); // { value: 1, done: false }
+        console.log(generator.next()); // { value: 2, done: false }
+        console.log(generator.next()); // { value: 3, done: false }
+        console.log(generator.next()); // { value: undefined, done: true }
+    </code>
+</pre>
+    <p>
+        In this example, the generator function <strong>generatorFunction</strong> is called, and 
+        a generator object is returned. Each call to the next function on the generator object 
+        will pause the execution of the generator function and return an object with a value and done property. 
+        The value property represents the value yielded by the generator, 
+        and the done property indicates whether the generator has finished yielding values.
+    </p>
+
+    <p>
+        Generators 'yield a value'...
+    </p>
+  <ul>
+    <li>
+        Used in generator functions to convert them into generators, which can be exited and re-entered
+    </li>
+    <li>
+        Pauses the execution of a generator and returns an IteratorResult object, which contains a value and a done property
+    </li>
+    <li>
+        Replaces the return of a function to suspend its execution without destroying local variables
+    </li>
+    <li>
+        Code written after the yield statement executes in the next function call
+    </li>
+  </ul>
+    </section>
+
+    <section>
+        <p>Here's a brief overfiew of these concepts:</p>
+        <ul>
+            <li>
+                <strong>Iterable:</strong> An iterable is an object that has an associated function, usually 
+                named <strong>'[Symbol.iterator]'</strong>, which returns an iterator. Arrays, strings, sets, and 
+                maps are examples of built-in iterables in TypeScript.
+            </li>
+            <li>
+                <strong>Iterator:</strong> An iterator is an object that provides a <strong>next</strong> method, 
+                which, when called, returns an object with two properties: <strong>'value'</strong> (the next 
+                value in the sequence) and <strong>'done'</strong> (a boolean indicating if the iteration is complete).
+            </li>
+        </ul>
+
+        <p>
+            To work with iterators in TypeScript, you typically use <strong>'for...of'</strong> loops. These 
+            loops can iterate over any iterable, making it easy to work with various collections.
+        </p>
+        <p>
+            Here's an example of how iterators are used in TypeScript:
+        </p>
+<pre>
+    <code>
+
+const numbers = [1,2,3,4,5];
+const iterator = numbers[Symbol.iterator]();  //Get an iterator 
+
+for (const num of iterator){
+    console.log(num); // Outputs: 1,2,3,4,5
+}
+    </code>
+</pre>
+        <p>
+            In this example, we obtain an iterator from the array numbers using the [Symbol.iterator] function. Then, we use a for...of loop to iterate over the elements of the array, and the iterator handles the sequence and access to each element.
+        </p>
+    </section>
+
+    <section>
+<pre>
+    <code>
+        class Range implements Iterable&lt;number&gt;{
+            private start: number;
+            privat end: number;
+
+            constructor(start: number, end: number){
+                this.start = start;
+                this.end = end;
+            }
+
+            //this allows us to iterate over the class
+            *[Symbol.iterator](): Generator&lt;number&gt;{
+                for (let i = this.start; i &lt;= this.end; i++){
+                    yield i;
+                }
+            }
+        }
+
+        const range = new Range(1,5);
+        for(const num of range){
+            console.log(num);
+        }
+    </code>
+</pre>
+    </section>
+
+    <section>
+        <h2>Code example:</h2>
+        <p>
+            Imagine you have a music playlist, and you want to play each song one by one. You can use an 
+            iterator to handle the iteration through the playlist. Here's a TypeScript code example:
+        </p>
+
+<pre>
+    <code>
+        class Playlist {
+            prive songs: string[];
+            private currentIndex: number;
+
+            constructor(){
+                this.songs = ["Song 1", "Song 2", "Song 3", "Song 4", "Song 5"];
+                this.currentIndex = 0;
+            }
+
+            *[Symbol.iterator](): Generator&lt;object&gt; {
+                return {
+                    next: () => {
+                        if (this.currentIndex &lt; this.songs.length){
+                            const song = this.songs[this.currentIndex];
+                            this.currentIndex++;
+
+                            return {value: song, done: false};
+                        } else {
+                            return {done: true};
+                        }
+                    }
+                }
+            }
+        }
+
+        const playList = new Playlist();
+
+        for (const song of playList){
+            console.log(`Now playing: ${song}`)
+        }
+    </code>
+</pre>
+        <p>
+            In this example, we have a <strong>'Playlist'</strong> class that represents a collection of songs. The 
+            <strong>'[Symbol.iterator]`</strong> method defines an iterator for the playlist. It returns an object with 
+            a <strong>'next'</strong> method that, when called, provides the next song and updates the <strong>'currentIndex'</strong>. 
+            <br>
+            We use a <strong>'for...of'</strong> loop to play each song from the playlist.
+        </p>
+    </section>
+
+
+    <section>
+        <h2>Assignment: Library</h2>
+        <p>
+            Imagine you have a library of books, each with different genres, and you want to create an iterator to go 
+            through the books in each genre. Create a TypeScript program that models this situation. You should define a class for the library, 
+            a way to add books of various genres, and an iterator to go through books of a specific genre.
+        </p>
+        <p>
+            Here's the assignment in pseudo-code:
+        </p>
+        <ol>
+            <li>Create a <strong>"Library"</strong> class.</li>
+            <li>
+                Implement a method to add books to the library. Each book should have a title, author and genre.
+            </li>
+            <li>
+                Implement an iterator for a specific genre. This iterator should allow you to iterate through all books of that genre in the library.
+            </li>
+            <li>
+                Demonstrate how to use the iterator to access and display books of a specific genre from the library.
+            </li>
+        </ol>
+    </section>
+    
+
+
+
+    <script src="Iterator/playlist.js"></script>
+    <script src="Iterator/library.js"></script>
+
+</body>
+</html>
