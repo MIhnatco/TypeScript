@@ -1,5 +1,3 @@
-// Instead of having a long 'review total 3', can you make the line say '3 reviews', or '1 review'
-// if there is only one? Use a function to do this and assing a type to the functions return.
 
 const reviewTotalDisplay = document.querySelector('#reviews') as HTMLInputElement;
 let isLoggedIn: boolean;
@@ -37,13 +35,13 @@ const reviews: Review[] = [
         loyaltyUser: UserStats[1],
         date: '27-03-2021'
     },
-]
+];
 
 function makeMultiple(value: number):string {
     if (value > 1 || value === 0 ) {
         return 's'
     } else return ''
-}
+};
 
 
 
@@ -52,15 +50,15 @@ function displayReviews(reviews: number, reviewer: string, isLoyalty: string): v
 
     reviewTotalDisplay.textContent = `Total reviews: ${reviews} Review'${makeMultiple(reviews)}  | last reviewed by: ${reviewer} ${icon}` 
 
-}
+};
 
-displayReviews(reviews.length, reviews[0].name, reviews[0].loyaltyUser)
-
-
+displayReviews(reviews.length, reviews[0].name, reviews[0].loyaltyUser);
 
 
-const returningUserDisplay = document.querySelector('#returning-user')
-const userNameDisplay = document.querySelector('#user')
+
+
+const returningUserDisplay = document.querySelector('#returning-user');
+const userNameDisplay = document.querySelector('#user');
 
 enum Permissions {
     ADMIN = 'ADMIN', 
@@ -90,7 +88,7 @@ populateUser(Boolean(you.isReturning), you)
 
 const propertyContainer = document.querySelector('.properties')
 
-type Props = {
+interface Property {
     image: string;
     title: string;
     price: number;
@@ -105,7 +103,7 @@ type Props = {
 
 }
 //Array of Properties 
-const properties : Props[] =  [
+const properties : Property[] =  [
     {
         image: '../images/colombia-property.jpg',
         title: 'Colombian Shack',
@@ -144,6 +142,20 @@ const properties : Props[] =  [
         },
         contact: [+1125632124856,'andyluger@aol.com'],
         isAvailable: true
+    },
+
+    {
+        image: 'images/malaysian-hotel.jpeg',
+        title: 'Malia Hotel',
+        price: 35,
+        location: {
+            firstLine: 'Room 4',
+            city: 'Malia',
+            code: 45334,
+            country: 'Malaysia'
+        },
+        contact: [ +60349822083, 'lee34@gmail.com'],
+        isAvailable: false
     }
 ]
 
@@ -175,8 +187,10 @@ for (let i = 0; i < properties.length; i++){
     image.setAttribute('src', properties[i].image);
     card.appendChild(image);
 
+
+
     propertyContainer.appendChild(card)
-    showDetails(you.permissions, card, properties[i].price)
+    showDetails(true, card, properties[i].price)
 }
 
 

@@ -19,6 +19,14 @@
         <p>
             A declaration file typically has the extension <strong>'.d.ts'</strong>. The basic structure 
             includes declarations for variables, functions, classes, or modules.
+
+            They exist for one purpose only: to describe the shape of an existing module and 
+            they only contain type information used for type checking.
+        </p>
+
+        <p>
+            Type definition files (.d.ts) serve as an interface between JavaScript code and the TypeScript compiler. They describe the types, functions, classes, and modules that exist within a JavaScript library or framework. 
+            These files enable the TypeScript compiler to perform type checking and provide rich IntelliSense support within an IDE.
         </p>
 <pre>
     <code>
@@ -98,6 +106,16 @@
     </code>
 </pre>
     </section>
+
+
+   <footer>
+    <p>
+        Creating TypeScript type definition files (.d.ts) allows developers to harness the power of static typing and enhance 
+        the developer experience when working with external JavaScript libraries and modules. By following the step-by-step 
+        process of analysing the library structure, declaring modules, defining types and interfaces, and testing and refining the type definitions, developers can ensure accurate and comprehensive typings for their projects. 
+        With type definition files in place, TypeScript provides improved code quality, early error detection, and enhanced maintainability.
+    </p>
+   </footer>
 
     <script>var exports = {"__esModule": true};</script>
     <script src="dts/dts.js"></script>
