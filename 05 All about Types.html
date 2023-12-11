@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All about Types</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Type</h1>
+        <p>A set of values and the things you can do with them</p>
+    </header>
+    <section>
+        <p>
+            In TypeScript, every value has a type, and the type determines what operations can be performed on that value. TypeScript supports a wide range of data types, including basic types such as 
+            boolean, number, string, null, and undefined, as well as more complex types such as arrays, tuples, enums, and interfaces.
+        </p>
+
+        <h2>Any</h2>
+        <p>
+            In TypeScript, the any type is a special type that can be used to represent any type of value. It is a dynamic type that allows developers to opt-out of type checking for a particular variable, function, or object. The any type is useful when working with existing 
+            JavaScript code that does not have type annotations or when the type of a value is unknown or cannot be determined at compile-time.
+        </p>
+        <p>
+            TypeScript will not perform any type checking on that variable, which means that it is possible to assign values of any type to that variable. This can lead to unexpected behavior and errors in the code.
+        </p>
+<pre>
+    <code>
+        let something: any = "hello, world!";
+        something = 23;
+        something = true;
+    </code>
+</pre>
+
+    <p>In this example:</p>
+    <ul>
+        <li>
+            The variable 'something' is initially assigned a string value 'Hello, world!'.
+        </li>
+        <li>
+            Later, it is reassigned with a number (23) and then with a boolean (true).
+        </li>
+    </ul>
+    <p>
+        The any type allows the variable to hold values of any type, and TypeScript does not perform type checking on variables of type any. While this flexibility can be useful in certain scenarios, it's important to use the any type judiciously to maintain type safety and avoid unexpected runtime errors
+    </p>
+    </section>
+
+    <section>
+        <h2>Type literal</h2>
+        <p>
+            A type that represents a single value and nothing else.
+        </p>
+        <p>
+            In TypeScript, a <strong>type literal</strong> is a type that represents a specific value. It is a way to define 
+            a type that can only have a single value, rather than a range of values. <strong>Type literals</strong> are used 
+            to create more precise types that can help catch errors at compile-time.
+        </p>
+        <p>
+            TypeScript supports three types of literal types: string, number, boolen. 
+        </p>
+        <p>
+            For example, a <strong>string literal</strong> type can be used to represent a specific string value, like this:
+        </p>
+<pre>
+    <code>
+        let myString: "Hello world";
+        myStr = "Hello world";
+        myStr = "World of warcraft"; //Type '"World of warcraft"' is not assignable to type '"Hello world"'.
+    </code>
+</pre>
+
+    <p>
+        In this example, the variable myString is declared as a string literal type that can only have the value "Hello World". 
+        If we try to assign a different string value to myString, TypeScript will throw a compile-time error.
+    </p>
+
+    <p>Type literals can also be used in combination with union types to create more complex types. For example, we can define a type that can only have the values "success" or "error" like this:</p>
+<pre>
+    <code>
+type Result = "success" | "error";
+let myResult: Result = "success"; // OK
+myResult = "error"; // OK
+myResult = "warning"; // Error: Type '"warning"' is not assignable to type 'Result'
+
+    </code>
+</pre>
+<p>
+    In this example, the Result type is a union of the string literal types "success" and "error". 
+    The variable myResult can only have one of these two values.
+</p>
+
+    </section>
+
+    
+    <section>
+        <header>
+            <h2>Boolean Logic</h2>
+
+            
+            <p> <strong>Boolean logic</strong> is a fundamental concept that involves evaluating true/false statements.
+                 It is a system of logical thought that uses <strong>true</strong> and <strong>false</strong> values to make deductions or draw conclusions. 
+                 <br> <strong>Boolean logic</strong> is used to
+                 express conditions and make decisions based on the truth or falsehood of these conditions.
+            </p>
+        </header>
+        <h2>Boolean Data Type in TypeScript:</h2>
+        <p>
+
+            In TypeScript, the boolean data type represents two values: true and false. 
+            Booleans are used to express binary logic and are fundamental to decision-making in programming.
+        </p>
+
+<pre>
+    <code>
+        let isRaining: boolean = true;
+        let hasPermission: boolean = false;
+
+    </code>
+</pre>
+  
+  
+        <h2>Logical Operators:</h2>
+        <p>
+            TypeScript provides several logical operators to work with boolean values:
+
+        </p>
+
+<pre>
+    <code>
+        AND (&&): Returns true if both operands are true.
+        OR (||): Returns true if at least one operand is true.
+        NOT (!): Negates the value; if the operand is true, it becomes false, and vice versa.
+
+        let sunny = true;
+        let warm = true;
+        let isSummer = false;
+        
+        let goingOutside = sunny && warm; // true
+        let needACoat = !warm; // false
+        let beachDay = sunny && (warm || isSummer); // true
+    </code>
+</pre>
+
+   
+        <h2>Boolean Expressions:</h2>
+        <p>
+            Boolean expressions are combinations of variables, values, and logical operators that result in a boolean value. 
+            They are used in decision-making and control flow in your programs.
+
+        </p>
+
+
+<pre>
+    <code>
+        let isWeekend = true;
+        let hasHomework = false;
+        
+        if (isWeekend && !hasHomework) {
+          console.log("Let's go have fun!");
+        } else {
+          console.log("Time to study.");
+        }
+
+    </code>
+</pre>
+   
+
+ 
+        <h3>Exercises:</h3>
+
+        <ul>
+            <li>
+                <h5>Exercise 1: Sunny weekend decision</h5>
+                You're planning your weekend activities. Write a TypeScript program that uses boolean variables 
+                and logical operators to help you decide whether to go to the beach.
+                <ul>
+                    <li>
+                        Create two boolean variables: <strong>'isSunny'</strong> and <strong>'isWeekend'</strong>
+                    </li>
+                    <li>Use a boolean expression to determine whether you should go to the beach. You should consider 
+                        going if it's sunny and it's the weekend.
+                    </li>
+                    <li>
+                        Print a message that advises you on your decision
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <h5>Exercise 2: Temperature Classifier</h5>
+                Write a TypeScript program that classifies the temperature based 
+                on the following rules:
+                <ul>
+                    <li>
+                        If the temperature is greater than or equal to 30 degrees, print "It's hot day!"
+                    </li>
+                    <li>
+                        If the temperature is between 20 and 29 degrees (inclusive), print "It's a nice day."
+                    </li>
+                    <li>
+                        If the temperature is below 20 degrees, print "It's a cold day."
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <h5>Exercise 3: Eligibility Checher</h5>
+                Your are building a program to check if a person is eligible to vote. 
+                Create a TypeScript program that does the following:
+                <ul>
+                    <li>
+                        Declare a variable <strong>'age'</strong> and assign it a value;
+                    </li>
+                    <li>Use a boolean expression to determine if the person is eligible to vote. 
+                        In most countries, the minimum voting age is 18.
+                    </li>
+                    <li>
+                        If the person is eligible, print "You're eligible to vote.". If not, 
+                        print "You are not eligible to vote."
+                    </li>
+                </ul>
+                Test your program with different values of <strong>'age'</strong> to ensure it accurately 
+                determines eligibility.
+            </li>
+        </ul>
+
+
+        <footer>
+            <h3>Mnemonic Devices:</h3>
+            <ul>
+                <li>
+                    Think of boolean expressions as questions or conditions. For example, "Is it sunny?" or "Do I have homework?"
+                </li>
+                <li>
+                    Logical operators are like the words that connect these questions: "AND" connects conditions that must both be true, "OR" connects conditions where at least one should be true, and "NOT" negates a condition.
+    
+                </li>
+            </ul>
+    
+            <p>
+                These concepts are essential for building programs that can make informed choices based on different conditions. 
+            </p>
+        </footer>
+    </section>
+
+
+
+    
+</body>
+</html>
