@@ -1,55 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Type Annotations</title>
-    <link rel="stylesheet" href="css/styles.css">
- 
-</head>
-<body>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
     <header>
-        <h1>Type Annotations</h1>
-        <p>
-            Type annotations in TypeScript are used to explicitly specify types for variables, functions, objects, and more.
-             They are not mandatory in TypeScript, but they help the compiler in checking types and avoiding errors when dealing with data types.
-        </p>
-</header>
+      <h1>Type Annotations</h1>
+      <p>
+        Type annotations in TypeScript are used to explicitly specify types for
+        variables, functions, objects, and more. They are not mandatory in
+        TypeScript, but they help the compiler in checking types and avoiding
+        errors when dealing with data types.
+      </p>
+    </header>
 
-<article>
-        <strong>Type annotations</strong> are declared using a colon (:) followed by the name of the type, and they come after the name of the construct they're declaring the type for
-<pre>
+    <article>
+      <strong>Type annotations</strong> are declared using a colon (:) followed
+      by the name of the type, and they come after the name of the construct
+      they're declaring the type for
+      <pre>
     <code>
         let age: number = 30;  //Age is explicitly annotated as a number.
     </code>
 </pre>
 
-    <p>Here are some key points about type annotations in TypeScript:</p>
-    <ul>
+      <p>Here are some key points about type annotations in TypeScript:</p>
+      <ul>
+        <li>They help catch JavaScript errors by enforcing type checking.</li>
         <li>
-            They help catch JavaScript errors by enforcing type checking.
+          They can be used to specify the type of variables, function
+          parameters, and object properties.
         </li>
         <li>
-            They can be used to specify the type of variables, function parameters, and object properties.
+          Once an identifier is annotated with a type, it can be used as that
+          type only. If the identifier is used as a different type, the
+          TypeScript compiler will issue an error.
         </li>
         <li>
-            Once an identifier is annotated with a type, it can be used as that type only. If the identifier is used as a different type, the TypeScript compiler will issue an error.
+          Type annotations can be used for primitive data types such as number,
+          string, and boolean.
         </li>
         <li>
-            Type annotations can be used for primitive data types such as number, string, and boolean.
+          They can also be used for more complex types such as arrays and
+          objects.
         </li>
         <li>
-            They can also be used for more complex types such as arrays and objects.
+          Type annotations can be used to specify the return type of functions.
         </li>
-        <li>
-            Type annotations can be used to specify the return type of functions.
-        </li>
-    </ul>
+      </ul>
 
-    <h2>Basic Type Annotations for variables:</h2>
-    <p>You can use type annotations when declaring variables to specify their data type.</p>
-    
-<pre>
+      <h2>Basic Type Annotations for variables:</h2>
+      <p>
+        You can use type annotations when declaring variables to specify their
+        data type.
+      </p>
+
+      <pre>
     <code>
         let name: string = 'Alice';
         let isActive: boolean = true;
@@ -58,14 +67,17 @@
     </code>
 </pre>
 
-        <p>
-            You cannot change the value using a different data type other than the declared data type of a variable. 
-            If you try to do so, TypeScript compiler will show an error. This helps in catching JavaScript errors. 
-        </p>
+      <p>
+        You cannot change the value using a different data type other than the
+        declared data type of a variable. If you try to do so, TypeScript
+        compiler will show an error. This helps in catching JavaScript errors.
+      </p>
 
-        <p>If you assign a string to the counter variable, you'll get an error:</p>
+      <p>
+        If you assign a string to the counter variable, you'll get an error:
+      </p>
 
-<pre>
+      <pre>
     <code>
         let counter: number;
         counter = 'Hello'; // compile error  Type '"Hello"' is not assignable to type 'number'.
@@ -73,204 +85,213 @@
     </code>
 </pre>
 
-<h2>Type Annotations for function parameters and return values</h2>
-<p>
-    <strong>Type Annotations</strong> can be applied to function parameters and return values, ensuring that 
-    the function accepts and produces the correct data types.
-</p>
+      <h2>Type Annotations for function parameters and return values</h2>
+      <p>
+        <strong>Type Annotations</strong> can be applied to function parameters
+        and return values, ensuring that the function accepts and produces the
+        correct data types.
+      </p>
 
-<pre>
+      <pre>
     <code>
         function add(a: number, b: number): number {
             return a + b
         }
     </code>
 </pre>
-    <p>
-        Here, the parameters must be numbers...and the third "number" word, shows, that return from this function 
-        must be a number as well.
-    </p>
+      <p>
+        Here, the parameters must be numbers...and the third "number" word,
+        shows, that return from this function must be a number as well.
+        <br />
+        TypeScript will verify that the function is called with the correct
+        types of arguments and will enforce the return type.
+      </p>
 
-
-
-    <p>
-        In TypeScript, the <strong>'void'</strong> type is used to indicate that a function does not return any value. 
-    </p>
-<pre>
+      <p>
+        In TypeScript, the <strong>'void'</strong> type is used to indicate that
+        a function does not return any value.
+      </p>
+      <pre>
     <code>
         function add(a: number, b: number): void {
             a + b //No return statement
         }
     </code>
 </pre>
-    <p>
-        If the intention of the function is to perform an operation without returning a value, you can keep the 
-        <strong>'void'</strong> return type but remove the <strong>return</strong> statement.
-    </p>
-    <p>
-        The choice between these options depends on the intended behavior of your function. If the function is meant to perform 
-        a calculation and return a result, use type of variable, that should be returned. It it's meant to perform 
-        an operation without returning a value, use <strong>'void'</strong> return type.
-    </p>
+      <p>
+        If the intention of the function is to perform an operation without
+        returning a value, you can keep the
+        <strong>'void'</strong> return type but remove the
+        <strong>return</strong> statement.
+      </p>
+      <p>
+        The choice between these options depends on the intended behavior of
+        your function. If the function is meant to perform a calculation and
+        return a result, use type of variable, that should be returned. It it's
+        meant to perform an operation without returning a value, use
+        <strong>'void'</strong> return type.
+      </p>
 
-    <h2>Type Annotations for Arrays</h2>
-    <p>Annotate an array type you use use a specific type followed by a square bracket : type[] :</p>
+      <h2>Type Annotations for Arrays</h2>
+      <p>
+        Annotate an array type you use use a specific type followed by a square
+        bracket : type[] :
+      </p>
 
-<pre>
+      <pre>
     <code>
 let arrayName: type[];
 
     </code>
 </pre>
-        <p>
-            For example, the following declares an array of strings:
-        </p>
-<pre>
+      <p>For example, the following declares an array of strings:</p>
+      <pre>
     <code>
         let names: string[] = ['John', 'Jane', 'Peter', 'David', 'Mary'];
     </code>
 </pre>
-
-
-
-    <h2>Type Annotations for objects.</h2>
-    <p>
-        In <strong>TypeScript</strong>, you can use type annotations to specify the structure and types of the properties within an object. 
-        You can define a type that represents the shape of an object and then annotate the object with that type.
-    </p>
-    <p>
-        Here's how you can add type annotations for the you object in your code:
-    </p>
-
-    <pre>
-        <code>
-    type Person = {
-        name: string;
-        age: number;
-    };
-    
-    const person: Person  = {
-        name: 'John',
-        age: 25
-    }; 
-        </code>
-    </pre>
-
-<pre>
+      <p>The following declares an array of numbers:</p>
+      <pre>
     <code>
-        type User = {
-          userName: {
-            firstName: string;
-            lastName: string;
-          };
-          isReturning: string;
-        };
-        
-        const you: User = {
-          userName: { firstName: 'Bobby', lastName: 'Brown' },
-          isReturning: 'yes',
-        };
+        let myArray: number[] = [1, 2, 3];
+    </code>
+</pre>
+
+      <p>
+        In the examples above, we have annotated 'names' as an array of strings
+        and 'myArray' as an array of numbers.
+      </p>
+
+      <h2>Type Annotations for objects.</h2>
+      <p>
+        In <strong>TypeScript</strong>, you can use type annotations to specify
+        the structure and types of the properties within an object. You can
+        define a type that represents the shape of an object and then annotate
+        the object with that type.
+      </p>
+      <p>
+        Here's how you can add type annotations for the you object in your code:
+      </p>
+
+      <pre>
+    <code>
+        let myObject: { name: string, age: number } = {
+            name: "John Doe", 
+            age: 24
+        }
 
     </code>
 </pre>
-        <p>
-            In this example:
-        </p>
-        <ul>
-            <li>
-                We define a User type that specifies the structure of the you object.
-            </li>
-            <li>
-                Inside the User type, we describe the userName property as an object with firstName and lastName properties, both of type string.
-            </li>
-            <li>
-                We also specify the isReturning property as a string.
-            </li>
 
-        </ul>
-        <p>
-            By adding these type annotations, you provide clear information to TypeScript about the expected structure and types of the you object, which can help catch type-related errors and provide better code documentation.
-        </p>
+      <p>
+        Type annotations can be used throughout your TypeScript code to provide
+        clarity and catch potential type-related errors. They also help with
+        code documentation and improve tooling support, such as autocompletion
+        and type checking in IDEs.
+      </p>
 
+      <h2>Type Inference</h2>
+      <p>
+        TypeScript can often infer the data type based on the value assigned to
+        a variable. This means that you don't always have to explicitly annotate
+        the types of variables, as TypeScript can infer them for you. This is
+        known as <strong>type inference</strong>.
+      </p>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <h2>Type Inference</h2>
-    <p>
-        TypeScript can often infer the data type based on the value assigned to a variable. This is known as <strong>type inference</strong>.
-    </p>
-    <pre>
-        <code>
-            let temperature = 25; //TypeScript infers that temperature is of type number
+      <p>Here's an example:</p>
+      <pre>
+ <code>
+            
+            let myNumber = 42; // TypeScript infers the type as number
+            let myString = "Hello, TypeScript!"; // TypeScript infers the type as string
+            let myBoolean = true; // TypeScript infers the type as boolean
+          
         </code>
     </pre>
-    <p>
-        However, you can still provide explicit type annotations for clarity and to catch potentail errors.
-    </p>
+      <p>
+        In this case, we haven't provided explicit type annotations for the
+        variables myNumber, myString, and myBoolean. However, TypeScript
+        automatically infers their types based on the assigned values.
+      </p>
+      <p>
+        Type inference also works with function parameters and return types:
+      </p>
+      <pre>
+        <code>
+            function add(a: number, b: number) { 
+                return a + b; // TypeScript infers the return type as number
+             } 
+                
+            
+            let result = add(2, 3); // TypeScript infers the type of result as number
+
+        </code>
+      </pre>
+      <p>
+
+      </p>
+       In this example, the function <strong>add</strong> doesn't
+      have an explicit return type annotation. However, TypeScript is able to
+      infer that the return type is number based on the fact that we are
+      performing addition on two parameters of type number.
+      <p>
+        Type inference is a handy feature that can help reduce code verbosity and improve code readability.
+        However, you can still provide explicit type annotations for clarity and
+        to catch potentail errors.
+      </p>
     </article>
     <article>
-        <h2> Union types and type aliases:</h2>
-        <p>
-            TypeScript supports more advance type annotations like 'union types' and type aliases.
-        </p>
-        <ul>
-            <li>
-                <strong>Union Types: </strong> Allow a variable to have multiple possible types.
-<pre>
+      <h2>Union types and type aliases:</h2>
+      <p>
+        TypeScript supports more advance type annotations like 'union types' and
+        type aliases.
+      </p>
+      <ul>
+        <li>
+          <strong>Union Types: </strong> Allow a variable to have multiple
+          possible types.
+          <pre>
     <code>
         let result: number || string = 42;
     </code>
 </pre>
-            </li>
-            <li>
-                <strong>Type Aliases:</strong> Let you create custom names for complex types, making your 
-                code more readable. Type aliases in TypeScript are used to assign a name to any type,
-                 making it easier to reuse throughout the code. <br>
-                 They do not create a new type, but rather provide a name for an existing type.
-                 To create a type alias, use the type keyword followed by the name of the alias and the type it refers to. <br>
-                 Here are some examples:
+        </li>
+        <li>
+          <strong>Type Aliases:</strong> Let you create custom names for complex
+          types, making your code more readable. Type aliases in TypeScript are
+          used to assign a name to any type, making it easier to reuse
+          throughout the code. <br />
+          They do not create a new type, but rather provide a name for an
+          existing type. To create a type alias, use the type keyword followed
+          by the name of the alias and the type it refers to. <br />
+          Here are some examples:
 
-                 <ul>
-                    <li>
-                        <strong>Primitives:</strong> <strong>Type aliases</strong> can be used to name primitive types 
-                        like <strong>'string'</strong>, <strong>'number'</strong>, <strong>'boolen'</strong>. For 
-                        example: 
-        <pre>
+          <ul>
+            <li>
+              <strong>Primitives:</strong> <strong>Type aliases</strong> can be
+              used to name primitive types like <strong>'string'</strong>,
+              <strong>'number'</strong>, <strong>'boolen'</strong>. For example:
+              <pre>
             <code>
                 type myString = string
                 type myNumber = number
                 type isNew = boolean
             </code>
         </pre>
-                    </li>
-                    <li>
-                        <strong>Unions:</strong> <strong>Type aliases</strong> can also be used to name union types. 
-                        For example:
-    <pre>
+            </li>
+            <li>
+              <strong>Unions:</strong> <strong>Type aliases</strong> can also be
+              used to name union types. For example:
+              <pre>
         <code>
             type myUnion = string || number;
         </code>
     </pre>
-                    </li>
-                    <li>
-                        <strong>Objects:</strong> <strong>Type aliases</strong> can be used to name object types. 
-                        For example: 
-    <pre>
+            </li>
+            <li>
+              <strong>Objects:</strong> <strong>Type aliases</strong> can be
+              used to name object types. For example:
+              <pre>
         <code>
             type myObject = {
                 name: string, 
@@ -278,9 +299,9 @@ let arrayName: type[];
             }
         </code>
     </pre>
-                    </li>
-                 </ul>
-<pre>
+            </li>
+          </ul>
+          <pre>
     <code>
 
         type myCountry = string;
@@ -295,20 +316,26 @@ let arrayName: type[];
     </code>
 </pre>
 
-To create a type alias, we're going to use the word <strong>type</strong>..In this case <code>type myCountry</code> and 
-if we're seeing <strong>type myCountry</strong> anywhere in the code, we must ensure it is going to be a string no matter what. <br>
-And this allows us to substitute these two for each other..So anywhere that requires a string we'll be able to use 'myCountry' and anywhere 
-that requires 'myCountry' we'll be able to use a string. So as far as TypeScript is concerned, 'myCountry' is a string.
-            </li>
+          To create a type alias, we're going to use the word
+          <strong>type</strong>..In this case <code>type myCountry</code> and if
+          we're seeing <strong>type myCountry</strong> anywhere in the code, we
+          must ensure it is going to be a string no matter what. <br />
+          And this allows us to substitute these two for each other..So anywhere
+          that requires a string we'll be able to use 'myCountry' and anywhere
+          that requires 'myCountry' we'll be able to use a string. So as far as
+          TypeScript is concerned, 'myCountry' is a string.
+        </li>
 
-            <li>
-                By adding these type annotations, you provide clear information to TypeScript about the expected structure 
-                and types of the you object, which can help catch type-related errors and provide better code documentation.
-            </li>
+        <li>
+          By adding these type annotations, you provide clear information to
+          TypeScript about the expected structure and types of the you object,
+          which can help catch type-related errors and provide better code
+          documentation.
+        </li>
 
-            <li>
-                Using Type aliases in action:
-<pre>
+        <li>
+          Using Type aliases in action:
+          <pre>
     <code>
         //bad function 
         function print(country: string){
@@ -321,29 +348,30 @@ that requires 'myCountry' we'll be able to use a string. So as far as TypeScript
         }
     </code>
 </pre>
-            </li>
-        </ul>
+        </li>
+      </ul>
     </article>
 
-
     <footer>
-       <h3>Mnemonic Devices:</h3>
-       <ul>
+      <h3>Mnemonic Devices:</h3>
+      <ul>
         <li>
-            Think of type annotations as labels that specify the data type of variables and functions.
+          Think of type annotations as labels that specify the data type of
+          variables and functions.
         </li>
         <li>
-            Union types are like having a variable that can wear multiple hats, and type aliases are like giving names to complex structures for better organization.
+          Union types are like having a variable that can wear multiple hats,
+          and type aliases are like giving names to complex structures for
+          better organization.
         </li>
-       </ul>
+      </ul>
 
-       <p>
-        <strong>Type annotations</strong> in TypeScript, a feature that enhances type safety, improves code readability, and provides valuable documentation. 
-        <strong>Type annotations</strong> are crucial for building robust and maintainable TypeScript applications.
-       </p>
-
+      <p>
+        <strong>Type annotations</strong> in TypeScript, a feature that enhances
+        type safety, improves code readability, and provides valuable
+        documentation. <strong>Type annotations</strong> are crucial for
+        building robust and maintainable TypeScript applications.
+      </p>
     </footer>
-
-    
-</body>
+  </body>
 </html>
