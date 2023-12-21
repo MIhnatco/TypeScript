@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Type Aliases</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Type Aliases</h1>
+      <p>
+        <strong>Type aliases</strong> in TypeScript allow us to create custom
+        names for types, making our code more readable and expressive. In other
+        words, <strong>type alias</strong> is just providing another name for
+        something that already exists.
+      </p>
+    </header>
+    <section>
+      <h3>Syntax:</h3>
+      <code>
+        <pre>
+                type &lt;AliasName&gt; = &lt;Type&gt;;
+
+            </pre
+        >
+      </code>
+      <p>
+        Type aliases are created using the type keyword, followed by the alias
+        name and the type it represents.
+      </p>
+      <p>Example:</p>
+      <pre>
+            <code>
+                type PersonName = string;
+
+                const myName: PersonName = "Jayson";
+                const alsoMyName: string = "Jayson";
+            </code>
+         </pre>
+      <p>
+        When you put your mouse over 'myName', TypeScript says it's a string
+        because we told it it's a string. Because 'PersonName' is purely for us
+        as developers, so we can document our code. And even if we put our mouse
+        over 'PersonName', it telss us that the type is a string. (It's strictly
+        for developer documentation to create code that is more
+        self-documenting).
+      </p>
+
+      <p>Example:</p>
+      <p>
+        In real code, you have a lot of lines of code...and you don't need to
+        see the function's code to understand it. SO the first function says..it
+        will 'print' something, 'thing' is definitely going to be anything. Who
+        knows what that is? And at least we know it is a string...So we can call
+        the function, but it might not do what we think it does.
+      </p>
+      <pre>
+        <code>
+    //bad 
+    function print(thing: string){
+        console.lot(`Name is ${thing}`)
+    }
+
+    print("a house")  //Name is a house.
+        </code>
+    </pre>
+
+      <p>
+        Now if we rewrite the function using better naming and our
+        <strong>type alias</strong>, this is going to become a lot more clear.
+      </p>
+      <pre>
+        <code>
+            //good 
+    function printName(name: PersonName){
+        console.log(`Name is ${name}`)
+    }
+        </code>
+    </pre>
+      <p>
+        Now if we collapse this function here, we can see we have a function
+        named 'printName' and we must supply a 'name' and that name has to be a
+        'PersonName'. And if we don't know what a "PersonName" is , then we can
+        just mouse over that and we can see .. it's a string. And we know for
+        sure.. it needs to be a person name.
+        <br />
+
+        So we use a <strong>type alias</strong> instead of a 'string'. A
+        'string' maybe the name or could be a name of an address. It could be a
+        name of a business. It could be a name of a fruit.
+      </p>
+    </section>
+
+    <section>
+      <h2>Assignment:</h2>
+      <p>
+        Create a TypeScript class called <strong>Person</strong> that represents
+        a person's information. Additionally, create a type alias called
+        <strong>PersonInfo</strong> to define the structure of the person's
+        information, including: name, age, email, and isStudent. The
+        <strong>name</strong> and <strong>email</strong> properties should be of
+        type string, the <strong>age</strong> property should be of type number,
+        and the <strong>isStudent</strong> property should be of type boolean.
+      </p>
+      <p>
+        Additionally, create a method called <strong>haveBirthday</strong> in
+        the <strong>Person</strong> class that increments the person's age by 1
+        each time it is called.
+      </p>
+      <p>
+        Your task is to implement the <strong>Person</strong> class in
+        TypeScript, including the necessary <strong>type</strong> annotations
+        and <strong>type alias</strong> for properties and methods.
+      </p>
+    </section>
+  </body>
+</html>
