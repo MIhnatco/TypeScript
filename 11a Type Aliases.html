@@ -93,6 +93,52 @@
     </section>
 
     <section>
+      <h2>Creating Aliases for Union Types | - or</h2>
+      <h3>Syntax:</h3>
+      <pre>
+        <code>
+          type &lt;AliasName&gt; = &lt;Type1&gt; | &lt;Type2&gt;;
+
+        </code>
+      </pre>
+      <p>
+        Type aliases can be used to create custom names for union types, which
+        represent a value that can be one of several types.
+      </p>
+      <pre>
+      <code>
+        Example: type Pet = "dog" | "cat" | "bird";
+
+        // Using the | we are saying our parameter is a string or number:
+        function printStatusCode(code: string | number) {
+          console.log(`My status code is ${code}.`)
+        }
+
+      </code>
+    </pre>
+    </section>
+
+    <section>
+      <h2>Creating Aliases for Intersection Types</h2>
+      <h3>Syntax:</h3>
+      <pre>
+        <code>
+          type &lt;AliasName&gt; = &lt;Type1&gt; & &lt;Type2&gt;;
+             </code>
+      </pre>
+      <p>
+        Type aliases can also be used to create custom names for intersection
+        types, which represent a value that must satisfy multiple types.
+      </p>
+      <pre>
+    <code>
+      Example: type Employee = { name: string } & { id: number };
+
+    </code>
+  </pre>
+    </section>
+
+    <section>
       <h2>Assignment:</h2>
       <p>
         Create a TypeScript class called <strong>Person</strong> that represents

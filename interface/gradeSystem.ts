@@ -33,7 +33,7 @@ class StudentRecord implements Student {
         this.studentId = studentId;
         this.testScores = testScores;
     }
-
+ 
 
     /**
      * Add a score to an array

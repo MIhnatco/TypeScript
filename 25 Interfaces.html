@@ -1,45 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Interfaces</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
     <header>
-        <h1>Interfaces</h1>
-        <p><strong>Interfaces</strong> allow you to define the structure and contract for objects in you code, making it 
-            easier to work with complex dat types and ensure type safety.  
-        </p>
+      <h1>Interfaces</h1>
+      <p>
+        <strong>Interfaces</strong> allow you to define the structure and
+        contract for objects in you code, making it easier to work with complex
+        dat types and ensure type safety.
+      </p>
     </header>
     <article>
-        <h2>What are Interfaces?</h2>
-        <ul>
-            <li>
-                <strong>Interfaces</strong> are a way to define the shape or structure of objects.
-            </li>
-            <li>
-                They describe the contract that an object must adhere to.
-            </li>
-        </ul>
-        <h2>Defining and using Interfaces:</h2>
-        <ul>
-            <li>
-                You can define interfaces using the <strong>'interface'</strong> keyword in TypeScript.
-            </li>
-            <li>
-                Interfaces can include properties, methods, and even optional members.
-            </li>
-            <li>
-                Interfaces can be used to define the structure of object literals or class instances.
-            </li>
-        </ul>
+      <h2>What are Interfaces?</h2>
+      <ul>
+        <li>
+          <strong>Interfaces</strong> are a way to define the shape or structure
+          of objects.
+        </li>
+        <li>They describe the contract that an object must adhere to.</li>
+      </ul>
+      <h2>Defining and using Interfaces:</h2>
+      <ul>
+        <li>
+          You can define interfaces using the
+          <strong>'interface'</strong> keyword in TypeScript.
+        </li>
+        <li>
+          Interfaces can include properties, methods, and even optional members.
+        </li>
+        <li>
+          Interfaces can be used to define the structure of object literals or
+          class instances.
+        </li>
+      </ul>
 
-        <p>
-        Here's an example of how you can use an <strong>interface</strong> in TypeScript with an object:
-        </p>
-<pre>
+      <p>
+        Here's an example of how you can use an <strong>interface</strong> in
+        TypeScript with an object:
+      </p>
+      <pre>
     <code>
 //Define an interface for a User object
 interface User {
@@ -75,34 +79,48 @@ displayUser(user2)
     </code>
 </pre>
 
-    <p>In this example:</p>
-    <ul>
+      <p>In this example:</p>
+      <ul>
         <li>
-            We define an <strong>"User"</strong> interface with three properties: <strong>'id'</strong>, 
-            <strong>'username'</strong> and <strong>'email'</strong>. This <strong>interface</strong> specifies 
-            the structure that objects representing users should adhere to.
+          We define an <strong>"User"</strong> interface with three properties:
+          <strong>'id'</strong>, <strong>'username'</strong> and
+          <strong>'email'</strong>. This <strong>interface</strong> specifies
+          the structure that objects representing users should adhere to.
         </li>
 
-        <li>We create two objects, <strong>user1</strong> and <strong>user2</strong>, that conform to the structure defined by the <strong>User</strong> interface. 
-            Each object has an <strong>id</strong>, <strong>username</strong>, and <strong>email</strong>.</li>
-
-        <li>The <strong>displayUser</strong> function takes a User object as a parameter and displays the user's information.</li>
-
-        <li>We call the <strong>displayUser</strong> function with the user1 and user2 objects, demonstrating how 
-            TypeScript enforces the object structure defined by the User interface.</li>
-    </ul>
-
-    <h2>Interface Properties and Methods:</h2>
-    <ul>
         <li>
-            <strong>Interfaces</strong> can include properties with data types and methods with function signatures.
+          We create two objects, <strong>user1</strong> and
+          <strong>user2</strong>, that conform to the structure defined by the
+          <strong>User</strong> interface. Each object has an
+          <strong>id</strong>, <strong>username</strong>, and
+          <strong>email</strong>.
+        </li>
+
+        <li>
+          The <strong>displayUser</strong> function takes a User object as a
+          parameter and displays the user's information.
+        </li>
+
+        <li>
+          We call the <strong>displayUser</strong> function with the user1 and
+          user2 objects, demonstrating how TypeScript enforces the object
+          structure defined by the User interface.
+        </li>
+      </ul>
+
+      <h2>Interface Properties and Methods:</h2>
+      <ul>
+        <li>
+          <strong>Interfaces</strong> can include properties with data types and
+          methods with function signatures.
         </li>
         <li>
-            You can specify optional properties using the <strong>'?'</strong> modifier.
+          You can specify optional properties using the
+          <strong>'?'</strong> modifier.
         </li>
-    </ul>
+      </ul>
 
-<pre>
+      <pre>
     <code>
 //Define an interface for a Person
 interface IPerson {
@@ -141,37 +159,48 @@ console.log(`Full Name: ${person.getFullName()}`);
     </code>
 </pre>
 
-<p>In this example:</p>
-<ul>
-    <li>
-        We define an <strong>IPerson</strong> interface that includes three properties (firstName, lastName, and age) with their respective data types and one method (getFullName) with a function signature specifying its return type.
-    </li>
-    <li>
-        We implement a <strong>Person </strong>class that adheres to the <strong>IPerson</strong> interface. The class includes properties that match the interface properties and implements the getFullName method, as required by the interface.
-    </li>
-    <li>
-        We create an instance of the Person class and demonstrate how to access the properties and call the method defined in the interface.
-    </li>
-</ul>
+      <p>In this example:</p>
+      <ul>
+        <li>
+          We define an <strong>IPerson</strong> interface that includes three
+          properties (firstName, lastName, and age) with their respective data
+          types and one method (getFullName) with a function signature
+          specifying its return type.
+        </li>
+        <li>
+          We implement a <strong>Person </strong>class that adheres to the
+          <strong>IPerson</strong> interface. The class includes properties that
+          match the interface properties and implements the getFullName method,
+          as required by the interface.
+        </li>
+        <li>
+          We create an instance of the Person class and demonstrate how to
+          access the properties and call the method defined in the interface.
+        </li>
+      </ul>
 
-        <p>
-            This example illustrates how <strong>interfaces</strong> can define a structure that includes both 
-            data properties and methods, helping ensure that classes adhere to a specific contract.
-        </p>
-    </article>    
+      <p>
+        This example illustrates how <strong>interfaces</strong> can define a
+        structure that includes both data properties and methods, helping ensure
+        that classes adhere to a specific contract.
+      </p>
+    </article>
 
     <section>
-        <h2>Optional properties</h2>
-        <p>
-            One usefule feature of TypeScript is the ability to specify <strong>optional properties</strong> in 
-            interfaces and classes, allowing you to define an object type that may or may not have certain properties. 
-        </p>
-        <p>
-            We can specify <strong>optional properties</strong> in interfaces and classes by the use of question mark <strong>'?'</strong> 
-            symbol after the property name.
-        </p>
+      <h2>Optional properties</h2>
+      <p>
+        One usefule feature of TypeScript is the ability to specify
+        <strong>optional properties</strong> in interfaces and classes, allowing
+        you to define an object type that may or may not have certain
+        properties.
+      </p>
+      <p>
+        We can specify <strong>optional properties</strong> in interfaces and
+        classes by the use of question mark <strong>'?'</strong>
+        symbol after the property name.
+      </p>
 
-<pre>
+      <pre>
     <code>
 //Define na interface for a book
 interface IBook {
@@ -214,98 +243,124 @@ displayBookInfo(book2)
     </code>
 </pre>
 
-        <p>This example demonstrates how you can use optional properties in interfaces to allow 
-            flexibility when working with objects, allowing certain properties to be present or omitted.
-        </p>
-    </section>
-
- <section>
-        <p>
-            <strong>Type annotations</strong> and <strong>interfaces</strong> are both used in TypeScript for different 
-            purposes, and they have some key differences:
-        </p>
-
-        <div class="container">
-            <div>
-                <h3>Type Annotations:</h3>
-                <ul>
-                    <li>
-                        A type annotation is a way to specify the data type of a variable, function parameter, or return value.
-                    </li>
-                    <li>
-                        Type annotations are often used to declare the data type of a specific value or entity.
-                    </li>
-                    <li>
-                        They are used to define the type of a single variable or value;
-                    </li>
-                    <li>
-                        Type annotations can be simple, like <strong>'number'</strong>, <strong>'string'</strong> or 
-                        more complex, like custom types or unions.
-                    </li>
-                    <li>
-                        Type annotations are especially useful for defining the type of function parameters or the 
-                        return type of functions.
-                    </li>
-                </ul>
-
-            </div>
-
-            <div>
-                    <h3>Interface:</h3>
-                    <ul>
-                        <li>An interface is a way to define a contract for the shape or structure of objects.</li>
-                        <li>Interfaces are typically used to define the structure that objects should adhere to, 
-                            specifying the properties they must have.
-                        </li>
-                        <li>
-                            They are used to create a bluepring for objects, defining their properties and methods.
-                        </li>
-                        <li>
-                            Interfaces are used to describe the structure of object literals, class instances, and custom types.
-                        </li>
-                        <li>
-                            Interfaces can include properties, methods, and optional members.
-                        </li>
-                    </ul>
-            </div>
-        </div>
-
-        <h4>
-            Key Differences
-        </h4>
-        <ul>
-            <li>
-                <strong>Type annotations</strong> are primarily concerned with specifying data types for variables, parameters, 
-                and return values, while <strong>interfaces</strong> are concerned with defining the structure of objects.
-            </li>
-            <li>
-                <strong>Type annotations</strong> are used to declare the type of specific values, while <strong>interfaces</strong> describe 
-                the expected structure of objects.
-            </li>
-            <li>
-                <strong>Interfaces</strong> are often used when working with objects, classes, and custom data structures, 
-                while <strong>type annotations</strong> are used for variables and function signatures.
-            </li>
-            <li>
-                You can use <strong>interfaces</strong> to create reusable type contracts, making your code more maintainable 
-                and readable.
-            </li>
-        </ul>
-
+      <p>
+        This example demonstrates how you can use optional properties in
+        interfaces to allow flexibility when working with objects, allowing
+        certain properties to be present or omitted.
+      </p>
     </section>
 
     <section>
-
-        <h2>Assignment 1: Using Interface</h2>
-        <h3>
-            Objective:
-        </h3>
-
+      <section>
+        <h2>Readonly Properties</h2>
         <p>
-            Given the data, define the interface "User" and use it accordingly.
+          You can mark properties as readonly in an interface by using the
+          readonly keyword before the property name. This ensures that the
+          property can't be modified after it's been initialized.
         </p>
+        <p>For example:</p>
 
-<pre>
+        <pre>
+            <code>
+                interface Point { readonly x: number; readonly y: number; }
+            </code>
+        </pre>
+      </section>
+    </section>
+
+    <section>
+      <p>
+        <strong>Type annotations</strong> and <strong>interfaces</strong> are
+        both used in TypeScript for different purposes, and they have some key
+        differences:
+      </p>
+
+      <div class="container">
+        <div>
+          <h3>Type Annotations:</h3>
+          <ul>
+            <li>
+              A type annotation is a way to specify the data type of a variable,
+              function parameter, or return value.
+            </li>
+            <li>
+              Type annotations are often used to declare the data type of a
+              specific value or entity.
+            </li>
+            <li>
+              They are used to define the type of a single variable or value;
+            </li>
+            <li>
+              Type annotations can be simple, like <strong>'number'</strong>,
+              <strong>'string'</strong> or more complex, like custom types or
+              unions.
+            </li>
+            <li>
+              Type annotations are especially useful for defining the type of
+              function parameters or the return type of functions.
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Interface:</h3>
+          <ul>
+            <li>
+              An interface is a way to define a contract for the shape or
+              structure of objects.
+            </li>
+            <li>
+              Interfaces are typically used to define the structure that objects
+              should adhere to, specifying the properties they must have.
+            </li>
+            <li>
+              They are used to create a bluepring for objects, defining their
+              properties and methods.
+            </li>
+            <li>
+              Interfaces are used to describe the structure of object literals,
+              class instances, and custom types.
+            </li>
+            <li>
+              Interfaces can include properties, methods, and optional members.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <h4>Key Differences</h4>
+      <ul>
+        <li>
+          <strong>Type annotations</strong> are primarily concerned with
+          specifying data types for variables, parameters, and return values,
+          while <strong>interfaces</strong> are concerned with defining the
+          structure of objects.
+        </li>
+        <li>
+          <strong>Type annotations</strong> are used to declare the type of
+          specific values, while <strong>interfaces</strong> describe the
+          expected structure of objects.
+        </li>
+        <li>
+          <strong>Interfaces</strong> are often used when working with objects,
+          classes, and custom data structures, while
+          <strong>type annotations</strong> are used for variables and function
+          signatures.
+        </li>
+        <li>
+          You can use <strong>interfaces</strong> to create reusable type
+          contracts, making your code more maintainable and readable.
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Assignment 1: Using Interface</h2>
+      <h3>Objective:</h3>
+
+      <p>Given the data, define the interface "User" and use it accordingly.</p>
+
+      <pre>
     <code>
 
         interface User = unknown;
@@ -332,125 +387,126 @@ displayBookInfo(book2)
     </code>
 </pre>
 
+      <h2>Assignment 2: Building a Student Grading System</h2>
+      <h3>Objective:</h3>
+      <p>
+        You are tasked with building a student grading system for a school. Each
+        student has the following information:
+      </p>
+      <ul>
+        <li>name</li>
+        <li>Student Id</li>
+        <li>List of test scores (an array of numbers)</li>
+      </ul>
+      <p>
+        You need to design TypeScript interfaces and class to model this system
+        and implement the following functionality:
+      </p>
 
+      <ol>
+        <li>
+          Create an interface Student that defines the structure of a student
+          object.
+          <ul>
+            <li>
+              It should have properties for name, studentId, and testScores.
+            </li>
+            <li>The testScores property is an array of numbers.</li>
+          </ul>
+        </li>
+        <li>
+          Create a class StudentRecord that implements the Student interface.
+          <ul>
+            <li>
+              The class should have a constructor that accepts the name and
+              studentId as parameters and initializes the testScores array as an
+              empty array.
+            </li>
+            <li>
+              Implement a method
+              <strong>'addTestScore(score: number)'</strong> that allows adding
+              test scores to the <strong>'testScores'</strong> array.
+            </li>
+            <li>
+              Implement a method <strong>'getAverageTestScore()'</strong> that
+              calculates and returns the average test score for the student.
+            </li>
+            <li>
+              Implement a method addTestScore(score: number) that allows adding
+              test scores to the testScores array.
+            </li>
+            <li>
+              Implement a method getAverageTestScore() that calculates and
+              returns the average test score for the student.
+            </li>
+          </ul>
+        </li>
+        <li>
+          Create an array of StudentRecord instances to represent multiple
+          students.
+        </li>
+        <li>Display the student information and their average test scores.</li>
+      </ol>
 
-
-
-        <h2>Assignment 2: Building a Student Grading System</h2>
-        <h3>Objective:</h3>
-        <p>
-            You are tasked with building a student grading system for a school. Each student has the 
-            following information:
-        </p>
-        <ul>
-            <li>
-                name
-            </li>
-            <li>
-                Student Id
-            </li>
-            <li>
-                List of test scores (an array of numbers)
-            </li>
-        </ul>
-        <p>
-            You need to design TypeScript interfaces and class to model this system and implement the following 
-            functionality:
-        </p>
-
-        <ol>
-            <li>
-                Create an interface Student that defines the structure of a student object.
-                    <ul>
-                        <li>
-                            It should have properties for name, studentId, and testScores.
-                        </li>
-                        <li>
-                            The testScores property is an array of numbers.
-                        </li>
-                    </ul>
-            </li>
-            <li>
-                Create a class StudentRecord that implements the Student interface.
-                <ul>
-                    <li>
-                        The class should have a constructor that accepts the name and studentId as parameters and initializes 
-                        the testScores array as an empty array.
-                    </li>
-                    <li>
-                        Implement a method <strong>'addTestScore(score: number)'</strong> that allows adding test 
-                        scores to the <strong>'testScores'</strong> array.
-                    </li>
-                    <li>
-                        Implement a method <strong>'getAverageTestScore()'</strong> that calculates and returns the average 
-                        test score for the student.
-                    </li>
-                    <li>
-                        Implement a method addTestScore(score: number) that allows adding test scores to the testScores array.
-                    </li>
-                    <li>
-                        Implement a method getAverageTestScore() that calculates and returns the average test score for the student.
-                    </li>
-                </ul>
-            </li>
-            <li>
-                Create an array of StudentRecord instances to represent multiple students.
-            </li>
-            <li>
-                Display the student information and their average test scores.
-            </li>
-        </ol>
-
-       <h3>Instructions:</h3>
-       <ul>
-            <li>
-                Create the TypeScript interface Student.
-            </li>
-            <li>
-                Implement the StudentRecord class according to the Student interface.
-            </li>
-            <li>
-                Create at least three instances of the StudentRecord class to represent different students.
-            </li>
-            <li>
-                Add test scores for each student using the addTestScore method.
-            </li>
-            <li>
-                Calculate and display the average test scores for each student using the getAverageTestScore method.
-            </li>
-        
-       </ul>
-        <p>
-            This assignment will require you to use interfaces, classes, methods, and arrays to model and manage student records and their test scores. It's a practical exercise that reflects a real-world scenario.
-        </p>
-
+      <h3>Instructions:</h3>
+      <ul>
+        <li>Create the TypeScript interface Student.</li>
+        <li>
+          Implement the StudentRecord class according to the Student interface.
+        </li>
+        <li>
+          Create at least three instances of the StudentRecord class to
+          represent different students.
+        </li>
+        <li>Add test scores for each student using the addTestScore method.</li>
+        <li>
+          Calculate and display the average test scores for each student using
+          the getAverageTestScore method.
+        </li>
+      </ul>
+      <p>
+        This assignment will require you to use interfaces, classes, methods,
+        and arrays to model and manage student records and their test scores.
+        It's a practical exercise that reflects a real-world scenario.
+      </p>
     </section>
 
-
     <footer>
+      <h2>Summary</h2>
+      <p>
+        In TypeScript, an interface is a powerful feature that allows you to
+        define the structure of an object, including its properties and methods.
+        Interfaces are used to enforce a certain shape or contract for objects,
+        providing a way to define complex types and ensure consistency across
+        your codebase.
+      </p>
+      <p>
+        Interfaces are especially useful for defining the shape of data that
+        will be passed between different parts of your program, such as between
+        functions, classes, or modules.
+      </p>
+      <h3>Type Checking and Type Safety:</h3>
 
-        <h2>Summary</h2>
-        <h3>Type Checking and Type Safety:</h3>
+      <ul>
+        <li>
+          Interfaces provide type checking, helping catch type-related errors at
+          compile time.
+        </li>
+        <li>
+          Interfaces promote type safety by clearly defining the expected object
+          structure.
+        </li>
+      </ul>
 
-        <ul>
-            <li>
-                Interfaces provide type checking, helping catch type-related errors at compile time.
-            </li>
-            <li>
-                Interfaces promote type safety by clearly defining the expected object structure.
-            </li>
-        </ul>
-
-        <p>
-            <strong>Type annotations </strong> help ensure that individual values ahve the correct data type, while 
-            <strong>interfaces</strong> define the structure of more complex data, such as objects and classes.
-        </p>
+      <p>
+        <strong>Type annotations </strong> help ensure that individual values
+        ahve the correct data type, while <strong>interfaces</strong> define the
+        structure of more complex data, such as objects and classes.
+      </p>
     </footer>
-
-
 
     <script src="interface/index.js"></script>
     <script src="interface/interface.js"></script>
     <script src="interface/gradeSystem.js"></script>
-</body>
+  </body>
 </html>

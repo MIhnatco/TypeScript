@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Map() test</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <section>
+      <h2>Scenario:</h2>
+      <p>
+        You are building a small application to manage a student roster. Each
+        student is identified by a unique student ID, and you need to store
+        additional information such as the student's name, age, and grade level.
+        You decide to use a Map to store the student data.
+      </p>
+
+      <h2>Test Question:</h2>
+      <p>
+        Given the scenario, how would you use the Map object to store and manage
+        the student data? Please outline the steps you would take to achieve
+        this:
+      </p>
+      <ul>
+        <li>
+          Add New Students: How would you add new students to the Map object
+          using the unique student IDs and their corresponding details?
+        </li>
+        <li>
+          Retrieve Student Information: How would you retrieve student
+          information from the Map object based on their unique student IDs?
+        </li>
+        <li>
+          Update Student Details: How would you update the details of existing
+          students in the Map object, such as modifying their names, ages, or
+          grade levels?
+        </li>
+        <li>
+          Remove Students: Implement a method to remove students from the roster based on their student ID.
+        </li>
+        <li>
+          Iterate Over Student Roster: Add a method to iterate over the entire student roster and perform operations on each student's details.
+        </li>
+      </ul>
+      <pre>
+    <code>
+        
+        interface Details {
+            name: string;
+            age: number;
+            grade: number;
+        }
+
+        class StudentInfo {
+            account: Map&lt;number, Details&gt;
+
+            constructor(){
+                this.account = new Map();
+
+            }
+
+            //Add new students
+            addStudent(studentID: number, studentDetails: Details): void {
+                this.account.set(studentID, studentDetails)
+            }
+
+            //Retrieve Student information
+            getStudentDetails(studentID: number): Details | undefined {
+              return this.account.get(studentID);
+            }
+
+            //Update Student information
+            updateStudentDetails(studentID:number, updatedDetails: Partial<Details>): void{
+              const existingDetails = this.account.get(studentID);
+              if(existingDetails){
+                const updatedStudentDetails = {...existingDetails, ...updatedDetials};
+                this.account.set(studentID, updatedStudentDetails)
+              }
+            }
+
+            
+        }
+
+    </code>
+</pre>
+    </section>
+
+    <script></script>
+  </body>
+</html>
