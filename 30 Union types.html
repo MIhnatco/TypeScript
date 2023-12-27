@@ -30,6 +30,55 @@
 
 <pre>
     <code>
+        let myVariable: string | number;
+    </code>
+</pre>
+
+<p>
+    Now, <code>myVariable</code> can hold either a string or a number.
+</p>
+<pre>
+    <code>
+        myVariable = 'hello'
+        console.log(myVariable)   //Output: 'hello'
+    </code>
+</pre>
+<pre>
+    <code>
+        myVariable = 10
+        console.log(myVariable)   //Output: 10
+    </code>
+</pre>
+
+<p>
+    <strong>Union types </strong>are often used when a function or method can accept different 
+    types of parameters. Let's consider an example where we have a function that accepts either a string 
+    or an array of numbers
+</p>
+
+<pre>
+    <code>
+        function printData(data: string | number[]){
+            if(typeof data === 'string'){
+                console.log(data)
+            } else {
+                console.log(data.join(", "))
+            }
+        }
+
+        printData('hello')  //Output: "hello"
+
+        printData([1,2,3])  //Output: "1, 2, 3"
+    </code>
+</pre>
+
+<p>
+    In this example, the <code>printData</code> function can handle different types of data by using a union 
+    type as the parameter.
+</p>
+
+<pre>
+    <code>
 type Color = 'red' | 'green' | 'blue';
 const r: Color = "red";
 
@@ -439,6 +488,13 @@ switch (result.status){
 
 
 <footer>
+
+    <p>
+        A <strong>union type</strong> in TypeScript is a type that can hold values of multiple types. It 
+        allows you to define a variable, parameter or return type that can be assigned to hold values of 
+        different types. Bye using the pipe (|) oeprator, you can combine two or more types into a 
+        union type. 
+    </p>
     <p>
         <strong>Union types</strong> are a versatile way to work with variables and function parameters that 
         can have multiple data types. They make your TypeScript code more flexible and enable you to handle 

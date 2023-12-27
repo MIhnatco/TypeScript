@@ -13,6 +13,7 @@
         In <strong>TypeScript</strong>, <strong>type assertion</strong> is a
         method for explicitly declaring the type of a variable, allowing you to
         specify a value's type and preventing the compiler from inferring it.
+        <br />
         <strong>Type assertion</strong> is utilized when you need to convert a
         variable from one type to another, such as changing it from "unknown" to
         "number," among other scenarios.
@@ -26,9 +27,7 @@
     </header>
 
     <section>
-        <p>
-            And here's the same example using "as" syntax:
-        </p>
+      <p>And here's the same example using "as" syntax:</p>
       <pre>
     <code>
 const someValue: unknown = 'hello';
@@ -41,10 +40,10 @@ let strLength: number = (someValue as string).length;
 
 </code>
 </pre>
-<p>
-    Here, we are asserting that someValue is of type string so that we can access the length property.
-
-</p>
+      <p>
+        Here, we are asserting that <strong>someValue</strong> is of type string so that we can
+        access the length property.
+      </p>
 
       <p>
         This is how you can use the assertion to invert one data type to another
@@ -116,16 +115,15 @@ Alice.position()
     </section>
 
     <section>
-        <h2>Assignment: </h2>
-        <p>
-            You are building a messaging application using TypeScript. You have an array of messages 
-            received from a server, but the server response does not include explicit type 
-            information for each message. Your task is to iterate over the messages array 
-            and print the content of each message. Use 'type assertions' to tell TypeScript 
-            that each item in the array is of type <em>string</em>.
-        </p>
-
-
+      <h2>Assignment:</h2>
+      <p>
+        You are building a messaging application using TypeScript. You have an
+        array of messages received from a server, but the server response does
+        not include explicit type information for each message. Your task is to
+        iterate over the messages array and print the content of each message.
+        Use 'type assertions' to tell TypeScript that each item in the array is
+        of type <em>string</em>.
+      </p>
 
       <h2>Assignment: Type assertion</h2>
       <p>
