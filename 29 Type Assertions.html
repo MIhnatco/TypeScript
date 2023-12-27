@@ -1,59 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Type Assertions</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
     <header>
-        <h1>Type Assertions</h1>
-        <p>
-            In <strong>TypeScript</strong>, <strong>type assertion</strong> is a method for explicitly declaring the type of a variable, allowing you to specify a value's type 
-            and preventing the compiler from inferring it. Type assertion is utilized 
-            when you need to convert a variable from one type to another, such as changing it 
-            from "unknown" to "number," among other scenarios.
-        </p>
+      <h1>Type Assertions</h1>
+      <p>
+        In <strong>TypeScript</strong>, <strong>type assertion</strong> is a
+        method for explicitly declaring the type of a variable, allowing you to
+        specify a value's type and preventing the compiler from inferring it.
+        <strong>Type assertion</strong> is utilized when you need to convert a
+        variable from one type to another, such as changing it from "unknown" to
+        "number," among other scenarios.
+      </p>
+
+      <p>
+        <strong>Type assertions</strong> are of two forms: "angle-bracket"
+        syntax and "as" syntax. The angle-bracket syntax is the older form,
+        while the "as" syntax is the newer and recommended form.
+      </p>
     </header>
 
     <section>
-<pre>
+        <p>
+            And here's the same example using "as" syntax:
+        </p>
+      <pre>
     <code>
-const greeting: unknown = 'hello';
+const someValue: unknown = 'hello';
     
-const strLength: number = (greeting as string).length;
-   </code>
-</pre>
+const strLength: number = (someValue as string).length;
 
+
+let someValue: any = "hello world";
+let strLength: number = (someValue as string).length;
+
+</code>
+</pre>
 <p>
-    This is how you can use the assertion to invert one data type to another and than to use that without to make a new variable.
+    Here, we are asserting that someValue is of type string so that we can access the length property.
+
 </p>
 
-    <p>Here's a brief explanation of when and how to use type assertions:</p>
-    <ul>
-        <li>
-            Use type assertions when you are confident about the variable's type, but TypeScript can't infer it.
-        </li>
-        <li>
-            It's helpful when working with dynamic types (like data from APIs or user inputs) or when you know the type more precisely than TypeScript's inference.
-        </li>
-        <li>
-            Type assertions don't perform any runtime checks. They are purely a compile-time feature, so you must be certain of the type you're asserting.
-        </li>
-        <li>
-            The <strong>as</strong> syntax is recommended over the angle bracket syntax because it is more compatible with JSX in React and avoids conflicts.
-        </li>
-    </ul>
-   </section>
+      <p>
+        This is how you can use the assertion to invert one data type to another
+        and than to use that without to make a new variable.
+      </p>
 
+      <p>Here's a brief explanation of when and how to use type assertions:</p>
+      <ul>
+        <li>
+          Use type assertions when you are confident about the variable's type,
+          but TypeScript can't infer it.
+        </li>
+        <li>
+          It's helpful when working with dynamic types (like data from APIs or
+          user inputs) or when you know the type more precisely than
+          TypeScript's inference.
+        </li>
+        <li>
+          Type assertions don't perform any runtime checks. They are purely a
+          compile-time feature, so you must be certain of the type you're
+          asserting.
+        </li>
+        <li>
+          The <strong>as</strong> syntax is recommended over the angle bracket
+          syntax because it is more compatible with JSX in React and avoids
+          conflicts.
+        </li>
+      </ul>
+    </section>
 
-   <section>
-    <p>
-        This section is not directly related to 'Assertions'..but we can use <strong>'type annotations' </strong> to interpret 
-        one class as something else.
-    </p>
-<pre>
+    <section>
+      <p>
+        This section is not directly related to 'Assertions'..but we can use
+        <strong>'type annotations' </strong> to interpret one class as something
+        else.
+      </p>
+      <pre>
     <code>
 interface Employee {
     position(): string;
@@ -78,99 +106,103 @@ Alice.position()
 
     </code>
 </pre>
-    <p>
-        Now TypeScript registers 'Alice' as Employee and we are only looking at the implemented portion in class from interface. <br>
-        This is useful, because sometimes we can have a class, that implements multiple 'interfaces' but we only want to deal with just 
-         a single 'interface'.
-    </p>
-   </section>
+      <p>
+        Now TypeScript registers 'Alice' as Employee and we are only looking at
+        the implemented portion in class from interface. <br />
+        This is useful, because sometimes we can have a class, that implements
+        multiple 'interfaces' but we only want to deal with just a single
+        'interface'.
+      </p>
+    </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   <section>
-  
-        <h2>Assignment 1: Type assertion</h2>
+    <section>
+        <h2>Assignment: </h2>
         <p>
-            You're building a simple function that calculates the area of a rectangle. However, the input 
-            data is coming from an external source, and TypeScript is treating the dimensions as 'any' type. <br>
-            You need to use <strong>type assertion</strong> to specify the correct types and calculate the area.
+            You are building a messaging application using TypeScript. You have an array of messages 
+            received from a server, but the server response does not include explicit type 
+            information for each message. Your task is to iterate over the messages array 
+            and print the content of each message. Use 'type assertions' to tell TypeScript 
+            that each item in the array is of type <em>string</em>.
         </p>
-   
-    <main>
+
+
+
+      <h2>Assignment: Type assertion</h2>
+      <p>
+        You're building a simple function that calculates the area of a
+        rectangle. However, the input data is coming from an external source,
+        and TypeScript is treating the dimensions as 'any' type. <br />
+        You need to use <strong>type assertion</strong> to specify the correct
+        types and calculate the area.
+      </p>
+
+      <main>
         <ol>
-            <li>
-                Create a TypeScript function named <strong>'calculateRectangleArea'</strong> that takes two parameters:
-                <ul>
-                    <li>
-                        <strong>'length'</strong> (an 'any' type) representing the length of the rectangle.
-                    </li>
-                    <li>
-                        <strong>'width'</strong> (an 'any' type) representing the width of the rectangle.
-                    </li>
-                </ul>
-            </li>
-            <li>
-                Use <strong>type assertion</strong> to specify that both <strong>'length'</strong> and <strong>'width'</strong> 
-                are of type 'number'.
-            </li>
-            <li>
-                Calculate the area of the rectangle using the formula: <strong>'area = length * width'</strong>
-            </li>
-            <li>Return the calculated area.</li>
-            <li>
-                Test your function with the following inputs:
-                <ul>
-                    <strong>'lenght = 5'</strong>(a number)
-                    <strong>'lenght = 8'</strong>(a number)
-                </ul>
-                Ensure that your function correctly calculates the area and returns the result.
-            </li>
-
+          <li>
+            Create a TypeScript function named
+            <strong>'calculateRectangleArea'</strong> that takes two parameters:
+            <ul>
+              <li>
+                <strong>'length'</strong> (an 'any' type) representing the
+                length of the rectangle.
+              </li>
+              <li>
+                <strong>'width'</strong> (an 'any' type) representing the width
+                of the rectangle.
+              </li>
+            </ul>
+          </li>
+          <li>
+            Use <strong>type assertion</strong> to specify that both
+            <strong>'length'</strong> and <strong>'width'</strong>
+            are of type 'number'.
+          </li>
+          <li>
+            Calculate the area of the rectangle using the formula:
+            <strong>'area = length * width'</strong>
+          </li>
+          <li>Return the calculated area.</li>
+          <li>
+            Test your function with the following inputs:
+            <ul>
+              <strong>'lenght = 5'</strong
+              >(a number)
+              <strong>'lenght = 8'</strong
+              >(a number)
+            </ul>
+            Ensure that your function correctly calculates the area and returns
+            the result.
+          </li>
         </ol>
-    </main>
+      </main>
+    </section>
 
-  </section>
+    <section>
+      <h2>Assignment: Type Validation with Switch</h2>
+      <p>
+        You are working on a project where you need to validate data for
+        different fields. Your task is to create a function validateData that
+        takes an object as input and validates the types of its properties. You
+        should use a switch statement to handle each field and validate its type
+        according to the following requirements:
+      </p>
 
-  <section>
-    <h2>Assignment 2: Type Validation with Switch</h2>
-    <p>You are working on a project where you need to validate data for different fields. 
-        Your task is to create a function validateData that takes an object as input and validates the types of its properties. 
-        You should use a switch statement to handle each field and validate its type according to the following requirements:
-    </p>
-
-    <h3>
-        Requirements:
-    </h3>
-    <ol>
+      <h3>Requirements:</h3>
+      <ol>
         <li>The field "name" should be of type "string".</li>
         <li>The field "age" should be of type "number".</li>
         <li>The field "email" should be of type "string".</li>
         <li>The field "isSubscribed" should be of type "boolean".</li>
-       
-    </ol>
-    
-    <p>If any of the properties have an incorrect type, you should throw an error with a message indicating which field has the incorrect type.</p>
+      </ol>
 
-    <p>You can use the following template to complete the assignment:</p>
+      <p>
+        If any of the properties have an incorrect type, you should throw an
+        error with a message indicating which field has the incorrect type.
+      </p>
 
-<pre>
+      <p>You can use the following template to complete the assignment:</p>
+
+      <pre>
     <code>
 
         function validateData(data) {
@@ -228,18 +260,21 @@ Alice.position()
     </code>
 </pre>
 
-        <p>
-            Your task is to complete the switch statement to validate the types of the fields and ensure the error messages are appropriate. 
-        </p>
+      <p>
+        Your task is to complete the switch statement to validate the types of
+        the fields and ensure the error messages are appropriate.
+      </p>
+    </section>
 
+    <footer>
+      <p>
+        <strong>Type assertions</strong> in TypeScript allow you to tell the
+        compiler that you know more about the type of a value than TypeScript
+        does. It is a way to override the default type inference behavior of the
+        compiler.
+      </p>
+    </footer>
 
-
-
-
-  </section>
-
-
-
-   <script src="assertions/assertions.js"></script>
-</body>
+    <script src="assertions/assertions.js"></script>
+  </body>
 </html>
