@@ -1,9 +1,18 @@
+/**
+ * Defines a structure of a Cat object
+ * @interface
+ */
 interface Cat {
     name: string;
     age: number;
     type: string;
     meow: boolean;
 }
+
+/**
+ * Defines a structure of a Dog object
+ * @interface
+ */
 interface Dog {
     name: string;
     age: number;

@@ -1,25 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Type Predicates</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
     <header>
-        <h1>Type Predicates</h1>
-        <p>
-            Type predicates are a way to narrow down the type of a variable within a certain code block, allowing you to work with that variable with more specific knowledge about its type. 
-        </p>
+      <h1>Type Predicates</h1>
+      <p>
+        <strong>Type predicates</strong> are a way to narrow down the type of a
+        variable within a certain code block, allowing you to work with that
+        variable with more specific knowledge about its type.
+      </p>
     </header>
 
     <section>
-        <p>
-            The code below demonstrates a common use of TypeScript's <strong>type guards</strong>, 
-            which are used to narrow down the type of a variable within a code block to ensure more specific type checking.
-        </p>
-<pre>
+      <p>
+        <strong>Type predicates</strong> are defined using a custom function
+        that returns a type predicate assertion. The function takes an input
+        parameter and returns a boolean indicating whether the input satisfies a
+        specific condition.
+      </p>
+      <p>Here's an example of a type predicate function:</p>
+      <pre>
+    <code>
+        function isString(value: any): value is string {
+            return typeof value === 'string'
+        }
+    </code>
+</pre>
+
+      <p>
+        In this example, <code>isString</code> is a type predicate that checks
+        if the input <code>value</code> is of type <em>string</em>. The function
+        returns <em>true</em> if the condition is satisfied and
+        <em>false</em> otherwise.
+      </p>
+    </section>
+
+    <section>
+      <p>
+        The code below demonstrates a common use of TypeScript's
+        <strong>type guards</strong>, which are used to narrow down the type of
+        a variable within a code block to ensure more specific type checking.
+      </p>
+      <pre>
     <code>
         //type guard
 type StrOrNum = string | number;
@@ -33,52 +60,62 @@ function sample(data: StrOrNum){
 }
     </code>
 </pre>
-    
-    <p>
-        Here's an explanation of the code:
-    </p>
 
-    <ul>
+      <p>Here's an explanation of the code:</p>
+
+      <ul>
         <li>
-            type <strong>StrOrNum = string | number;</strong>
-             This defines a custom type StrOrNum, which can hold values of either a string or a number. 
-             It's a union type that represents a variable that can be either a string or a number.
+          type <strong>StrOrNum = string | number;</strong>
+          This defines a custom type StrOrNum, which can hold values of either a
+          string or a number. It's a union type that represents a variable that
+          can be either a string or a number.
         </li>
         <li>
-            function <strong>sample(data: StrOrNum)</strong>: 
-            This function sample takes an argument data of type StrOrNum, which means it can accept either a string or a number.
+          function <strong>sample(data: StrOrNum)</strong>: This function sample
+          takes an argument data of type StrOrNum, which means it can accept
+          either a string or a number.
         </li>
         <li>
-            Inside the function, there's an if-else construct:
-            <ul>
-                <li>
-                    <strong>if (typeof data === 'string'):</strong> This is a type guard. It checks whether the data variable is of type 'string'. If it is, the code within this block will run. This is possible because TypeScript narrows down the type of data within this block to be specifically a 'string'.
-                </li>
-                <li>
-                    <strong>else if (typeof data === 'number'):</strong> This is another type guard. 
-                    It checks whether data is of type 'number'. 
-                    If it is, the code within this block will run. 
-                    TypeScript narrows down the type of data within this block to be specifically a 'number'.
-                </li>
-            </ul>
+          Inside the function, there's an if-else construct:
+          <ul>
+            <li>
+              <strong>if (typeof data === 'string'):</strong> This is a type
+              guard. It checks whether the data variable is of type 'string'. If
+              it is, the code within this block will run. This is possible
+              because TypeScript narrows down the type of data within this block
+              to be specifically a 'string'.
+            </li>
+            <li>
+              <strong>else if (typeof data === 'number'):</strong> This is
+              another type guard. It checks whether data is of type 'number'. If
+              it is, the code within this block will run. TypeScript narrows
+              down the type of data within this block to be specifically a
+              'number'.
+            </li>
+          </ul>
         </li>
-    </ul>
+      </ul>
 
-        <p>
-            These type guards ensure that you can safely perform operations specific to the type of data within each code block. 
-            For example, if you access string-specific methods or properties inside the first block, 
-            TypeScript knows it's dealing with a string, and if you do number-specific operations in the second block, 
-            TypeScript knows it's a number. This improves type safety and avoids runtime errors when working with variables of union types.
-        </p>
+      <p>
+        These <strong>type guards</strong> ensure that you can safely perform
+        operations specific to the type of data within each code block. For
+        example, if you access string-specific methods or properties inside the
+        first block, TypeScript knows it's dealing with a string, and if you do
+        number-specific operations in the second block, TypeScript knows it's a
+        number. This improves type safety and avoids runtime errors when working
+        with variables of union types.
+      </p>
 
+      <p>
+        The <strong>'typeof'</strong> operator works only with primitive types.
+      </p>
 
-        <p>The <strong>'typeof'</strong> operator works only with primitive types.</p>
-
-        <h2>Type predicate</h2>
-        <p>
-            The <strong>'type predicate'</strong> is going to allow us to check for arbitrary objects, that we actually create.
-        </p>
-<pre>
+      <h2>Type predicate</h2>
+      <p>
+        The <strong>'type predicate'</strong> is going to allow us to check for
+        arbitrary objects, that we actually create.
+      </p>
+      <pre>
     <code>
 interface Square {
     kind: "square";
@@ -95,11 +132,11 @@ type Shape = Square | Circle;
     </code>
 </pre>
 
-        <p>
-            Now, we need to have some way to determine what the shape actually is.
-        </p>
+      <p>
+        Now, we need to have some way to determine what the shape actually is.
+      </p>
 
-<pre>
+      <pre>
     <code>
 function isSquare(shape: Shape): shape is Square {
     return shape.kind === 'square';
@@ -134,61 +171,89 @@ const circle: Circle = {
 }
     </code>
 </pre>
-   </section>
+    </section>
 
-   <section>
-    <h2>Assignment: Type Predicates</h2>
-    <h3>Objective:</h3>
+    <section>
+      <h2>Assignment: Type Predicates</h2>
+      <h3>Objective:</h3>
 
-        <ul>
-            <li>
-                Define an interface named Animal with the following properties:
-                <ul>
-                    <li>
-                        name of type string
-                    </li>
-                    <li>
-                        age of type number
-                    </li>
-                    <li>
-                        type of type string
-                    </li>
-                </ul>    
-            </li>
-            <li>
-                Define a type predicate function named isCat that takes an argument of type Animal and returns 
-                a boolean value. 
-                The function should check if the type property of the Animal object is equal to "cat". 
-                The return type of the function should be animal is Cat, 
-                where Cat is an interface that extends Animal and has an additional property named meow 
-                of type boolean.
+      <ul>
+        <li>
+          Define an interface named Animal with the following properties:
+          <ul>
+            <li>name of type string</li>
+            <li>age of type number</li>
+            <li>type of type string</li>
+          </ul>
+        </li>
+        <li>
+          Define a type predicate function named isCat that takes an argument of
+          type Animal and returns a boolean value. The function should check if
+          the type property of the Animal object is equal to "cat". The return
+          type of the function should be animal is Cat, where Cat is an
+          interface that extends Animal and has an additional property named
+          meow of type boolean.
+        </li>
+        <li>
+          Define a type predicate function named isDog that takes an argument of
+          type Animal and returns a boolean value. The function should check if
+          the type property of the Animal object is equal to "dog". The return
+          type of the function should be animal is Dog, where Dog is an
+          interface that extends Animal and has an additional property named
+          bark of type boolean.
+        </li>
+        <li>
+          Define an array named animals of type Animal[] with at least two
+          objects that have the type property set to "cat" and two objects that
+          have the type property set to "dog".
+        </li>
+        <li>
+          Use the isCat and isDog type predicate functions to filter the animals
+          array into two separate arrays: one for cats and one for dogs.
+        </li>
+        <li>Log the resulting arrays to the console.</li>
+      </ul>
 
-            </li>
-            <li>
-                Define a type predicate function named isDog that takes an argument of type Animal and returns a boolean value. 
-                The function should check if the type property of the Animal object is equal to "dog". 
-                The return type of the function should be animal is Dog, 
-                where Dog is an interface that extends Animal and has an additional property named bark of type boolean.
-            </li>
-            <li>
-                Define an array named animals of type Animal[] with at least two objects that have the type property 
-                set to "cat" and two objects that have the type property set to "dog".
+      <h2>Assignment: Create a User Validation Function</h2>
+      <h3>Scenario:</h3>
+      <p>
+        You are working on a user authentication system for a web application.
+        Your task is to create a validation function that checks whether a given
+        user object is valid or not. The user object may have different
+        properties based on their role, such as "username" and "password" for
+        regular users, and additional properties like "employeeId" and
+        "position" for employees.
+      </p>
+      <h3>Requirements:</h3>
 
-            </li>
-            <li>
-                Use the isCat and isDog type predicate functions to filter the animals array into two separate arrays: 
-                one for cats and one for dogs.
+      <ul>
+        <li>
+          Create a type for the User object that includes the common properties
+          for all users.
+        </li>
+        <li>
+          Implement a type predicate function called
+          <strong>isValidUser</strong> that takes a parameter of type unknown
+          and returns a boolean value indicating whether the input is a valid
+          user or not.
+        </li>
+        <li>
+          The <strong>isValidUser</strong> function should check if the input
+          object has the required properties based on their role (e.g.,
+          "username" and "password" for regular users).
+        </li>
+        <li>
+          If the input object has additional properties for employees, such as
+          "employeeId" and "position," they should also be validated.
+        </li>
+        <li>
+          Test your <strong>isValidUser</strong> function with different valid
+          and invalid user objects to ensure it behaves correctly.
+        </li>
+      </ul>
+    </section>
 
-            </li>
-            <li>
-                Log the resulting arrays to the console.
-
-            </li>
-        </ul>
-   </section>
-
-
-
-   <script src="typePredicates/typePredicates.js"></script>
-</body>
+    <script src="typePredicates/typePredicates.js"></script>
+    <script src="typePredicates/userValidation.js"></script>
+  </body>
 </html>
