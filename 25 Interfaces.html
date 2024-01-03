@@ -16,7 +16,23 @@
       </p>
     </header>
     <article>
+      <p>
+        Original text:
+        <a
+          href="https://www.typescriptlang.org/docs/handbook/interfaces.html"
+          target="_blank"
+          >Interfaces</a
+        >
+      </p>
       <h2>What are Interfaces?</h2>
+
+      <p>
+        <strong>TypeScript</strong> emphasizes type checking based on the shape
+        of values, which is sometimes referred to as 'duck typing' or
+        'structural subtyping'. <strong>Interfaces</strong> in
+        <strong>TypeScript</strong> server as a way to name these types and
+        define contracts within your code and with code outside of your project.
+      </p>
       <ul>
         <li>
           <strong>Interfaces</strong> are a way to define the shape or structure
@@ -40,8 +56,64 @@
       </ul>
 
       <p>
-        Here's an example of how you can use an <strong>interface</strong> in
-        TypeScript with an object:
+        Let's start by understanding how interfaces work with a simple example:
+      </p>
+
+      <pre>
+    <code>
+      function printLabel(labeledObj: {label: string}){
+        console.log(labeledObj.label);
+
+      }
+
+      let myObj = {size: 10, label: "Size 10 Object"};
+      printLabel(myObj)
+    </code>
+  </pre>
+  <p>
+    In this example, the type checker verifies that call to <em>printLabel</em>. The <em>printLabel</em> 
+    function has a single parameter that expects an object with a property called <em>label</em> of type 
+    <em>string</em>. It's important to note that although our object has additional properties, 
+    the compiler only checks if the required properties are present and have the correct types. TypeScript 
+    provides some flexibility in this regard, but there are cases where it enforces stricter rules.
+  </p>
+  <p>
+    We can rewrite the same example using an <strong>interface</strong> to describe the requirement 
+    of having a <em>label</em> property of type <em>string</em>
+  </p>
+
+  <pre>
+    <code>
+      interface LabeledValue {
+        label: string;
+      }
+
+
+      function printLabel(labeledObj: LabeledValue){
+        console.log(labeledObj.label)
+      }
+
+      let myObj = {size: 10, label: "Size 10 Object"};
+      printLabel(myObj)
+    </code>
+  </pre>
+
+    <p>
+      Here, we introduce the <em>LabeledValue</em> interface, which represents the requirement 
+      mentioned in the previous example. It specifies that an object must have a single property 
+      called <em>label</em> of type <em>string</em>. Unlike some other languages, we don't need to 
+      explicitly state that the object passed to <em>printLabel</em> implements this interface. In 
+      TypeScript, only the shape matters. If an object meets the requirements defined by the 
+      interface, it is considered valid.
+    </p>
+    <p>
+      It's worth  noting that the type checker doesn't enforce any specific order for the 
+      properties; it only checks if the required properties defined by the interface are 
+      present and have the correct types.
+    </p>
+      <p>
+        Here's another example of how you can use an
+        <strong>interface</strong> in TypeScript with an object:
       </p>
       <pre>
     <code>
