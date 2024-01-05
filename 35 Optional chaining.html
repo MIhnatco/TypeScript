@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Optional chaining</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
     <header>
-        <h1>Optional chaining</h1>
-        <p>
-            <strong>Optional Chaining</strong> is a feature in TypeScript that allows you to safely access properties or methods on objects without 
-            having to explicitly check if each property or method exists. 
-            It can help you prevent runtime errors that occur when you attempt to access properties or methods on null or undefined values.
-        </p>
+      <h1>Optional chaining</h1>
+      <p>
+        <strong>Optional Chaining</strong> is a feature in TypeScript that
+        allows you to safely access properties or methods on objects without
+        having to explicitly check if each property or method exists. It can
+        help you prevent runtime errors that occur when you attempt to access
+        properties or methods on null or undefined values.
+      </p>
     </header>
 
     <section>
-<code>
-    <pre>
+      <code>
+        <pre>
         interface Pii {
             age?: number;
             address?: string;
@@ -51,13 +53,15 @@
             }
         }
 
-    </pre>
-</code>
+    </pre
+        >
+      </code>
 
-    <p>
-        As you can see..we have multiple points where we can get 'undefined'. Here is code to test for 'undefined' for 'age'.
-    </p>
-<pre>
+      <p>
+        As you can see..we have multiple points where we can get 'undefined'.
+        Here is code to test for 'undefined' for 'age'.
+      </p>
+      <pre>
     <code>
 const database = new Database();
 
@@ -73,12 +77,11 @@ const database = new Database();
     </code>
 </pre>
 
-
-    <p>
-        As you can see there is a lot of code and it must be written in the right order. Now, 
-        we can use 'optional chaining'.
-    </p>
-<pre>
+      <p>
+        As you can see there is a lot of code and it must be written in the
+        right order. Now, we can use 'optional chaining'.
+      </p>
+      <pre>
     <code>
         const result = database.search("John");
         if(result?.pii?.age) {
@@ -87,86 +90,178 @@ const database = new Database();
     </code>
 </pre>
 
-    <p>
-        The <strong>'?'</strong> is going automatically check if it's 'undefined' or 'null', and if it's not 'undefined' or 'null', 
-        then it's going to continue with this line of code.
-    </p>
+      <p>
+        The <strong>'?'</strong> is going automatically check if it's
+        'undefined' or 'null', and if it's not 'undefined' or 'null', then it's
+        going to continue with this line of code.
+      </p>
     </section>
 
+    <section>
+      <h2>Assignment: Handling Nested Data with Optional Chaining</h2>
+      <h3>Scenario:</h3>
+
+      <p>
+        You are building a weather app that fetches data from a weather API.
+        However, the API response may not always contain all the necessary data,
+        and sometimes the properties might be missing or null. Your task is to
+        create a function that extracts relevant information from the API
+        response using optional chaining.
+      </p>
+
+      <h3>Instructions:</h3>
+      <ul>
+        <li>
+          Create an interface named WeatherData to represent the structure of
+          the API response. It should have the following properties:
+          <ul>
+            <li>location: string</li>
+            <li>temperature?: number</li>
+            <li>description?: string</li>
+            <li>wind?: { speed?: number }</li>
+          </ul>
+        </li>
+        <li>
+          Implement a function named getWeatherInfo that takes a WeatherData
+          object as a parameter. Inside the function:
+          <ul>
+            <li>
+              Use optional chaining to safely access the location, temperature,
+              description, and wind.speed properties.
+            </li>
+            <li>
+              Log the following information to the console:
+              <ul>
+                <li>Location: [location]</li>
+                <li>Temperature: [temperature]°C (if available)</li>
+                <li>Description: [description] (if available)</li>
+                <li>Wind Speed: [wind.speed] km/h (if available)</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          Create two WeatherData objects to represent different API responses:
+          <ul>
+            <li>One with all the properties.</li>
+            <li>Another with missing or null properties.</li>
+          </ul>
+        </li>
+
+        <li>
+          Call the <strong>'getWeatherInfo'</strong> function for both objects
+          to display the information.
+        </li>
+      </ul>
+    </section>
 
     <section>
-        <h2>Assignment: Handling Nested Data with Optional Chaining</h2>
-        <h3>
-            Scenario:
-        </h3>
+      <p>
+        To illustrate this, let's say we have an object called
+        <em>person</em> with nested properties like <em>address</em> and
+        <em>city</em>. Without <strong>optional chaining</strong>, if we want to
+        access the <em>city</em> property, we would need to check if each
+        intermediate property exists before accessing the next one:
+      </p>
+      <pre>
+        <code>
+            if(person && person.address && person.address.city){
+                console.log(person.address.city)
+            }
+        </code>
+    </pre>
+      <p>
+        With <strong>optional chaining</strong>, we can simplify this code by
+        using the <strong>?.</strong>
+        operator.
+      </p>
 
-        <p>
-            You are building a weather app that fetches data from a weather API. 
-            However, the API response may not always contain all the necessary data, 
-            and sometimes the properties might be missing or null. 
-            Your task is to create a function that extracts relevant information from the API response using optional chaining.
+      <pre>
+    <code>
+        console.log(person?.address?.city)
+    </code>
+    </pre>
+      <p>
+        If any of the intermediate properties (person, address, or city) are
+        null or undefined, the expression will short-circuit and return
+        undefined, without throwing any error. This makes your code more concise
+        and less error-prone.
+      </p>
+      <p>
+        <strong>Optional chaining</strong> can also be used with function calls.
+        For example, if we have an optional method <em>getName()</em> on the
+        <em>person</em> object, we can call it using
+        <strong>optional chaining</strong> like this:
+      </p>
+      <pre>
+        <code>
+            console.log(person?.getName?.());
+        </code>
+    </pre>
 
-        </p>
+      <p>
+        If <em>getName()</em> exists and is a function, it will be called.
+        Otherwise, it will return undefined.
+      </p>
+    </section>
 
-        <h3>Instructions:</h3>
-        <ul>
-            <li>
-                Create an interface named WeatherData to represent the structure of the API response. It should have the following properties:
-                <ul>
-                    <li>location: string</li>
-                    <li>temperature?: number</li>
-                    <li>description?: string</li>
-                    <li>wind?: { speed?: number }</li>
-                </ul>
-            </li>
-            <li>
-                Implement a function named getWeatherInfo that takes a WeatherData object as a parameter. Inside the function:
-                <ul>
-                    <li>
-                        Use optional chaining to safely access the location, temperature, description, and wind.speed properties.
+    <section>
+      <h2>Assignment: Build a User Management System</h2>
+      <h3>Scenario:</h3>
+      <p>
+        You have been tasked with building a user management system for a
+        website. The system should allow users to view their profile
+        information, including their name, email, and address. However, not all
+        users have provided their address information.
+      </p>
 
-                    </li>
-                    <li>
-                        Log the following information to the console:
-                        <ul>
-                            <li>Location: [location]</li>
-                            <li>Temperature: [temperature]°C (if available)</li>
-                            <li>Description: [description] (if available)</li>
-                            <li>Wind Speed: [wind.speed] km/h (if available)</li>
+      <h3>Instructions:</h3>
+      <p>
+        Your goal is to implement a TypeScript class called <em>User</em> with
+        the following properties:
+      </p>
+      <ul>
+        <li>name (string): The name of the user</li>
+        <li>email (string) : The email address of the user</li>
+        <li>
+          address (optional object): An object containing the user's address
+          information, including <em>street, city, zipCode</em>
+        </li>
+      </ul>
+      <p>
+        Your class should have a method called <em>getAddress()</em> that
+        returns the user's address as a formatted string. If the user has not
+        provided their address information, the method should return 'Address
+        not available'.
+      </p>
 
-                        </ul>
+      <p>
+        Your task is to implement the User class, including the optional
+        chaining logic in the getAddress() method.
+      </p>
+      <h3>Hints:</h3>
+      <ul>
+        <li>
+          Use the optional chaining operator (?.) to safely access properties of
+          the address object.
+        </li>
+        <li>
+          Use a conditional statement to check if the address object exists
+          before accessing its properties.
+        </li>
+      </ul>
+    </section>
 
-                    </li>
-                </ul>
-            </li>
-
-            <li>
-                Create two WeatherData objects to represent different API responses:
-                    <ul>
-                        <li>
-                            One with all the properties.
-                        </li>
-                        <li>
-                            Another with missing or null properties.
-                        </li>
-                    </ul>
-            </li>
-
-            <li>
-                Call the <strong>'getWeatherInfo'</strong> function for both objects to display the information.
-            </li>
-        </ul>
-   
-   </section>
     <footer>
-        <p>
-            Optional Chaining is especially useful in scenarios where you don't control the data source and want to avoid unnecessary null or undefined checks. It simplifies your code and makes it more robust against potential null or undefined values.
-        </p>
+      <p>
+        Optional Chaining is especially useful in scenarios where you don't
+        control the data source and want to avoid unnecessary null or undefined
+        checks. It simplifies your code and makes it more robust against
+        potential null or undefined values.
+      </p>
     </footer>
 
-
-
     <script src="optionalFields/optionalChaining.js"></script>
-    
-</body>
+  </body>
 </html>
